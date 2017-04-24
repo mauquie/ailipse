@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Inscription</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="vue/css/style_login.css" rel="stylesheet">
+		<link href="vue/css/style_notification.css" rel="stylesheet">
+		<link href="vue/animate.css" rel="stylesheet">
+		
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+        <a href="index.php"><button type="button"  class="button-exit"><i class="glyphicon glyphicon-arrow-left"></i></button></a>
+		<div class="login animated zoomInDown">
+			<h1>Inscription</h1>
+			<p><br /></p>
+			<form method="post">
+				<input type="email" name="e-mail" placeholder="E-mail"  required=required; />
+				<input type="password" name="pass" placeholder="Mot de passe"  required=required; />
+				<input type="password" name="confirm" placeholder="Confirmation mot de passe"  required=required; />
+				<p><br /></p>
+				<input type="text" name="name" placeholder="Nom"  required=required; />
+				<input type="text" name="surname" placeholder="Prénom"  required=required; />
+				<input type="text" name="tel" placeholder="Téléphone"  required=required; />
+				<input type="text" name="adresse" placeholder="Adresse"  required=required; />
+				<input class="dbl" type="text" name="ville" placeholder="Ville"  required=required; />
+				<input class="dbl" type="text" name="cp" placeholder="Code Postal"  required=required; />
+				<p><br/></p>
+				<button name="submit" type="submit" class="btn btn-primary btn-block btn-large">S'inscrire</button>
+			</form>
+			<br>
+			{#CONTENU}
+		</div>
+		<script type="text/javascript">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE xml>
+<controle id="HBFJKC">
+	<name>Contrôle 1</name>
+	<date>28/02/2017</date>
+	
+	<AR>-17</AR><AR>-16</AR><AR>-11</AR><AR>-14</AR><AR>-22</AR><AR>-20</AR><AR>-20</AR><AR>-20</AR><AR>-24</AR><AR>-32</AR><AR>-26</AR><AR>-29</AR>
+	<BR>-23</BR><BR>-15</BR><BR>-20</BR><BR>-20</BR><BR>-19</BR><BR>-22</BR><BR>-17</BR><BR>-25</BR><BR>-23</BR><BR>-21</BR><BR>-21</BR><BR>-21</BR>
+	<CR>-21</CR><CR>-21</CR><CR>-17</CR><CR>-21</CR><CR>-25</CR><CR>-20</CR><CR>-27</CR><CR>-27</CR><CR>-20</CR><CR>-27</CR><CR>-26</CR><CR>-25</CR>
+	<DR>-30</DR><DR>-32</DR><DR>-27</DR><DR>-35</DR><DR>-24</DR><DR>-24</DR><DR>-27</DR><DR>-28</DR><DR>-28</DR><DR>-24</DR><DR>-31</DR><DR>-28</DR>
+	
+	<AL>-20</AL><AL>-17</AL><AL>-17</AL><AL>-22</AL><AL>-23</AL><AL>-23</AL><AL>-23</AL><AL>-20</AL><AL>-24</AL><AL>-29</AL><AL>-30</AL><AL>-30</AL>
+	<BL>-22</BL><BL>-19</BL><BL>-17</BL><BL>-23</BL><BL>-26</BL><BL>-26</BL><BL>-21</BL><BL>-23</BL><BL>-28</BL><BL>-27</BL><BL>-30</BL><BL>-29</BL>
+	<CL>-26</CL><CL>-24</CL><CL>-20</CL><CL>-22</CL><CL>-25</CL><CL>-24</CL><CL>-28</CL><CL>-29</CL><CL>-30</CL><CL>-29</CL><CL>-27</CL><CL>-32</CL>
+	<DL>-32</DL><DL>-32</DL><DL>-31</DL><DL>-36</DL><DL>-30</DL><DL>-29</DL><DL>-28</DL><DL>-32</DL><DL>-31</DL><DL>-27</DL><DL>-33</DL><DL>-36</DL>	
+</controle>

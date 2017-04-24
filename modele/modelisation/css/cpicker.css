@@ -1,0 +1,29 @@
+		.NiceForm fieldset {
+			font-weight: bold;
+			display: inline;
+			border: 1px solid black;
+			padding: 10px 20px 10px 20px;
+		}
+		.NiceForm legend {
+			color: black;
+			font: italic 12pt Trebauchet, Garamond, serif;
+		}
+		.NiceForm > div, .NiceForm .box {
+			display: table-row;
+		}
+		.NiceForm label, .NiceForm input, .NiceForm select, .NiceForm textarea {
+			display: table-cell;
+		}
+		.NiceForm label {
+			font-weight: bold;
+			cursor: pointer;
+			padding-right: 1em;
+		}
+		.ColorPicker {
+			border: 1px solid gray;
+			height: 1em;
+			width: 1em;
+			border-radius:4px;
+			cursor: pointer;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+		}

@@ -1,0 +1,21 @@
+input[type="range"] {
+    position: relative;
+}
+input[type="range"]:after, input[type="range"]:before {
+    position: absolute;
+    top: 1em;
+    color: black;
+}
+input[type="range"]:before {
+    left:0em;
+	top:6px;
+    content: attr(min);
+}
+input[type="range"]:after {
+    right: 0em;
+	top:6px;
+    content: attr(max);
+}
+.btn-primary{
+	background-color:none;
+}

@@ -3,3 +3,4 @@
 - Transformer le fichier menu.php en classe
 - Refaire le noyau pour qu'il y ait qu'une seule condition pour checker la connexion
 - Créer un .htaccess
+aaaaaaaaaaaaaaaaaaaar

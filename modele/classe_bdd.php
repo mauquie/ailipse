@@ -1,30 +1,23 @@
 <?php 
-if(!class_exists("BDD")){
+if(!class_exists("Bdd")){
 	
-	class BDD 
+	class Bdd
 	{
 		// information sur la base de données
-		private $hostname = "localhost";				private $username = "admin";		private $password = "toor";		private $databaseName = "ailipse";
+		private $_hostname = "localhost";				private $_username = "admin";		private $_password = "toor";		private $_databaseName = "ailipset921";
 		//variable tampon 
-		private $connect;
+		private $_connect;
 		
-		public function __construct()
+		public function __construct()
 		{
 		}
-		public function OpenBDD() // ouvre la base de données et renvoi un objet utilisable 
+		public function openBDD() // ouvre la base de données et renvoi un objet utilisable 
 		{
-			$this->connect = new mysqli($this->hostname, $this->username, $this->password, $this->databaseName);
-			return $this->connect;
+			$this->_connect = new mysqli($this->_hostname, $this->_username, $this->_password, $this->_databaseName);
+			return $this->_connect;
 		}
-		public function CloseBDD($test)		// fermeture avec un objet donné
+		public function closeBDD()		// femeture avec un objet donné
 		{
-			$test->close();
-		}
-		public function CloseBD()		// femeture avec un objet donné
-		{
-			$this->connect->close();
-		}
-		
-	}
-}
+			$this->_connect->close();
+		}	}}
 ?>

@@ -1,16 +1,16 @@
 <?php  
-if(!class_exists("operateur"))
+if(!class_exists("Operateur"))
 {
-	class operateur extends user
+	class Operateur extends Utilisateur
 	{
 		
 		public function __construct()
 		{
 		}
 		
-		public function ajout_voile()
+		public function ajoutVoile()
 		{					
-				$connect = $this->OpenBDD();
+				$connect = $this->openBDD();
 				$sql="SELECT * from fabricant";
 				$result= $connect->query($sql);
 				
@@ -20,7 +20,7 @@ if(!class_exists("operateur"))
 				{
 					$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";	
 				}
-				$sql="SELECT id ,ref from material";
+				$sql="SELECT id ,ref from susp_materiaux";
 				$result=$connect->query($sql);
 				$materiaux="<select id='materiaux' class='nice-select' style='width:50%'>
 							<option value='-1'> </option>";
@@ -30,7 +30,7 @@ if(!class_exists("operateur"))
 				}
 				$materiaux=$materiaux."</select>";
 				
-				$this->CloseBDD($connect);
+				$this->closeBDD();
 				$selectSuspente="<select id='nbSuspente' name='nbSuspente' class='nice-select' style='width:50%'>";
 				for($i=1;$i<=200;$i++)
 				{
@@ -45,7 +45,7 @@ if(!class_exists("operateur"))
 						<h2 class="mdl-card__title-text">Ajout de voile</h2>
 					</div>
 					<div class="mdl-card__supporting-text card-background">
-					<form  action="modele/Forme/valider_voile.php" method="post" enctype="multipart/form-data">
+					<form  action="modele/formulaires/valider_voile.php" method="post" enctype="multipart/form-data">
 						<div class="content-grid mdl-grid">
 							<div class="mdl-cell">
 							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -203,7 +203,7 @@ if(!class_exists("operateur"))
 				</div>');
 		}
 		
-		public function AjoutConstructeur()	// affichage des input pour tous les champs a remplir dans la base de données 
+		public function ajoutConstructeur()	// affichage des input pour tous les champs a remplir dans la base de données 
 		{
 			return"
 						<div class='demo-card-wide mdl-card mdl-shadow--2dp'>
@@ -212,7 +212,7 @@ if(!class_exists("operateur"))
 					</div>
 					<div class='content-grid mdl-grid'>
 						<div class='mdl-cell'>
-			<form action='modele/Forme/constructeurAjout.php' method='post'  enctype='multipart/form-data'>
+			<form action='modele/formulaires/valider_constructeur.php' method='post'  enctype='multipart/form-data'>
 							<h5> Informations de l'entreprise </h5>
 							<div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
 								<input name='nomc' class='mdl-textfield__input' type='text' id='nomc'>
@@ -299,10 +299,10 @@ if(!class_exists("operateur"))
 						</button>
 			</form>
 				</div>";
-				// à la validation ligne 121  modele/Forme/constructeurAjout.php est appellé pour valider et executer les requetes
+				// à la validation ligne 121  modele/formulaires/constructeurAjout.php est appellé pour valider et executer les requetes
 			
 		}
-		public function MenuOperateur()		// affichage du pannel operateur chaque <div class="mdl-cell"> sont des items
+		public function menuOperateur()		// affichage du pannel operateur chaque <div class="mdl-cell"> sont des items
 		{
 			
 			return ('<div class="demo-card-wide mdl-card mdl-shadow--2dp">
@@ -344,9 +344,9 @@ if(!class_exists("operateur"))
 			
 			
 		}
-		 public function AjoutMateriaux()
+		 public function ajoutMateriaux()
 		 {
-			$connect = $this->OpenBDD();
+			$connect = $this->openBDD();
 			$sql="SELECT * from fabricant";
 			$result= $connect->query($sql);
 				
@@ -356,7 +356,7 @@ if(!class_exists("operateur"))
 			{
 				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";	
 			}
-			$sql="SELECT id ,ref  From material";
+			$sql="SELECT id ,ref  From susp_materiaux";
 
 			$result=$connect->query($sql);
 			$materiaux="<option value='-1'> </option>";
@@ -365,7 +365,7 @@ if(!class_exists("operateur"))
 				$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";
 			}
 			$materiaux;
-			$this->CloseBDD($connect);
+			$this->closeBDD();
 			
 			 return"
 					<div class='demo-card-wide mdl-card mdl-shadow--2dp'>
@@ -374,7 +374,7 @@ if(!class_exists("operateur"))
 					</div>
 					<div class='content-grid mdl-grid'>
 						<div class='mdl-cell'>
-			<form action='modele/Forme/valider_materiel.php' method='post'  enctype='multipart/form-data'>
+			<form action='modele/formulaires/valider_materiel.php' method='post'  enctype='multipart/form-data'>
 							<h5> Informations du materiaux par le constructeur </h5>
 							<div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
 								<select id='id_fab' class='nice-select' name='id_fab'>
@@ -450,24 +450,17 @@ if(!class_exists("operateur"))
 						</button>
 			</form>
 				</div>";
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
+
 		 }
-		 public function ModifierVoile()
+		 
+		 public function modifierVoile()
 		 {
-			$connect = $this->OpenBDD();
+			$connect = $this->openBDD();
 			
-			$sql="SELECT * from modele WHERE valider=0 ";
+			$sql="SELECT * from voile WHERE valider=0 ";
 			$result= $connect->query($sql);
 			
-			$voile="
-						<option value='-1'> </option>";
+			$voile="<option value='-1'> </option>";
 			while($row=mysqli_fetch_array($result))
 			{
 				$voile=$voile."<option value=$row[0]>$row[1]</option>";	
@@ -482,7 +475,7 @@ if(!class_exists("operateur"))
 			{
 				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";	
 			}
-			
+			$this->closeBDD();
 			return("
 				<div class='demo-card-wide mdl-card mdl-shadow--2dp'>
 					<div class='mdl-card__title mdl-card-operateur__background animated slideInDown'>

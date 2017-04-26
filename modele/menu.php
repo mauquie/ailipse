@@ -9,9 +9,7 @@ function menuProfil() {
 	} else {
 		$menu = '<span>Bonjour, '.$prenom.'.</span>';
 	}
-	return ($menu);	
-	
-	
+	return ($menu);	
 }
 
 function menuNavigation() {		

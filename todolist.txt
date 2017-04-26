@@ -1,0 +1,5 @@
+- Rename le fichier 'mainvue.js' par 'application.js' dans '/addons/js/'
+- Mettre toutes les images contenues dans 'images' dans 'images/application'
+- Transformer le fichier menu.php en classe
+- Refaire le noyau pour qu'il y ait qu'une seule condition pour checker la connexion
+- Créer un .htaccess

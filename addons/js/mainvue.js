@@ -5,7 +5,7 @@
 		alert(voile);
 		$.ajax({
 			
-			url:"modele/Forme/recupVoile.php",
+			url:"modele/formulaires/recupVoile.php",
 			data:{id:voile},
 			type : "POST",
 			success :function(rep)
@@ -163,7 +163,7 @@
 			wid= 15;
 			$(".longerSuspente").append(tabl2);
 			$.ajax({
-			url:"modele/Forme/recupMaterial.php",
+			url:"modele/formulaires/recupMaterial.php",
 			success :function(rep)
 			{
 				
@@ -238,7 +238,7 @@
 			}
 			
 			$.ajax({
-			url:"modele/Forme/showUser.php",
+			url:"modele/formulaires/showUser.php",
 			data :{id:x},
 			type : "POST",
 			success :function(rep)	
@@ -285,7 +285,7 @@
 		 var activation = document.getElementById("activation_adm").checked;
 		 // transfaire les donner  pour pouvoir utiliser dans du php requete sql
 		 $.ajax({
-		  url:"modele/Forme/updateAdm.php",
+		  url:"modele/formulaires/updateAdm.php",
 		  type : "GET",
 		  data:  {id:x,
 				  email:email,
@@ -314,7 +314,7 @@
 		if(confirm("�tes-vous s�r de vouloir continuer ?")==true)
 		{
 			$.ajax({
-			  url:"modele/Forme/selectAdm.php",
+			  url:"modele/formulaires/selectAdm.php",
 			  type : "GET",
 			  success: function (rep)
 			 {
@@ -328,7 +328,7 @@
 					}
 				}
 				$.ajax({
-				  url:"modele/Forme/activate.php",
+				  url:"modele/formulaires/activate.php",
 				  type : "GET",
 				  data: {ids:ids},
 				  success: function (rep)
@@ -414,7 +414,7 @@ function showThumbnail(files){
 		if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)
 		{
 			$.ajax({
-			  url:"modele/Forme/selectAdm.php",
+			  url:"modele/formulaires/selectAdm.php",
 			  type : "GET",
 			  success: function (rep)
 			 {
@@ -428,7 +428,7 @@ function showThumbnail(files){
 					}
 				}
 				$.ajax({
-				  url:"modele/Forme/delete_notifications.php",
+				  url:"modele/formulaires/delete_notifications.php",
 				  type : "GET",
 				  data: {ids:ids},
 				  success: function (rep)

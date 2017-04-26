@@ -21,19 +21,6 @@ body {
   position: relative;
 }
 
-.fadeInLoad {
-    animation: fadeInLoad 2s;
-}
-@keyframes fadeInLoad {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-
-
 a {
   color: #118DF0;
   -webkit-transition: 0.5s;

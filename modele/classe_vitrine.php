@@ -12,7 +12,7 @@
 							</div>	
 						</div>
 	
-						<div class="container superbackground fadeInLoad">
+						<div class="container superbackground">
 							<div class="row">
 								<div class="fh5co-spacer fh5co-spacer-sm"></div>
 								<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">

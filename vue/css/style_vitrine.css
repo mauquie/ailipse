@@ -1673,6 +1673,9 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #888f94;
 }
 
+.js .animate-box {
+    opacity: 0;
+}
 
 .tableau {
     padding-top: 8%;

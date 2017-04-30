@@ -4,7 +4,7 @@ if(!class_exists("Bdd")){
 	class Bdd
 	{
 		// information sur la base de données
-		private $_hostname = "localhost";				private $_username = "admin";		private $_password = "toor";		private $_databaseName = "ailipset921";
+		private $_hostname = "ailipset921.mysql.db";				private $_username = "ailipset921";		private $_password = "B0urdelle";		private $_databaseName = "ailipset921";
 		//variable tampon 
 		private $_connect;
 		

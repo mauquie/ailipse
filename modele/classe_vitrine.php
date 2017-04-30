@@ -285,6 +285,9 @@ $contenu.='</table>
 	</aside>
 	
 	<div id="best-deal">
+<div class="alert alert-warning" style="margin-top:-50px;">
+  <strong>Avertissement : Ce projet est actuellement en développement. Pour accéder à l\'application web, cliquez sur "Se connecter".
+</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box" data-animate-effect="fadeIn">

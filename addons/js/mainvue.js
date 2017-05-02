@@ -441,4 +441,4 @@ function showThumbnail(files){
 			 });	
 			
 		}	
-	}
+	}			function annonce_select_marque()	{		var id_marque = document.getElementById("marque").value;		$.ajax({		  url:"modele/formulaires/annonce_select_marque.php",		  type : "POST",		  data: {id_marque:id_marque},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez un modèle</option>" + rep;			document.getElementById("modele").innerHTML = retour;			if(id_marque = -2)			{				document.getElementById("taille").innerHTML = "<option value='-2'>Sélectionnez la taille</option>";			}		 }			 });			}		function annonce_select_modele()	{		var id_modele = document.getElementById("modele").value;		$.ajax({		  url:"modele/formulaires/annonce_select_modele.php",		  type : "POST",		  data: {id_modele:id_modele},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez la taille</option>" + rep;			document.getElementById("taille").innerHTML = retour;		 }			 });			}

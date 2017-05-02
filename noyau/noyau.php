@@ -25,8 +25,7 @@ $notif=new Notification();$vitrine=new Vitrine();
 if(isset($login_session) || ($action =="") || ($action =="vitrine_tarifs") || ($action =="vitrine_prestations")	|| ($action =="vitrine_contact")|| ($action =="connexion")){
 	switch ($action) {
 		// Si aucune action n'est envoyee dans l'URL on affiche l'accueil
-		case "application":			$sortie=file("vue/application.html");			if(!isset($login_session)){				header('Location: index.php?a=connexion');				$contenu='';			}			else{
-			$nav_en_cours = "index";
+		case "application":			$sortie=file("vue/application.html");			if(!isset($login_session)){				header('Location: index.php?a=connexion');				$contenu='';			}			else{			$sortie=file("vue/application.html");			$nav_en_cours = "index";
 			$contenu='<div class="content-index animated fadeInUp">Application web de modelisation de voiles pour parapentes <br/> <br/> <small>Version 0.1.0</small></div>';			}
 			break;
 			

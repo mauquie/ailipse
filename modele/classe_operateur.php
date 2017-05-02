@@ -322,6 +322,11 @@ if(!class_exists("Operateur"))
 			</div>
 			
 		<div class="mdl-cell">
+			<figure><a href="index.php?a=suivi"><img width="250" height="200" src="vue/images/suivi.png" /></a></figure>
+			<span>Suivi</span>			
+		</div>
+			
+		<div class="mdl-cell">
 			<figure><a href="index.php?a=ajouter_voile"><img width="250" height="200" src="vue/images/ajouter.png" /></a></figure>
 			<span>Ajouter une voile</span>			
 		</div>

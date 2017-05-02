@@ -12,7 +12,7 @@
 							</div>	
 						</div>
 	
-						<div class="container superbackground">
+						<div class="container superbackground fadeInLoad">
 							<div class="row">
 								<div class="fh5co-spacer fh5co-spacer-sm"></div>
 								<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
@@ -285,11 +285,11 @@ $contenu.='</table>
 	</aside>
 	
 	<div id="best-deal">
-<div class="alert alert-warning" style="margin-top:-50px;">
-  <strong>Avertissement : Ce projet est actuellement en développement. Pour accéder à l\'application web, cliquez sur "Se connecter".
-</div>
 		<div class="container">
 			<div class="row">
+			<div class="alert alert-warning">
+  <strong>Avertissement :</strong> Le projet est actuellement en cours de développement. Pour vous rendre sur l\'application, veuillez vous connecter.
+</div>
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box" data-animate-effect="fadeIn">
 					<h2>Vente de voiles d\'occasion</h2>
 				</div>

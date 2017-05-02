@@ -44,10 +44,10 @@
 		<canvas id="renderCanvas"></canvas>   
 		<script type="text/javascript">  
 			//BOUTONS CAMERA //////////////////////////////////////////////////////////////////////////////////////////////
-			$('.demo-content').append('<button id="bFace" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 2.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue de face</button>');
-			$('.demo-content').append('<button id="bArriere" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 7.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue arrière</button>');
-			$('.demo-content').append('<button id="bDroite" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 12.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue de droite</button>');
-			$('.demo-content').append('<button id="bGauche" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 17.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue de gauche</button>');
+			$('.demo-content').append('<button id="bFace" class="salut mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 2.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue de face</button>');
+			$('.demo-content').append('<button id="bArriere" class="salut mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 7.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue arrière</button>');
+			$('.demo-content').append('<button id="bDroite" class="salut mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 12.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue de droite</button>');
+			$('.demo-content').append('<button id="bGauche" class="salut mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 17.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue de gauche</button>');
 
 			//BOUTON AIDE /////////////////////////////////////////////////////////////////////////////////////////////////
 			$('.demo-content').append('<button id="bControles" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="position: absolute; left: 1.2%; top: 22.4%; width:140px; z-index:1; background-color: #00BCD4; ">COMMANDES</button>');
@@ -73,8 +73,8 @@
 			var canvas = document.querySelector("#renderCanvas");
 
 			//On charge le framework
-			var engine = new BABYLON.Engine(canvas, true); 
-	
+			var engine = new BABYLON.Engine(canvas, true); 			//TEST LOGS
+			$(".salut").click(function(){				    var buttonName=$(this).attr('id');			    $.ajax({			      type:"POST",			      data:"ClickedButton="+buttonName, 			      url: "modele/modelisation/logs/logs.php",			      success: function(data){			      alert('Written in Log File');			    }			    }); // END Ajax 			});
       
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//                                     		LES FONCTIONS                                                 	 //

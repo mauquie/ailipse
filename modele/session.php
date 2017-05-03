@@ -5,15 +5,15 @@ include 'modele/classe_utilisateur.php';
 include 'modele/classe_operateur.php';
 include 'modele/classe_admin.php';
 include 'modele/classe_annonce.php';
-// on établit la connexion avec le serveur par le biais de la base de données
+// on ï¿½tablit la connexion avec le serveur par le biais de la base de donnï¿½es
 $baseDeDonnees=new bdd();
 $connexionBdd = $baseDeDonnees->openBDD();
-// on sélectionne la base de données
+// on sï¿½lectionne la base de donnï¿½es
 session_start();// Starting Session
-// on garde en mémoire la session
+// on garde en mï¿½moire la session
 if (isset($_SESSION['login_user'])) {
 	$user_check=$_SESSION['login_user'];
-	// requête SQL qui complète les informations de l'utilisateur
+	// requï¿½te SQL qui complï¿½te les informations de l'utilisateur
 	$ses_sql=$connexionBdd->query("select email from clients where email='$user_check'");
 	$row = $ses_sql->fetch_assoc();
 	$login_session =$row['email'];
@@ -45,8 +45,6 @@ if (isset($_SESSION['login_user'])) {
 		break;
 	}
 	$typeUtilisateur->SetMail($login_session);  
-	$annonce=new annonce(); //Crée un objet annonce
-
-	$baseDeDonnees->closeBDD();	// on ferme la connexion à la base de données
-	unset($basse);
+	$annonce=new annonce(); //Crï¿½e un objet annonce
+	$baseDeDonnees->closeBDD();	// on ferme la connexion ï¿½ la base de donnï¿½es
 }

@@ -50,7 +50,7 @@
 			$('.demo-content').append('<button id="bGauche" class="salut mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 17.4%; width:140px; z-index:1; background: rgb(96,125,139); color: rgb(255,255,255);">Vue de gauche</button>');
 
 			//BOUTON AIDE /////////////////////////////////////////////////////////////////////////////////////////////////
-			$('.demo-content').append('<button id="bControles" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="position: absolute; left: 1.2%; top: 22.4%; width:140px; z-index:1; background-color: #00BCD4; ">COMMANDES</button>');
+			$('.demo-content').append('<button id="bControles" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="position: absolute; left: 1.2%; top: 22.4%; width:140px; z-index:1; background-color: #2196F3; ">COMMANDES</button>');
 
 			//COLOR PICKER ////////////////////////////////////////////////////////////////////////////////////////////////
 			$('.demo-content').append('<div class="NiceForm" style="margin-t2op: 100px"><div><label for="bgColor" style="position: absolute; left: 1.2%;  top:27.4%; width:160px; z-index:1;">Couleur de Fond</label><input type="text" id="bgColor" value="rgb(255, 255, 255)" style="position: absolute; left: 1.2%;  top:30%; width:140px; z-index:1;"/></div></div>');  		
@@ -58,7 +58,7 @@
 			$('.demo-content').append('<div class="NiceForm" style="margin-t2op: 100px"><div><label for="clientColor" style="position: absolute; left: 1.2%;  top:37.4%; width:160px;z-index:1;">Votre voile</label><input type="text" id="clientColor" value="rgb(255, 74, 25)" style="position: absolute; left: 1.2%;  top:40%; width:140px; z-index:1;"/></div></div>');  
 
 			//BOUTON ACTUALISATION ////////////////////////////////////////////////////////////////////////////////////////
-			$('.demo-content').append('<button id="bActualiser" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 55.3%; width:140px; z-index:1; background-color:#00BCD4; color:#FFFFFF;">ACTUALISER</button>');
+			$('.demo-content').append('<button id="bActualiser" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="position: absolute; left: 1.2%; top: 55.3%; width:140px; z-index:1; background-color: #2196F3; color:#FFFFFF;">ACTUALISER</button>');
 
 			//RANGE SLIDER ////////////////////////////////////////////////////////////////////////////////////////////////
 			$('body').append('<input type="range" oninput="setScale(this.value)" class="mdl-slider mdl-js-slider" id="scaleDiff" name="range" value="1" max="30" min="1" step="1" style="position: absolute; left: 240px; top: 505px; width:140px; z-index:1; background-color:rgb(96,125,139); "><div class="NiceForm" style="margin-t2op: 100px"><label for="scaleDiff" style="position: absolute; left: 260px; top: 475px; width:300px; z-index:1;">Échelle différence</label></div>');

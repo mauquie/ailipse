@@ -27,3 +27,6 @@
 2017-05-03 04:19:13 --- Ajout dans la table "tarifs_articles" de Chalain à 10€ 12.00€ 50% par ""
 2017-05-03 16:19:15 --- Redirection vers la page "tarifs" par "admin@test.fr"
 2017-05-03 16:24:14 --- Redirection vers la page "voile" par "admin@test.fr"
+2017-05-03 16:45:44 --- Redirection vers la page "voile" par "admin@test.fr"
+2017-05-03 16:46:58 --- Redirection vers la page "voile" par "admin@test.fr"
+2017-05-03 16:49:40 --- Redirection vers la page "voile" par "admin@test.fr"

@@ -10,36 +10,36 @@ if(!class_exists("Operateur"))
 		
 		public function ajoutVoile()
 		{					
-				$connect = $this->openBDD();
-				$sql="SELECT * from fabricant";
-				$result= $connect->query($sql);
-				
-				$fabricant="<option value='-2'> </option>
+			$connect = $this->openBDD();
+			$sql="SELECT * from fabricant";
+			$result= $connect->query($sql);
+			
+			$fabricant="<option value='-2'> </option>
 						  <option value='-1'> </option>";
-				while($row=mysqli_fetch_array($result))
-				{
-					$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";	
-				}
-				$sql="SELECT id ,ref from susp_materiaux";
-				$result=$connect->query($sql);
-				$materiaux="<select id='materiaux' class='nice-select' style='width:50%'>
+			while($row=mysqli_fetch_array($result))
+			{
+				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
+			}
+			$sql="SELECT id ,ref from susp_materiaux";
+			$result=$connect->query($sql);
+			$materiaux="<select id='materiaux' class='nice-select' style='width:50%'>
 							<option value='-1'> </option>";
-				while($row = mysqli_fetch_array($result))
-				{
-					$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";
-				}
-				$materiaux=$materiaux."</select>";
+			while($row = mysqli_fetch_array($result))
+			{
+				$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";
+			}
+			$materiaux=$materiaux."</select>";
+			
+			$this->closeBDD();
+			$selectSuspente="<select id='nbSuspente' name='nbSuspente' class='nice-select' style='width:50%'>";
+			for($i=1;$i<=200;$i++)
+			{
 				
-				$this->closeBDD();
-				$selectSuspente="<select id='nbSuspente' name='nbSuspente' class='nice-select' style='width:50%'>";
-				for($i=1;$i<=200;$i++)
-				{
-					
-					$selectSuspente=$selectSuspente."<option value=".$i.">".$i."</option>";
-					
-				}
-				$selectSuspente=$selectSuspente."</select>";
-				return ('
+				$selectSuspente=$selectSuspente."<option value=".$i.">".$i."</option>";
+				
+			}
+			$selectSuspente=$selectSuspente."</select>";
+			return ('
 				<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 					<div class="mdl-card__title mdl-card-operateur__background animated slideInDown">
 						<h2 class="mdl-card__title-text">Ajout de voile</h2>
@@ -50,11 +50,11 @@ if(!class_exists("Operateur"))
 							<div class="mdl-cell">
 							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 									<input name="nom" class="mdl-textfield__input" type="text" value=""  id="nom" >
-									<label class="mdl-textfield__label" for="sample3" id="nom">nom de la voile</label>	
+									<label class="mdl-textfield__label" for="sample3" id="nom">nom de la voile</label>
 								</div>
 								<h6>Fabriquant:</h6>
 								<select id="id_const" class="nice-select" name="client" >
-									<?php 
+									<?php
 											echo('.$fabricant.');
 									?>
 								</select>
@@ -64,7 +64,7 @@ if(!class_exists("Operateur"))
 									<button type="button" onclick="window.location=\'index.php?a=ajout_constructeur\'" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >
 										Ajouter constructeur
 									</button>
-								
+					
 								<br />
 								<br />
 								<h6>Nombre de taille:</h6>
@@ -84,10 +84,10 @@ if(!class_exists("Operateur"))
 								<br />
 								<br />
 								<br />
-								
+					
 								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 									<input name="datesorti" class="mdl-textfield__input" type="text" value=""  id="datesortie" >
-									<label class="mdl-textfield__label" for="sample3" id="datesortie">Date de sortie</label>	
+									<label class="mdl-textfield__label" for="sample3" id="datesortie">Date de sortie</label>
 								</div>
 								<br />
 								<h8> jj/mm/AAAA</h8>
@@ -96,7 +96,7 @@ if(!class_exists("Operateur"))
 								<br />
 								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 									<input name="cert" class="mdl-textfield__input" type="text" value=""  id="cert" >
-									<label class="mdl-textfield__label" for="sample3" id="cert">certification</label>	
+									<label class="mdl-textfield__label" for="sample3" id="cert">certification</label>
 								</div>
 								<br />
 								<button class="mdl-button mdl-js-button mdl-button--raised" type="button" onclick="affichTable()">
@@ -105,50 +105,51 @@ if(!class_exists("Operateur"))
 									<br />
 							<br />
 							<br />
-								<div class="valeur_taille" name="valeur_taille" id="valeur_taille">
+								<div class="valeur_taille_containt" name="valeur_taille_containt" id="valeur_taille_containt" style=" visibility: hidden">
+								<a href="#popup_tableau" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">reference fabriquant des suspente </a>
 							</div>
 							</div>
 							<div class="mdl-cell">
-								<div class="tabl_suite" id="tabl_suite"> 
-							
-								
-							
+								<div class="tabl_suite" id="tabl_suite">
+					
+					
+					
 								</div>
 								<div class="file" name="file" id="file"  style=" visibility: hidden">
 								    <h6>Select un plan  (obligatoire)</h6>
 									<input type="file" name="planToUpload[]" id="planToUpload">
 									<h6>Select un manuel </h6>
 									<input type="file" name="manuelToUpload[]" id="manuelToUpload">
-									
+					
 								</div>
 								<br />
 								<br />
 								<div class="valider" name="valider" id="valider"  style=" visibility: hidden">
 									<button class="mdl-button mdl-js-button mdl-button--raised" type="button" onclick="aficherTableauxvaleur()" >
-										Valider les taille et le nombre de suspente 
+										Valider les taille et le nombre de suspente
 									</button>
 									<br />
 									<h7>(Pensé a selectioner le nombre de suspente)</h7>
 									<br />
 									<br />
 									<br />
-									<br />								
 									<br />
 									<br />
-									<br />	
-									<br />	
 									<br />
 									<br />
-									<br />	
-									<br />	
 									<br />
 									<br />
-							
-								
-									<div class="longerSuspente" name="longerSuspente" id="longerSuspente">
-						
+									<br />
+									<br />
+									<br />
+									<br />
+									<br />
+									<div class="longerSuspentecontain" name="longerSuspentecontain" id="longerSuspentecontain"  style="visibility: hidden">
+					
+									<a href="#popup_tableau2" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">longueur des suspentes</a>
+					
+					
 									</div>
-								
 								</div>
 							</div>
 							<div class="mdl-cell">
@@ -165,7 +166,7 @@ if(!class_exists("Operateur"))
 								<br />
 								<br />
 								<br />
-								Si non présent veiller l\'ajouter avant de continuer  
+								Si non présent veiller l\'ajouter avant de continuer
 								<br />
 								<br />
 								<br />
@@ -185,20 +186,56 @@ if(!class_exists("Operateur"))
 								<br />
 								<br />
 								<br />
-								<div class="materiauxSuspente" name="materiauxSuspente" id="materiauxSuspente">
-						
+								<div class="materiauxSuspentecontin" name="materiauxSuspentecontin" id="materiauxSuspentecontin" style=" visibility: hidden">
+								<a href="#popup_tableau3" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">reference fabriquant des suspente </a>
 								</div>
 							</div>
 						</div>
 					
 						<br />
 						<div class="boutons" name="boutons" id="boutons">
-						
-						
-						
+					
+					
+					
 						</div>
 						<br />
 						</form>
+						<div id="popup_tableau" class="overlay">
+									<div class="popup">
+								<h2>Référance fabricant des suspentes</h2>
+								<a class="close" href="#">&times;</a>
+								<div class="valeur_taille" id="valeur_taille">
+					
+								</div>
+								<br />
+								<hr />
+							</div>
+						</div>
+					
+					
+						<div id="popup_tableau2" class="overlay">
+							<div class="popup">
+								<h2>longeur des supente </h2>
+								<a class="close" href="#">&times;</a>
+								<div class="longerSuspente" id="longerSuspente">
+					
+								</div>
+								<br />
+								<hr />
+							</div>
+						</div>
+					
+						<div id="popup_tableau3" class="overlay">
+							<div class="popup">
+								<h2>materiaux des suspente </h2>
+								<a class="close" href="#">&times;</a>
+								<div class="materiauxSuspente" id="materiauxSuspente">
+					
+								</div>
+								<br />
+								<hr />
+							</div>
+						</div>
 					</div>
 				</div>');
 		}

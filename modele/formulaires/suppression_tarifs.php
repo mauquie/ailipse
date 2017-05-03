@@ -27,17 +27,18 @@
 	{		
 		if($j<$nbTarifRevision)
 		{
-			$typetarif = "Révisions";
+			$typetarif = "tarifs_revision";
 			$connect->query('DELETE FROM tarifs_revision WHERE id='.$_GET['id']);
+			echo $_GET['id'];
 		}
 		elseif($j<$nbTarifReparation+$nbTarifRevision)
 		{
-			$typetarif = "Réparations";
+			$typetarif = "tarifs_reparation";
 			$connect->query('DELETE FROM tarifs_reparation WHERE id='.$_GET['id']);
 		}
 		elseif($j<$nbTarifArticle+$nbTarifReparation+$nbTarifRevision)
 		{
-			$typetarif = "Articles";
+			$typetarif = "tarifs_articles";
 			$connect->query('DELETE FROM tarifs_articles WHERE id='.$_GET['id']);
 		}
 	}
@@ -45,7 +46,7 @@
 	$connect->close();
 	
 	//Ecriture du tarif ajouté dans le fichier logfile.txt
-	$contenu = date('Y-m-d h:i:s').' --- Suppression dans '.$typetarif.' à ID:'.$_GET['id']."\r\n";
+	$contenu = date('Y-m-d H:i:s').' --- Suppression dans la table "'.$typetarif.'" à ID:'.$_GET['id']."\r\n";
 	//Ouverture du répertoire de destination
 	$fichier = fopen ("../modelisation/logs/logfile.txt", "a+");
 	//Copie du fichier

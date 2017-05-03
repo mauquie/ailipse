@@ -20,17 +20,17 @@
 	
 	if($typetarif == 0)
 	{
-		$typetarif = "Révisions";
+		$typetarif = "tarifs_revision";
 		$sql = "INSERT INTO `tarifs_revision`(`id`, `nom`, `tarifht`, `tarifttc`, `pourcent`) VALUES ('','$nom','$valeurHT','$valeurTTC','$valeurPCT')";
 	}
 	elseif($typetarif == 1)
 	{
-		$typetarif = "Réparations";
+		$typetarif = "tarifs_reparation";
 		$sql = "INSERT INTO `tarifs_reparation`(`id`, `nom`, `tarifht`, `tarifttc`, `pourcent`) VALUES ('','$nom','$valeurHT','$valeurTTC','$valeurPCT')";
 	}	
 	elseif($typetarif == 2)
 	{
-		$typetarif = "Articles";
+		$typetarif = "tarifs_articles";
 		$sql = "INSERT INTO `tarifs_articles`(`id`, `nom`, `tarifht`, `tarifttc`, `pourcent`) VALUES ('','$nom','$valeurHT','$valeurTTC','$valeurPCT')";
 	}
 	
@@ -39,7 +39,7 @@
 	
 	
 	//Ecriture du tarif ajouté dans le fichier logfile.txt
-	$contenu = date('Y-m-d h:i:s').' --- Ajout de '.$typetarif.' '.$_POST['tarifName'].' à '.$_POST['tarifHT'].' '.$valeurTTC.'€ '.$_POST['tarifPCT']."\r\n";
+	$contenu = date('Y-m-d h:i:s').' --- Ajout dans la table "'.$typetarif.'" de '.$_POST['tarifName'].' à '.$_POST['tarifHT'].' '.$valeurTTC.'€ '.$_POST['tarifPCT']."\r\n";
 	//Ouverture du répertoire de destination
 	$fichier = fopen ("../modelisation/logs/logfile.txt", "a+");
 	//Copie du fichier

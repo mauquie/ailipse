@@ -1,3 +1,10 @@
-﻿
-2017-05-02 05:33:21 --- Ajout de Révisions Salut à 1000€ 1200.00€ 0%
+﻿2017-05-02 05:33:21 --- Ajout de Révisions Salut à 1000€ 1200.00€ 0%
 2017-05-02 05:33:35 --- Suppression de Révisions à ID:14
+2017-05-03 08:16:36 --- Ajout dans la table tarifs_revision Tibo² à 10€ 12.00€ 50%
+2017-05-03 08:18:11 --- Suppression dans la table tarifs_revision à ID:11
+2017-05-03 08:18:32 --- Ajout dans la table tarifs_revision brebrtbr à 10€ 12.00€ 50%
+2017-05-03 08:19:15 --- Ajout dans la table tarifs_reparation czczecze à 10€ 12.00€ 50%
+2017-05-03 08:19:30 --- Suppression dans la table tarifs_reparation à ID:7
+2017-05-03 08:19:39 --- Suppression dans la table tarifs_revision à ID:12
+2017-05-03 08:20:26 --- Ajout dans la table "tarifs_revision" de Salut à 10€ 12.00€ 0%
+2017-05-03 08:21:01 --- Suppression dans la table "tarifs_revision" à ID:13

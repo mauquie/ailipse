@@ -26,8 +26,8 @@ if (isset($_POST['submit'])) {
 		$query = $connexionBdd->query("select * from clients where password='$password' AND email='$email'");				$getUser = $connexionBdd->query("select permissions from clients where password='$password' AND email='$email'");		
 		$rows = $query->num_rows;				
 		if ($rows == 1) {
-			$_SESSION['login_user']=$email; // initialisation de la session			while($typeUser = $getUser->fetch_array())			{				if($typeUser['permissions']==1)				{					$user="Utilisateur";				}				elseif($typeUser['permissions']==2)				{					$user="Operateur";				}				elseif($typeUser['permissions']==3)				{					$user="Administrateur";				}				else				{					$user="Erreur";				}			}
-									$logs = date('Y-m-d H:i:s').' --- Connexion de "'.$email.'" en tant que "'.$user.'"'."\r\n";			//Ouverture du répertoire de destination			$fichier = fopen ("modele/modelisation/logs/logfile.txt", "a+");			//Copie du fichier			fwrite($fichier, $logs);			//Fermeture du fichier			fclose ($fichier);			//Fin écriture
+			$_SESSION['login_user']=$email; // initialisation de la session			while($typeUser = $getUser->fetch_array())			{				if($typeUser['permissions']==1)				{					$user="Utilisateur";					$logfile = "log_User.txt";				}				elseif($typeUser['permissions']==2)				{					$user="Operateur";					$logfile = "log_Operator.txt";				}				elseif($typeUser['permissions']==3)				{					$user="Administrateur";					$logfile = "log_Admin.txt";				}				else				{					$user="Erreur";				}			}
+								$logs = date('Y-m-d H:i:s').' --- Connexion de "'.$email.'" en tant que "'.$user.'"'."\r\n";			//Ouverture du répertoire de destination			$fichier = fopen ("modele/modelisation/logs/".$logfile, "a+");			//Copie du fichier			fwrite($fichier, $logs);			//Fermeture du fichier			fclose ($fichier);			//Fin écriture
 			header("location: index.php?a=application"); // on redirige vers une page à la connexion
 		} else {
 			$error = 1;

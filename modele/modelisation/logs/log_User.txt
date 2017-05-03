@@ -1,0 +1,4 @@
+2017-05-03 14:20:00 --- Connexion de "jacquestuning@test.fr" en tant que "Utilisateur"
+2017-05-03 14:43:34 --- Redirection vers la page "application" par "jacquestuning@test.fr"
+2017-05-03 14:43:50 --- Redirection vers la page "application" par "jacquestuning@test.fr"
+2017-05-03 14:48:44 --- Redirection vers la page "deconnexion" par "jacquestuning@test.fr"

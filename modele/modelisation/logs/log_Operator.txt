@@ -1,0 +1,3 @@
+2017-05-03 14:51:07 --- Connexion de "operateur@test.fr" en tant que "Operateur"
+2017-05-03 14:51:09 --- Redirection vers la page "application" par "operateur@test.fr"
+2017-05-03 14:51:28 --- Redirection vers la page "annonces" par "operateur@test.fr"

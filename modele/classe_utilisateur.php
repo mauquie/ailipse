@@ -68,7 +68,7 @@ if(!class_exists("Utilisateur"))
 			
 			
 			
-		}				public function getType()		{			if($this->_permissions==1)			{				return "Utilisateur";			}			elseif($this->_permissions==2)			{				return "Operateur";			}			elseif($this->_permissions==2)			{				return "Administrateur";			}			else 			{				return "Erreur";			}					}
+		}				public function getTypeUser()		{			if($this->_permissions==1)			{				return "Utilisateur";			}			elseif($this->_permissions==2)			{				return "Operateur";			}			elseif($this->_permissions==2)			{				return "Administrateur";			}			else 			{				return "Erreur";			}					}
 	}
 }
 

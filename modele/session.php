@@ -24,15 +24,15 @@ if (isset($_SESSION['login_user'])) {
 	switch($permissions)
 	{
 		case 1:
-		$typeUtilisateur= new utilisateur();
+		$typeUtilisateur= new utilisateur();		$logfile = "log_User.txt";
 		break;
 		
 		case 2:
-		$typeUtilisateur=new operateur();
+		$typeUtilisateur=new operateur();		$logfile = "log_Operator.txt";
 		break;
 		
 		case 3:
-		$typeUtilisateur=new administrateur();
+		$typeUtilisateur=new administrateur();		$logfile = "log_Admin.txt";
 		
 		break;
 		

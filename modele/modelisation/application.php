@@ -73,8 +73,7 @@
 			var canvas = document.querySelector("#renderCanvas");
 
 			//On charge le framework
-			var engine = new BABYLON.Engine(canvas, true); 			//TEST LOGS
-			$(".salut").click(function(){				    var buttonName=$(this).attr('id');			    $.ajax({			      type:"POST",			      data:"ClickedButton="+buttonName, 			      url: "modele/modelisation/logs/logs.php",			      success: function(data){			      alert('Written in Log File');			    }			    }); // END Ajax 			});
+			var engine = new BABYLON.Engine(canvas, true); 
       
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//                                     		LES FONCTIONS                                                 	 //

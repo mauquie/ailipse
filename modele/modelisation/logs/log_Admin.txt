@@ -1,1 +1,6 @@
-﻿
+﻿2017-05-03 15:04:04 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-03 15:04:06 --- Redirection vers la page "application" par "admin@test.fr"
+2017-05-03 15:04:19 --- Redirection vers la page "voile" par "admin@test.fr"
+2017-05-03 15:04:28 --- Redirection vers la page "administration" par "admin@test.fr"
+2017-05-03 15:04:34 --- Redirection vers la page "gerer_tarifs" par "admin@test.fr"
+2017-05-03 15:05:02 --- Redirection vers la page "tarifs" par "admin@test.fr"

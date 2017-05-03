@@ -41,7 +41,7 @@
 	//Ecriture du tarif ajouté dans le fichier logfile.txt
 	$contenu = date('Y-m-d h:i:s').' --- Ajout dans la table "'.$typetarif.'" de '.$_POST['tarifName'].' à '.$_POST['tarifHT'].' '.$valeurTTC.'€ '.$_POST['tarifPCT'].' par "'.$login_session.'"'."\r\n";
 	//Ouverture du répertoire de destination
-	$fichier = fopen ("../modelisation/logs/logfile.txt", "a+");
+	$fichier = fopen ("../modelisation/logs/log_Admin.txt", "a+");
 	//Copie du fichier
 	fwrite($fichier, $contenu);
 	//Fermeture du fichier

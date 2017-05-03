@@ -8,3 +8,11 @@
 2017-05-03 08:19:39 --- Suppression dans la table tarifs_revision à ID:12
 2017-05-03 08:20:26 --- Ajout dans la table "tarifs_revision" de Salut à 10€ 12.00€ 0%
 2017-05-03 08:21:01 --- Suppression dans la table "tarifs_revision" à ID:13
+2017-05-03 08:34:01 --- Redirection vers la page "tarifs"
+2017-05-03 08:34:10 --- Redirection vers la page "voile"
+2017-05-03 08:34:18 --- Redirection vers la page "operateur"
+2017-05-03 08:34:23 --- Redirection vers la page "suivi"
+2017-05-03 08:34:30 --- Redirection vers la page "operateur"
+2017-05-03 08:42:33 --- Redirection vers la page "annonces"
+2017-05-03 08:42:38 --- Redirection vers la page "visualiser_annonces"
+2017-05-03 08:45:05 --- Redirection vers la page "administration"

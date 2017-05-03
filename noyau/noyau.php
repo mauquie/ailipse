@@ -28,7 +28,7 @@ $notif=new Notification();$vitrine=new Vitrine();
 		case "application":			$sortie=file("vue/application.html");			if(!isset($login_session)){				header('Location: index.php?a=connexion');				$contenu='';			}			else{			$sortie=file("vue/application.html");			$nav_en_cours = "index";
 			$contenu='<div class="content-index animated fadeInUp">Application web de modelisation de voiles pour parapentes <br/> <br/> <small>Version 0.1.0</small></div>';			}
 			break;
-			
+		
 		// Si l'action demandee est profil, on appelle le fichier profil.php
 		case "profil":			$sortie=file("vue/application.html");
 			$nav_en_cours = 'profil';			$typeUtilisateur->recuData();			$contenu = $typeUtilisateur->ModifierProfil();			
@@ -97,7 +97,7 @@ $notif=new Notification();$vitrine=new Vitrine();
 			$nav_en_cours = 'voile';
 			$contenu = file_get_contents("modele/modelisation/application.php");
 		break;				case "":			$contenu = $vitrine->accueil();		break;				case "vitrine_tarifs":			$contenu = $vitrine->tarifs();		break;				case "vitrine_prestations":			$contenu = $vitrine->prestations();		break;				case "vitrine_contact":			$contenu = $vitrine->contact();		break;
-	}
+	}	//Ecriture du tarif ajouté dans le fichier logfile.txt	$logs = date('Y-m-d H:i:s').' --- Redirection vers la page "'.$action.'"'."\r\n";	//Ouverture du répertoire de destination	$fichier = fopen ("modele/modelisation/logs/logfile.txt", "a+");	//Copie du fichier	fwrite($fichier, $logs);	//Fermeture du fichier	fclose ($fichier);	//Fin écriture
 }else{		header('Location: index.php?a=connexion');}
 $notif->updateNotif();
 //Transformation de la page index, les balises sont remplacees

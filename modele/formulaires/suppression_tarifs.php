@@ -1,5 +1,6 @@
 <?php
 	include 'connect.php';
+
 	$connect = mysqli_connect($hostname, $username, $password, $databaseName);
 	
 	$i = $_GET['num'];
@@ -45,7 +46,6 @@
 	
 	$connect->close();
 	
-	//Ecriture du tarif ajouté dans le fichier logfile.txt
 	$contenu = date('Y-m-d H:i:s').' --- Suppression dans la table "'.$typetarif.'" à ID:'.$_GET['id'].' par "'.$login_session.'"'."\r\n";
 	//Ouverture du répertoire de destination
 	$fichier = fopen ("../modelisation/logs/log_Admin.txt", "a+");

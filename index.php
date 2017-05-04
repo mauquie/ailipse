@@ -1,6 +1,4 @@
-<?php
-//session_start();
-//Ajout d'un autre developpeur
-
-require_once("noyau/noyau.php");
-//test du dimanche
+<?php
+//session_start();
+require_once("noyau/noyau.php");
+?>

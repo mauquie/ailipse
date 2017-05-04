@@ -1,7 +1,7 @@
 <?php
 //Initialisation de la page html
 $html="";
-
+
 // Include du menu
 include 'modele/menu.php';
 include 'modele/session.php';
@@ -110,6 +110,5 @@ foreach ($sortie as $valeur) {
 }
 //Affichage final de la page index modifiee
 print $html;
-
 ?>
 

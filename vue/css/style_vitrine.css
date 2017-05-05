@@ -21,17 +21,6 @@ body {
   position: relative;
 }
 
-.fadeInLoad {
-    animation: fadeInLoad 2s;
-}
-@keyframes fadeInLoad {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
 
 
 a {
@@ -1686,6 +1675,9 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #888f94;
 }
 
+.js .animate-box {
+  opacity: 0;
+}
 
 .tableau {
     padding-top: 8%;

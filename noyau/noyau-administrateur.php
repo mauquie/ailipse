@@ -1,6 +1,5 @@
 <?php
 
-
 	switch($action)
 	{
 		case "valider_addmin":

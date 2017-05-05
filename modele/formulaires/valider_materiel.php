@@ -33,7 +33,7 @@ if(($ref != "")&&($id_fab!=-1))
 	$connect->query($sql);
 }
 
-header("location: ../../index.php?a=ajouter_voile");
+header("location: ../../index.php?d=operateur&a=ajouter_voile");
 
 
 ?>

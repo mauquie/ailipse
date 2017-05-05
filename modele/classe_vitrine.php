@@ -8,7 +8,7 @@
 				return '<div class="container2">
 							<br/><br/><br/><br/><br/>
 							<div class="col-md-12 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0 text-center">
-								<h2 style="color:white;">Contrôle et révision</h2>
+								<h2>Contrôle et révision</h2>
 							</div>	
 						</div>
 	

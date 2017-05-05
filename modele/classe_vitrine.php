@@ -123,7 +123,7 @@
 					// Si tout va bien, on peut continuer
 
 					// On récupère tout le contenu de la table jeux_video
-					$reponse = $bdd->query('SELECT * FROM tarifs_revision');
+					$reponse = $bdd->query('SELECT * FROM tarifsrevision');
 
 					// On affiche chaque entrée une à une
 					while ($donnees = $reponse->fetch())
@@ -178,7 +178,7 @@
 					// Si tout va bien, on peut continuer
 
 					// On récupère tout le contenu de la table jeux_video
-					$reponse = $bdd->query('SELECT * FROM tarifs_reparation');
+					$reponse = $bdd->query('SELECT * FROM tarifsreparation');
 
 					// On affiche chaque entrée une à une
 					while ($donnees = $reponse->fetch())
@@ -235,7 +235,7 @@ $contenu.='</table>
 					// Si tout va bien, on peut continuer
 
 					// On récupère tout le contenu de la table jeux_video
-					$reponse = $bdd->query('SELECT * FROM tarifs_articles');
+					$reponse = $bdd->query('SELECT * FROM tarifsarticles');
 
 					// On affiche chaque entrée une à une
 					while ($donnees = $reponse->fetch())

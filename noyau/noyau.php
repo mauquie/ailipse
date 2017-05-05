@@ -95,7 +95,7 @@ $notif=new Notification();$vitrine=new Vitrine();
 		case "voile":			$sortie=file("vue/application.html");
 			$nav_en_cours = 'voile';
 			$contenu = file_get_contents("modele/modelisation/application.php");
-		break;				case "":			$contenu = $vitrine->accueil();		break;				case "vitrine_tarifs":			$contenu = $vitrine->tarifs();		break;				case "vitrine_prestations":			$contenu = $vitrine->prestations();		break;				case "vitrine_contact":			$contenu = $vitrine->contact();		break;
+		break;				case "":			$contenu = $vitrine->accueil();			$contenu.= $vitrine->prestations();			$contenu.= $vitrine->tarifs();			break;
 	}	if($action=="")	{		$action="Accueil";	}	if($login_session=="")	{		$logs = date('Y-m-d H:i:s').' --- Redirection vers la page "'.$action.'" par "Visiteur"'."\r\n";		$logfile = "log_Visitor.txt";	}	else	{		$logs = date('Y-m-d H:i:s').' --- Redirection vers la page "'.$action.'" par "'.$login_session.'"'."\r\n";	}	//Ouverture du répertoire de destination	$fichier = fopen ("modele/modelisation/logs/".$logfile, "a+");	//Copie du fichier	fwrite($fichier, $logs);	//Fermeture du fichier	fclose ($fichier);	//Fin écriture
 }else{		header('Location: index.php?a=connexion');}
 $notif->updateNotif();

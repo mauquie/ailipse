@@ -97,7 +97,7 @@ if(!class_exists("Vitrine")){
 							</div>
 						</div>';
 		}
-		public function tarifs (){
+		/*public function tarifs (){
 			$contenu = '<div class="tableau" style="background-color: white;">
 					
 								<h1>Tarifs public à partir du 1er septembre 2014.</h1>
@@ -112,7 +112,7 @@ if(!class_exists("Vitrine")){
 			try
 			{
 				// On se connecte à MySQL
-				$bdd = new PDO('mysql:host=localhost;dbname=ailipset921;charset=utf8', 'admin', 'toor');
+				$bdd = new PDO('mysql:host=ailipset921.mysql.db;dbname=ailipset921;charset=utf8', 'ailipset921', 'B0urdelle');
 			}
 			catch(Exception $e)
 			{
@@ -268,7 +268,7 @@ if(!class_exists("Vitrine")){
 					
 </div>';
 			return $contenu;
-		}
+		}*/
 		public function accueil(){
 			return '<aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">

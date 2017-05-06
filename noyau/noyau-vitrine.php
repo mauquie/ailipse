@@ -30,7 +30,7 @@
 		case "":
 			$contenu = $vitrine->accueil();
 			$contenu.= $vitrine->prestations();
-			$contenu.= $vitrine->tarifs();
+			//$contenu.= $vitrine->tarifs();
 		break;
 	}
 

@@ -7,10 +7,7 @@ include 'modele/classe_admin.php';
 include 'modele/classe_annonce.php';
 // on �tablit la connexion avec le serveur par le biais de la base de donn�es
 $baseDeDonnees=new bdd();
-$connexionBdd = $baseDeDonnees->openBDD();
-// on s�lectionne la base de donn�es
-session_start();// Starting Session
-// on garde en m�moire la session
+$connexionBdd = $baseDeDonnees->openBDD();					// on sélectionne la base de données
 if (isset($_SESSION['login_user'])) {
 	$user_check=$_SESSION['login_user'];
 	// requ�te SQL qui compl�te les informations de l'utilisateur

@@ -60,6 +60,12 @@
 			require_once("modele/formulaires/suppressions_tarifs.php");
 		break;
 		
+		// pour les ajax 
+		
+		case "affiche":
+			require_once("modele/formulaires/showUser.php");
+		break;
+		
 		
 		//Ecriture du tarif ajouté dans le fichier logfile.txt
 		$logs = date('Y-m-d H:i:s').' --- Redirection vers la page "'.$action.'" par "'.$login_session."\r\n";

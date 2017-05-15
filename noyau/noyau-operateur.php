@@ -50,6 +50,15 @@
 			require_once("modele/formulaires/valider_constructeur.php");
 		break;
 		
+		
+		// pout les ajax (js)
+		case "recupvoile":
+				require_once("modele/formulaires/recupVoile.php");
+		break;
+		
+		case"recupmateriaux":
+				require_once("modele/formulaires/recupMaterial.php");		
+		break;
 	}
 
 ?>

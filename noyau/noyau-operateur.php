@@ -5,8 +5,7 @@
 		
 		case "menu":
 			$sortie=file("vue/application.html");
-			$nav_en_cours = 'operateur';
-			
+			$nav_en_cours = 'operateur';			
 			$typeUtilisateur->setMail($login_session);
 			$typeUtilisateur->recuData();
 			$contenu=$typeUtilisateur->MenuOperateur();	// utilisation de la classe operateur 
@@ -15,28 +14,19 @@
 		case "ajout_constructeur":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'operateur';
-
-			$contenu= $typeUtilisateur->AjoutConstructeur(); 	// affichage par methode de la classe operateur 
-
-			
+			$contenu= $typeUtilisateur->AjoutConstructeur(); 	// affichage par methode de la classe operateur 			
 		break;
 		
 		case "ajouter_voile":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'operateur';
-
-
-				$contenu=$typeUtilisateur->ajoutVoile();	// affichage par objet operateur 
-			
+			$contenu=$typeUtilisateur->ajoutVoile();	// affichage par objet operateur 			
 		break;
 		
 		case "modifier_voile":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'operateur';
-
-
-				$contenu=$typeUtilisateur->ModifierVoile();	// affichage par objet operateur 
-			
+			$contenu=$typeUtilisateur->ModifierVoile();	// affichage par objet operateur 			
 		break;
 		
 		case "ajout_materiaux":

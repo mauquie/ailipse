@@ -8,28 +8,27 @@
 		break;
 		
 		case "notifications":
-			$sortie=file("vue/application.html");
-			
+			$sortie=file("vue/application.html");			
 			$nav_en_cours = 'index';
-
-			$contenu=$notif->gestion_notif();	// appel de la fonction de notification
-			
+			$contenu=$notif->gestion_notif();	// appel de la fonction de notificatio			
 		break;
 		
 		case "menu":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'administration';
 			$contenu=$typeUtilisateur->menuAdministration();	// affichage par objet operateur 
-			
-
+		break;
+		
+		case "voile":
+			$sortie=file("vue/application.html");
+			$nav_en_cours = 'voile';
+			$contenu = file_get_contents("modele/modelisation/application.php");
 		break;
 		
 		case "gerer_tarifs":
-
 			$nav_en_cours = 'administration';
 			$sortie=file("vue/application.html");
 			require_once('modele/gerer_tarifs.php');
-
 		break;
 		
 		case "gerer_utilisateurs":
@@ -41,9 +40,7 @@
 		case "tarifs":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'administration';
-
 			require_once('modele/gerer_tarifs.php');
-
 		break;
 		// a partir de form 
 		

@@ -112,7 +112,7 @@ if(!class_exists("Vitrine")){
 			try
 			{
 				// On se connecte à MySQL
-				$bdd = new PDO('mysql:host=ailipset921.mysql.db;dbname=ailipset921;charset=utf8', 'ailipset921', 'B0urdelle');
+				$bdd= $this->openBDD();
 			}
 			catch(Exception $e)
 			{
@@ -126,7 +126,7 @@ if(!class_exists("Vitrine")){
 			$reponse = $bdd->query('SELECT * FROM tarifs_revision');
 			
 			// On affiche chaque entrée une à une
-			while ($donnees = $reponse->fetch())
+			while ($donnees = $reponse->fetch_array())
 			{
 				$contenu.="<tr>";
 				if($donnees['id']==2||$donnees['id']==4)
@@ -149,7 +149,6 @@ if(!class_exists("Vitrine")){
 					$contenu.='<td></br></td>';
 				}
 			}
-			$reponse->closeCursor(); // Termine le traitement de la requête
 			
 			$contenu.='</table>
 					
@@ -181,7 +180,7 @@ if(!class_exists("Vitrine")){
 			$reponse = $bdd->query('SELECT * FROM tarifs_reparation');
 			
 			// On affiche chaque entrée une à une
-			while ($donnees = $reponse->fetch())
+			while ($donnees = $reponse->fetch_array())
 			{
 				$contenu.='<tr>';
 				if($donnees['id']==2||$donnees['id']==3)
@@ -206,7 +205,6 @@ if(!class_exists("Vitrine")){
 					
 				}
 			}
-			$reponse->closeCursor(); // Termine le traitement de la requête
 			
 			$contenu.='</table>
 					
@@ -238,7 +236,7 @@ if(!class_exists("Vitrine")){
 			$reponse = $bdd->query('SELECT * FROM tarifs_articles');
 			
 			// On affiche chaque entrée une à une
-			while ($donnees = $reponse->fetch())
+			while ($donnees = $reponse->fetch_array())
 			{
 				$contenu.='<tr>';
 				if($donnees['id']==2||$donnees['id']==3||$donnees['id']==5||$donnees['id']==6||$donnees['id']==8||$donnees['id']==9)
@@ -262,7 +260,6 @@ if(!class_exists("Vitrine")){
 					
 				}
 			}
-			$reponse->closeCursor(); // Termine le traitement de la requête
 			
 			$contenu.='</table>
 					

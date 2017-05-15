@@ -1,3 +1,3 @@
 <?php
-$hostname = "localhost";			//Données de la base de données$username = "admin";$password = "toor";$databaseName = "ailipset921";
+$_hostname = "localhost";$_username = "admin";$_password = "toor";$_databaseName = "ailipset921";
 ?>

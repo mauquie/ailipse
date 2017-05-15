@@ -5,15 +5,12 @@
 		case "deconnexion":
 			$sortie=file("vue/application.html");
 			require_once('modele/logout.php');
-
 		break;
 		
 		case "voile":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'voile';
-
 			$contenu = file_get_contents("modele/modelisation/application.php");
-
 		break;
 		
 		case "profil":

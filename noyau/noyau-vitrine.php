@@ -5,7 +5,7 @@
 		case "application":
 			$sortie=file("vue/application.html");
 			if(!isset($login_session)){
-				header('Location: index.php?d=vitrine&a=connexion');
+				header('location: index.php?d=vitrine&a=connexion');
 				$contenu='';
 			}
 			else{
@@ -22,15 +22,13 @@
 		break;
 
 		case "inscription":
-
 			require_once ('modele/inscription.php');
-
 		break;
 		
 		case "":
 			$contenu = $vitrine->accueil();
 			$contenu.= $vitrine->prestations();
-			//$contenu.= $vitrine->tarifs();
+			$contenu.= $vitrine->tarifs();
 		break;
 	}
 

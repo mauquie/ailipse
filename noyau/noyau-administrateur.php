@@ -26,9 +26,9 @@
 		
 		case "gerer_tarifs":
 
-		$nav_en_cours = 'administration';
-		$sortie=file("vue/application.html");
-		require_once('modele/gerer_tarifs.php');
+			$nav_en_cours = 'administration';
+			$sortie=file("vue/application.html");
+			require_once('modele/gerer_tarifs.php');
 
 		break;
 		
@@ -58,6 +58,21 @@
 		case "ajout_tarif":
 			require_once("modele/formulaires/ajout_tarif.php");
 		break;
+		
+		case "suppression_tarif":
+			require_once("modele/formulaires/suppressions_tarifs.php");
+		break;
+		
+		
+		//Ecriture du tarif ajouté dans le fichier logfile.txt
+		$logs = date('Y-m-d H:i:s').' --- Redirection vers la page "'.$action.'" par "'.$login_session."\r\n";
+		//Ouverture du répertoire de destination
+		$fichier = fopen ("modele/modelisation/logs/log_Admin.txt", "a+");
+		//Copie du fichier
+		fwrite($fichier, $logs);
+		//Fermeture du fichier
+		fclose ($fichier);
+		//Fin écriture
 		
 		
 	}

@@ -324,8 +324,8 @@ if(!class_exists("Operateur"))
 			$add='';
 			if($this->_permissions==3)
 			{
-				$add=	'<div class="mdl-cell">
-								<figure><a href="index.php?d=operateur&a=valider_addmin"><img width="250" height="200" src="vue/images/blue2.png" /></a></figure>
+				$add=	'<div class="mdl-cell"  style="margin-bottom: 50px;">
+								<figure><a href="index.php?d=operateur&a=valider_addmin"><img width="250" height="200" src="vue/images/test.png" /></a></figure>
 								<span>valider la voile constructeur</span>
 							</div>';
 			}
@@ -335,32 +335,33 @@ if(!class_exists("Operateur"))
 						</div>
 							<div class="mdl-card__supporting-text card-background">
 					
-							<h5 class="animated slideInLeft">Sélectionnez une action</h5>
+							<h5 class="animated fadeIn">Sélectionnez une action</h5>
 					
 							<br />
 					
 							<div class="content-grid mdl-grid hover01 column animated zoomInDown">
-								<div class="mdl-cell">
-									<figure><img width="250" height="200" src="vue/images/controler.png" /></figure>
-									<span>Contrôler une voile</span>
-								</div>
+							
+							<div class="mdl-cell" style="margin-left: 25px; margin-bottom: 50px;">
+								<figure><img width="250" height="200" src="vue/images/controler.png" /></figure>
+								<span>Contrôler une voile</span>
+							</div>
 					
-							<div class="mdl-cell">
+							<div class="mdl-cell"  style="margin-bottom: 50px;">
 								<figure><a href="index.php?d=operateur&a=suivi"><img width="250" height="200" src="vue/images/suivi.png" /></a></figure>
 								<span>Suivi</span>
 							</div>
 					
-							<div class="mdl-cell">
+							<div class="mdl-cell"  style="margin-bottom: 50px;">
 								<figure><a href="index.php?d=operateur&a=ajouter_voile"><img width="250" height="200" src="vue/images/ajouter.png" /></a></figure>
 								<span>Ajouter une voile</span>
 							</div>
 					
-							<div class="mdl-cell">
+							<div class="mdl-cell"  style="margin-bottom: 50px;">
 								<figure><a href="index.php?d=operateur&a=modifier_voile"><img width="250" height="200" src="vue/images/modifier.png" /></a></figure>
 								<span>Modifier une voile constructeur</span>
 							</div>
 					
-							<div class="mdl-cell">
+							<div class="mdl-cell"  style="margin-bottom: 50px;">
 								<figure><img width="250" height="200" src="vue/images/supprimer.png" /></figure>
 								<span>Supprimer une voile</span>
 							</div>

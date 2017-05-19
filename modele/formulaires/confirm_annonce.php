@@ -59,7 +59,7 @@ if(isset($_POST["marque"]) && isset($_POST["modele"]) && isset($_POST["taille"])
 			$filesize = $_FILES['photos']['size'][$key];
 			$filetmpname = $_FILES['photos']['tmp_name'][$key];
 			// On spécifie le chemin où les images des annonces seront stockées
-			$target_dir = "../vue/images/annonces/";
+			$target_dir = "vue/images/annonces/";
 			$target_file = $target_dir . basename($filename);
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);

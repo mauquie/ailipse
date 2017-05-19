@@ -100,7 +100,7 @@
 	}
 	function aficherTableauxvaleur()
 	{
-		var tabl="";		var nbSuspente = document.getElementById("nbSuspente").value;		var nb=document.getElementById("nbtaile").value;		var wid= 45;		tabl="<h6>référence fabricant des suspentes  </h6>"+			"<table border='1'> <tr>"+			"<th width='"+wid+"px'> taille </th>";						for(i=1; i<=nb;i++)			{				tabl=tabl+"<th style='width:'"+wid+"px;'>ref"+i+"</th>";			}										tabl=tabl+"</tr><tr> ";						for(j=1;j<=nbSuspente;j++)			{				tabl=tabl+"<th width='45px'> suspente"+j+" </th>";				for(i=1; i<=nb;i++)				{					tabl=tabl+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+								'<input name="reffab'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="reffab'+j+i+'">'+								'<label style=" width:100%" class="mdl-textfield__label" for="reffab'+j+i+'"></label>'+								'</div>'+'</td>';				}				tabl=tabl+"</tr><tr>";			}				tabl=tabl+"  </tr> </tabl_2e>";			document.getElementById('valeur_taille').innerHTML = "";			if(document.getElementById('valeur_taille_containt').style.visibility=='hidden')			{				document.getElementById('valeur_taille_containt').style.visibility='visible';			}			$(".valeur_taille").append(tabl);						var tabl2="";			tabl2="<h6> Longueur des suspentes par ref�rence et par taille </h6>"+			"<table border='1'> <tr>"+			"<th width='"+wid+"px'> taille </th>";			for(i=1; i<=nb;i++)			{				tabl2=tabl2+"<th width='45px'> ru"+i+"</th>";			}										tabl2=tabl2+"</tr><tr> ";						for(j=1;j<=nbSuspente;j++)			{				tabl2=tabl2+"<th width='"+wid+"px'> taille"+j+" </th>";				for(i=1; i<=nb;i++)				{					tabl2=tabl2+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+								'<input name="tailsup'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="tailsup'+j+i+'">'+								'<label style=" width:100%" class="mdl-textfield__label" for="tailsup'+j+i+'"></label>'+								'</div>'+'</td>';				}				tabl2=tabl2+"</tr><tr>";			}				tabl2=tabl2+"  </tr> </tabl_2e>";			if(document.getElementById('longerSuspentecontain').style.visibility=='hidden')			{				document.getElementById('longerSuspentecontain').style.visibility='visible';			}			document.getElementById('longerSuspente').innerHTML = "";			wid= 15;			$(".longerSuspente").append(tabl2);			$.ajax({			url:"index.php?d=operateur&a=recupmateriaux",			success :function(rep)			{				var tabl3="";				tabl3="<h6> listes des matériaux de la suspentes </h6>"+				"<table border='1'> <tr>"+				"<th width='60px'> taille </th>";				for(i=1; i<=nb;i++)				{					tabl3=tabl3+"<th width='"+wid+"px'>suspentes"+i+"</th>";				}				tabl3=tabl3+"</tr><tr> ";								for(j=1;j<=nbSuspente;j++)				{					tabl3=tabl3+"<th width='"+wid+"px'> taille"+j+" </th>";					for(i=1; i<=nb;i++)					{						tabl3=tabl3+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+									'<select  name="materiaux'+i+j+'"  id="materiaux'+i+j+'"  style="width:100%">'+									rep+									'</select>'+									'</div>'+'</td>';					}					tabl3=tabl3+"</tr><tr>";				}						tabl3=tabl3+"  </tr> </table>";				document.getElementById('materiauxSuspente').innerHTML = "";				if(document.getElementById('materiauxSuspentecontin').style.visibility=='hidden')			{				document.getElementById('materiauxSuspentecontin').style.visibility='visible';			}				$(".materiauxSuspente").append(tabl3);							}			});			var bouton="";			bouton= '<br />'+					'<center>'+					'<button type="submit" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >'+					'valider  tout les donne� rentr�e  '+					'</button>'+					'</center>';			document.getElementById('boutons').innerHTML = "";			$(".boutons").append(bouton);
+		var tabl="";		var nbSuspente = document.getElementById("nbSuspente").value;		var nb=document.getElementById("nbtaile").value;		var wid= 45;		tabl="<h6>référence fabricant des suspentes  </h6>"+			"<table border='1'> <tr>"+			"<th width='"+wid+"px'> taille </th>";						for(i=1; i<=nb;i++)			{				tabl=tabl+"<th style='width:'"+wid+"px;'>ref"+i+"</th>";			}										tabl=tabl+"</tr><tr> ";						for(j=1;j<=nbSuspente;j++)			{				tabl=tabl+"<th width='45px'> suspente"+j+" </th>";				for(i=1; i<=nb;i++)				{					tabl=tabl+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+								'<input name="reffab'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="reffab'+j+i+'">'+								'<label style=" width:100%" class="mdl-textfield__label" for="reffab'+j+i+'"></label>'+								'</div>'+'</td>';				}				tabl=tabl+"</tr><tr>";			}				tabl=tabl+"  </tr> </tabl_2e>";			document.getElementById('valeur_taille').innerHTML = "";			if(document.getElementById('valeur_taille_containt').style.visibility=='hidden')			{				document.getElementById('valeur_taille_containt').style.visibility='visible';			}			$(".valeur_taille").append(tabl);						var tabl2="";			tabl2="<h6> Longueur des suspentes par ref�rence et par taille </h6>"+			"<table border='1'> <tr>"+			"<th width='"+wid+"px'> taille </th>";			for(i=1; i<=nb;i++)			{				tabl2=tabl2+"<th width='45px'> ru"+i+"</th>";			}										tabl2=tabl2+"</tr><tr> ";						for(j=1;j<=nbSuspente;j++)			{				tabl2=tabl2+"<th width='"+wid+"px'> taille"+j+" </th>";				for(i=1; i<=nb;i++)				{					tabl2=tabl2+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+								'<input name="tailsup'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="tailsup'+j+i+'">'+								'<label style=" width:100%" class="mdl-textfield__label" for="tailsup'+j+i+'"></label>'+								'</div>'+'</td>';				}				tabl2=tabl2+"</tr><tr>";			}				tabl2=tabl2+"  </tr> </tabl_2e>";			if(document.getElementById('longerSuspentecontain').style.visibility=='hidden')			{				document.getElementById('longerSuspentecontain').style.visibility='visible';			}			document.getElementById('longerSuspente').innerHTML = "";			wid= 15;			$(".longerSuspente").append(tabl2);			$.ajax({			url:"index.php?d=operateur&a=recupmateriaux",			success :function(rep)			{				var tabl3="";				alert(rep);				tabl3="<h6> listes des matériaux de la suspentes </h6>"+				"<table border='1'> <tr>"+				"<th width='60px'> taille </th>";				for(i=1; i<=nb;i++)				{					tabl3=tabl3+"<th width='"+wid+"px'>suspentes"+i+"</th>";				}				tabl3=tabl3+"</tr><tr> ";								for(j=1;j<=nbSuspente;j++)				{					tabl3=tabl3+"<th width='"+wid+"px'> taille"+j+" </th>";					for(i=1; i<=nb;i++)					{						tabl3=tabl3+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+									'<select  name="materiaux'+i+j+'"  id="materiaux'+i+j+'"  style="width:100%">'+									rep+									'</select>'+									'</div>'+'</td>';					}					tabl3=tabl3+"</tr><tr>";				}						tabl3=tabl3+"  </tr> </table>";				document.getElementById('materiauxSuspente').innerHTML = "";				if(document.getElementById('materiauxSuspentecontin').style.visibility=='hidden')			{				document.getElementById('materiauxSuspentecontin').style.visibility='visible';			}				$(".materiauxSuspente").append(tabl3);							}			});			var bouton="";			bouton= '<br />'+					'<center>'+					'<button type="submit" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >'+					'valider  tout les donne� rentr�e  '+					'</button>'+					'</center>';			document.getElementById('boutons').innerHTML = "";			$(".boutons").append(bouton);
 	}
 	function affich() {
 		
@@ -178,7 +178,7 @@
 		 var activation = document.getElementById("activation_adm").checked;
 		 // transfaire les donner  pour pouvoir utiliser dans du php requete sql
 		 $.ajax({
-		  url:"modele/formulaires/updateAdm.php",
+		  url:"index.php?d=administrateur&a=update_compte",
 		  type : "GET",
 		  data:  {id:x,
 				  email:email,
@@ -200,41 +200,8 @@
 			alert("Modifications effectu�es.");
 		 }	
 		 });
-	}
-	
-	function activate(){
-		ids=" ";
-		if(confirm("�tes-vous s�r de vouloir continuer ?")==true)
-		{
-			$.ajax({
-			  url:"modele/formulaires/selectAdm.php",
-			  type : "GET",
-			  success: function (rep)
-			 {
-				array=rep.split(',');
-				
-				for(i=0;i<(array.length-1);i++)
-				{
-					if(document.getElementById(array[i]).classList.contains("is-selected")==true)
-					{
-						ids=ids+array[i]+";";
-					}
-				}
-				$.ajax({
-				  url:"modele/formulaires/activate.php",
-				  type : "GET",
-				  data: {ids:ids},
-				  success: function (rep)
-				 {
-					 location.reload();
-				 }	
-				 });
-			
-			 }	
-			 });	
-			
-		}	
-	}
+	}
+	function activate(){		ids = "";		target = "activateUser";		if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)		{			$.ajax({			  url:"index.php?d=administrateur&a=select_compte",			  type : "GET",			  success: function (rep)			 {				array=rep.split(',');								for(i=0;i<(array.length-1);i++)				{					if(document.getElementById(array[i]).classList.contains("is-selected")==true)					{						ids=ids+array[i]+";";					}				}				$.ajax({				  url:"index.php?d=administrateur&a=activer",				  type : "GET",				  data: {ids:ids,target:target},				  success: function (rep)				 {					 location.reload();				 }					 });						 }				 });						}		}		function activate_annonce(){				ids = "";		target = "activateAnnonce";				if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)		{			$.ajax({			  url:"index.php?d=annonces&a=select_annonce",			  type : "GET",			  data: {target:target},			  success: function (rep)			 {				array=rep.split(',');								for(i=0;i<(array.length-1);i++)				{					if(document.getElementById(array[i]).classList.contains("is-selected")==true)					{						ids=ids+array[i]+";";					}				}				$.ajax({				  url:"index.php?d=administrateur&a=activer",				  type : "GET",				  data: {ids:ids,target:target},				  success: function (rep)				 {					 location.reload();				 }					 });			 }				 });			}		}
 	
 	
 jQuery(function($){
@@ -301,7 +268,7 @@ function showThumbnail(files){
   }
 }
           });
-		function delete_annonce(){		var ids="";		if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)		{						var val=0;				var element = document.getElementById(val);				var images = [];				while(element !=null)				{					val++;					if(element.parentElement.classList.contains("is-selected")==true){images.push(element.innerHTML);}					element = document.getElementById(val);				}				$.ajax({				  url:"modele/delete_annonce.php",				  type : "GET",				  data: {tab:images},				  success: function (rep)				 {					 location.reload();				 }					 });						}		}	
+		function delete_annonce(isFromPanel){		if(typeof(isFromPanel)!="undefined"){target = "notPanel";}	//si on vient pas du panel de gestion		else								{target = "delete";}//si on est dans la suppresion des annonces actives (admin) ou propre à l'utilisateur		ids = "";				if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)		{			$.ajax({			  url:"modele/formulaires/selectAnnonces.php",			  type : "GET",			  data: {target:target},			  success: function (rep)			 {				array=rep.split(',');								for(i=0;i<(array.length-1);i++)				{					if(document.getElementById(array[i]).classList.contains("is-selected")==true)					{						ids=ids+array[i]+";";					}				}				$.ajax({				  url:"modele/formulaires/delete_annonce.php",				  type : "GET",				  data: {ids:ids,target:target},				  success: function (rep)				 {					location.reload();				 }					 });			 }				 });		}		}	
 	function delete_notifications(){
 		ids=" ";
 		if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)
@@ -334,4 +301,4 @@ function showThumbnail(files){
 			 });	
 			
 		}	
-	}			function annonce_select_marque()	{		var id_marque = document.getElementById("marque").value;		$.ajax({		  url:"modele/formulaires/annonce_select_marque.php",		  type : "POST",		  data: {id_marque:id_marque},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez un modèle</option>" + rep;			document.getElementById("modele").innerHTML = retour;			if(id_marque = -2)			{				document.getElementById("taille").innerHTML = "<option value='-2'>Sélectionnez la taille</option>";			}		 }			 });			}		function annonce_select_modele()	{		var id_modele = document.getElementById("modele").value;		$.ajax({		  url:"modele/formulaires/annonce_select_modele.php",		  type : "POST",		  data: {id_modele:id_modele},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez la taille</option>" + rep;			document.getElementById("taille").innerHTML = retour;		 }			 });			}
+	}			function annonce_select_marque()	{		var id_marque = document.getElementById("marque").value;		$.ajax({		  url:"modele/formulaires/annonce_select_marque.php",		  type : "POST",		  data: {id_marque:id_marque},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez un modèle</option>" + rep;			document.getElementById("modele").innerHTML = retour;			if(id_marque = -2)			{				document.getElementById("taille").innerHTML = "<option value='-2'>Sélectionnez la taille</option>";			}		 }			 });			}		function annonce_select_modele()	{		var id_modele = document.getElementById("modele").value;		$.ajax({		  url:"modele/formulaires/annonce_select_modele.php",		  type : "POST",		  data: {id_modele:id_modele},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez la taille</option>" + rep;			document.getElementById("taille").innerHTML = retour;		 }			 });			}		function choixRegion(id){		document.getElementById("selRegion").value=id;	}

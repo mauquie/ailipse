@@ -25,6 +25,11 @@
 		case "update":
 			require_once("modele/formulaires/update.php");
 		break;
+		
+		default:
+			//redirection page 404
+			$contenu = "";
+			$sortie = "";
 	}
 
 ?>

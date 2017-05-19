@@ -63,11 +63,42 @@
 		// pour les ajax 
 		
 		case "affiche":
+			$contenu = "";
+			$sortie="";
 			require_once("modele/formulaires/showUser.php");
 		break;
 		
+		case "update_compte":
+			$contenu="";
+			$sortie="";
+			require_once("modele/formulaires/updateAdm.php");
+		break;
 		
+		case "select_compte":
+			$contenu="";
+			$sortie="";
+			require_once('modele/formulaires/selectAdm.php');
+		break;
+		
+		case "activer":
+			$contenu="";
+			$sortie="";
+			require_once('modele/formulaires/activate.php');
+		break;
+		
+		default:
+			//redirection page 404
+			$contenu = "";
+			$sortie = "";
+		
+		
+
+		
+		
+	}
+	
 		//Ecriture du tarif ajouté dans le fichier logfile.txt
+		date_default_timezone_set('Europe/Brussels');
 		$logs = date('Y-m-d H:i:s').' --- Redirection vers la page "'.$action.'" par "'.$login_session."\r\n";
 		//Ouverture du répertoire de destination
 		$fichier = fopen ("modele/modelisation/logs/log_Admin.txt", "a+");
@@ -76,9 +107,6 @@
 		//Fermeture du fichier
 		fclose ($fichier);
 		//Fin écriture
-		
-		
-	}
 
 
 ?>

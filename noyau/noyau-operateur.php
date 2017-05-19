@@ -53,12 +53,20 @@
 		
 		// pout les ajax (js)
 		case "recupvoile":
-				require_once("modele/formulaires/recupVoile.php");
+			$contenu="";
+			$sortie="";
+			require_once("modele/formulaires/recupVoile.php");
 		break;
 		
 		case"recupmateriaux":
+			$contenu="";
+			$sortie = "";
 				require_once("modele/formulaires/recupMaterial.php");		
 		break;
+		default:
+			//redirection page 404
+			$contenu = "";
+			$sortie = "";
 	}
 
 ?>

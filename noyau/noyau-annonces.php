@@ -23,12 +23,12 @@
 		case "supprimer_annonce":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'annonces';
-			$contenu = $annonce->SupprimerAnnonce();	// utilise la methode de la classe annonce
+			$contenu = $annonce->SupprimerAnnonce($login_session);	// utilise la methode de la classe annonce
 
 					
 		break;
 		
-		case "visualiser_annonces":
+		case "visualiser_annonce":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'annonces';
 			$contenu = $annonce->VisualiserAnnonces();	// utilise la methode de la classe annonce
@@ -36,16 +36,37 @@
 			
 		break;
 		
-		case "visualiser_annonces2":
-			$sortie=file("vue/application.html");
+		
+		case "rechercher_annonce":
+			$sortie =file("vue/application.html");
 			$nav_en_cours = 'annonces';
-			$contenu = $annonce->VisualiserAnnonces2();	// utilise la methode de la classe annonce	
+			if(isset($_POST["selRegion"])&&isset($_POST["marque"])&&isset($_POST["modele"])&&isset($_POST["prixMin"])&&isset($_POST["prixMax"])&&isset($_POST["anneeMin"])&&isset($_POST["anneeMax"])){
+				$contenu = $annonce->rechercherAnnonces();
+			}
+			else{$contenu = $annonce->MenuAnnonce();}
 		break;
 		
 		// a partir d'un form 
 		case "confirm_annonce":
-			require_once('modele/formulaires/confirm_annonce.php');
+			$sortie="";
+			$contenu="";
+			$annonce->confirmAnnonce();
+			//require_once('modele/formulaires/confirm_annonce.php');
 		break;
+		// Pour fonction ajax
+		case "confirm_annonce":  // vérife utiliter 
+		break; 
+		
+		case"select_annonce":
+			$sortie="";
+			$contenu="";
+			require_once ('modele/formulaires/selectAnnonces.php');
+		break;
+		
+		default:
+			//redirection page 404
+			$contenu = "";
+			$sortie = "";
 		
 	}
 

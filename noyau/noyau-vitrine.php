@@ -30,6 +30,11 @@
 			$contenu.= $vitrine->prestations();
 			$contenu.= $vitrine->tarifs();
 		break;
+		
+		default:
+			//redirection page 404
+			$contenu = "";
+			$sortie = "";
 	}
 
 ?>

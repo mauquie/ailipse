@@ -1,6 +1,6 @@
-<?php
-if(session_destroy()) // on d�truit toutes les sessions actives
-{
-	header("Location: index.php"); // on redirige vers une page
+<?php// On détruit toutes les sessions actuellement actives
+if(session_destroy())
+{
+	header("Location: index.php"); // on redirige vers une page
 }
 ?>

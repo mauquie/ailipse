@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.4
+-- version 4.5.4.1
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Mer 26 Avril 2017 à 11:04
--- Version du serveur :  5.6.15-log
--- Version de PHP :  5.4.24
+-- Client :  localhost
+-- Généré le :  Sam 20 Mai 2017 à 11:58
+-- Version du serveur :  5.7.11
+-- Version de PHP :  5.6.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `ailipset921`
@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `annonces`
 --
 
-CREATE TABLE IF NOT EXISTS `annonces` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `annonces` (
+  `id` int(10) NOT NULL,
   `titre` varchar(30) CHARACTER SET utf8 NOT NULL,
   `contenu` text CHARACTER SET utf8 NOT NULL,
   `prix` int(5) NOT NULL,
@@ -36,50 +36,25 @@ CREATE TABLE IF NOT EXISTS `annonces` (
   `marque` varchar(30) CHARACTER SET utf8 NOT NULL,
   `modele` varchar(30) CHARACTER SET utf8 NOT NULL,
   `taille` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `annee` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `annee` int(4) NOT NULL,
   `surface` varchar(30) CHARACTER SET utf8 NOT NULL,
   `ptv` varchar(30) CHARACTER SET utf8 NOT NULL,
   `localisation` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `telephone` int(1) NOT NULL DEFAULT '1',
+  `email` varchar(50) NOT NULL,
+  `telephone` varchar(10) NOT NULL DEFAULT '1',
   `online` int(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `annonces_annee`
---
-
-CREATE TABLE IF NOT EXISTS `annonces_annee` (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
-  `annee` int(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+  `auteur` varchar(30) NOT NULL,
+  `ville` varchar(50) NOT NULL,
+  `date_publication` varchar(10) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `annonces_annee`
+-- Contenu de la table `annonces`
 --
 
-INSERT INTO `annonces_annee` (`id`, `annee`) VALUES
-(1, 2000),
-(2, 2001),
-(3, 2002),
-(4, 2003),
-(5, 2004),
-(6, 2005),
-(7, 2006),
-(8, 2007),
-(9, 2008),
-(10, 2009),
-(11, 2010),
-(12, 2011),
-(13, 2012),
-(14, 2013),
-(15, 2014),
-(16, 2015),
-(17, 2016),
-(18, 2017);
+INSERT INTO `annonces` (`id`, `titre`, `contenu`, `prix`, `type_annonce`, `photo`, `marque`, `modele`, `taille`, `annee`, `surface`, `ptv`, `localisation`, `email`, `telephone`, `online`, `auteur`, `ville`, `date_publication`, `active`) VALUES
+(114, 'a', '<p>ddddd</p>\r\n', 1, 1, 'sample1_l.jpg,squid-avatar.jpg,', 'ijino_technique', 'moi', 'XS', 2003, '18', '70-75', 'Aquitaine', 'admin@test.fr', '0610203040', 1, 'Test A.', 'test', '20/05/2017', 0);
 
 -- --------------------------------------------------------
 
@@ -87,18 +62,17 @@ INSERT INTO `annonces_annee` (`id`, `annee`) VALUES
 -- Structure de la table `annonces_localisation`
 --
 
-CREATE TABLE IF NOT EXISTS `annonces_localisation` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `region` varchar(50) CHARACTER SET latin1 NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=23 ;
+CREATE TABLE `annonces_localisation` (
+  `id` int(2) NOT NULL,
+  `region` varchar(50) CHARACTER SET latin1 NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contenu de la table `annonces_localisation`
 --
 
 INSERT INTO `annonces_localisation` (`id`, `region`) VALUES
-(18, 'Provence Alpes Côte d''Azur'),
+(18, 'Provence Alpes Côte d\'Azur'),
 (17, 'Nord Pas de Calais'),
 (16, 'Midi-Pyrénées'),
 (15, 'Lorraine'),
@@ -119,38 +93,7 @@ INSERT INTO `annonces_localisation` (`id`, `region`) VALUES
 (19, 'Pays de la Loire'),
 (20, 'Picardie'),
 (21, 'Poitou Charente'),
-(22, 'Rhone Alpes');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `annonces_marque`
---
-
-CREATE TABLE IF NOT EXISTS `annonces_marque` (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
-  `marque` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `annonces_marque`
---
-
-INSERT INTO `annonces_marque` (`id`, `marque`) VALUES
-(2, 'peugeot');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `annonces_modele`
---
-
-CREATE TABLE IF NOT EXISTS `annonces_modele` (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
-  `modele` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+(22, 'Rhône Alpes');
 
 -- --------------------------------------------------------
 
@@ -158,11 +101,10 @@ CREATE TABLE IF NOT EXISTS `annonces_modele` (
 -- Structure de la table `annonces_ptv`
 --
 
-CREATE TABLE IF NOT EXISTS `annonces_ptv` (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
-  `ptv` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+CREATE TABLE `annonces_ptv` (
+  `id` int(4) NOT NULL,
+  `ptv` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `annonces_ptv`
@@ -189,11 +131,10 @@ INSERT INTO `annonces_ptv` (`id`, `ptv`) VALUES
 -- Structure de la table `annonces_surface`
 --
 
-CREATE TABLE IF NOT EXISTS `annonces_surface` (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
-  `surface` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+CREATE TABLE `annonces_surface` (
+  `id` int(4) NOT NULL,
+  `surface` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `annonces_surface`
@@ -233,28 +174,15 @@ INSERT INTO `annonces_surface` (`id`, `surface`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `annonces_taille`
---
-
-CREATE TABLE IF NOT EXISTS `annonces_taille` (
-  `id` int(4) NOT NULL AUTO_INCREMENT,
-  `taille` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `articles`
 --
 
-CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `id` int(10) NOT NULL,
   `titre` varchar(30) NOT NULL,
   `contenu` text NOT NULL,
-  `cadre` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
+  `cadre` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `articles`
@@ -271,13 +199,13 @@ INSERT INTO `articles` (`id`, `titre`, `contenu`, `cadre`) VALUES
 -- Structure de la table `clients`
 --
 
-CREATE TABLE IF NOT EXISTS `clients` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `clients` (
+  `id` int(10) NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `password` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `nom` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `prenom` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `telephone` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `telephone` varchar(10) NOT NULL,
   `ville_expedition` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `rue_expedition` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `code_postal_expedition` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -285,18 +213,17 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `rue_facturation` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `code_postal_facturation` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `permissions` int(1) NOT NULL DEFAULT '1',
-  `actif` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+  `actif` int(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `clients`
 --
 
 INSERT INTO `clients` (`id`, `email`, `password`, `nom`, `prenom`, `telephone`, `ville_expedition`, `rue_expedition`, `code_postal_expedition`, `ville_facturation`, `rue_facturation`, `code_postal_facturation`, `permissions`, `actif`) VALUES
-(17, 'jacquestuning@test.fr', 'dff4d36007d7e036512f9b148cede2ec1e4f6c9d', 'Tuning', 'Jacques', '0888888869', 'test', '17 rue de la Jante ChromÃ©e', '59200', 'Tourcoing', '17 rue de la Jante ChromÃ©e', '59200', 1, 1),
-(3, 'admin@test.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', 'Test tout cours', '06', 'test', '3 boulevard Herriot', '82000', 'Montauban', '3 boulevard Herriot', '82000', 3, 1),
-(19, 'jean.dupont@email.fr', '5be3abe776eaf5f251122aba6f291eb40b65aa3d', 'Dupont', 'Jean', '0610245471', 'test', '3 rue des chÃªnes', '75000', 'Paris', '3 rue des chÃªnes', '75000', 1, 0);
+(17, 'jacquestuning@test.fr', 'dff4d36007d7e036512f9b148cede2ec1e4f6c9d', 'Tuning', 'Jacques', '888888869', 'test', '17 rue de la Jante ChromÃ©e', '59200', 'Tourcoing', '17 rue de la Jante ChromÃ©e', '59200', 1, 1),
+(3, 'admin@test.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', 'Test', '0610203040', 'test', '3 boulevard Herriot', '82000', 'Montauban', '3 boulevard Herriot', '82000', 3, 1),
+(19, 'jean.dupont@email.fr', '5be3abe776eaf5f251122aba6f291eb40b65aa3d', 'Dupont', 'Jean', '610245471', 'test', '3 rue des chÃªnes', '75000', 'Paris', '3 rue des chÃªnes', '75000', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -304,18 +231,14 @@ INSERT INTO `clients` (`id`, `email`, `password`, `nom`, `prenom`, `telephone`, 
 -- Structure de la table `departement`
 --
 
-CREATE TABLE IF NOT EXISTS `departement` (
-  `departement_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `departement` (
+  `departement_id` int(11) NOT NULL,
   `departement_code` varchar(3) CHARACTER SET utf8 DEFAULT NULL,
   `departement_nom` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `departement_nom_uppercase` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `departement_slug` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `departement_nom_soundex` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`departement_id`),
-  KEY `departement_slug` (`departement_slug`),
-  KEY `departement_code` (`departement_code`),
-  KEY `departement_nom_soundex` (`departement_nom_soundex`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;
+  `departement_nom_soundex` varchar(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `departement`
@@ -343,8 +266,8 @@ INSERT INTO `departement` (`departement_id`, `departement_code`, `departement_no
 (19, '19', 'Corrèze', 'CORRÈZE', 'correze', 'C620'),
 (20, '2a', 'Corse-du-sud', 'CORSE-DU-SUD', 'corse-du-sud', 'C62323'),
 (21, '2b', 'Haute-corse', 'HAUTE-CORSE', 'haute-corse', 'H3262'),
-(22, '21', 'Côte-d''or', 'CÔTE-D''OR', 'cote-dor', 'C360'),
-(23, '22', 'Côtes-d''armor', 'CÔTES-D''ARMOR', 'cotes-darmor', 'C323656'),
+(22, '21', 'Côte-d\'or', 'CÔTE-D\'OR', 'cote-dor', 'C360'),
+(23, '22', 'Côtes-d\'armor', 'CÔTES-D\'ARMOR', 'cotes-darmor', 'C323656'),
 (24, '23', 'Creuse', 'CREUSE', 'creuse', 'C620'),
 (25, '24', 'Dordogne', 'DORDOGNE', 'dordogne', 'D6325'),
 (26, '25', 'Doubs', 'DOUBS', 'doubs', 'D120'),
@@ -417,7 +340,7 @@ INSERT INTO `departement` (`departement_id`, `departement_code`, `departement_no
 (93, '92', 'Hauts-de-Seine', 'HAUTS-DE-SEINE', 'hauts-de-seine', 'H32325'),
 (94, '93', 'Seine-Saint-Denis', 'SEINE-SAINT-DENIS', 'seine-saint-denis', 'S525352'),
 (95, '94', 'Val-de-Marne', 'VAL-DE-MARNE', 'val-de-marne', 'V43565'),
-(96, '95', 'Val-d''oise', 'VAL-D''OISE', 'val-doise', 'V432'),
+(96, '95', 'Val-d\'oise', 'VAL-D\'OISE', 'val-doise', 'V432'),
 (97, '976', 'Mayotte', 'MAYOTTE', 'mayotte', 'M300'),
 (98, '971', 'Guadeloupe', 'GUADELOUPE', 'guadeloupe', 'G341'),
 (99, '973', 'Guyane', 'GUYANE', 'guyane', 'G500'),
@@ -430,8 +353,8 @@ INSERT INTO `departement` (`departement_id`, `departement_code`, `departement_no
 -- Structure de la table `fabricant`
 --
 
-CREATE TABLE IF NOT EXISTS `fabricant` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fabricant` (
+  `id` int(11) NOT NULL,
   `nom` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `ad_www` varchar(50) CHARACTER SET utf32 COLLATE utf32_bin NOT NULL,
   `ad_wwwi` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -448,9 +371,8 @@ CREATE TABLE IF NOT EXISTS `fabricant` (
   `tel_c2` int(10) NOT NULL,
   `e_mail_c2` varchar(100) NOT NULL,
   `qual_c2` varchar(20) NOT NULL,
-  `logo` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `logo` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `fabricant`
@@ -465,20 +387,19 @@ INSERT INTO `fabricant` (`id`, `nom`, `ad_www`, `ad_wwwi`, `tel`, `mail`, `maili
 -- Structure de la table `notifications`
 --
 
-CREATE TABLE IF NOT EXISTS `notifications` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `notifications` (
+  `id` int(10) NOT NULL,
   `comptes` int(2) NOT NULL,
   `saisies` int(2) NOT NULL,
-  `annonces` int(2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `annonces` int(2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `notifications`
 --
 
 INSERT INTO `notifications` (`id`, `comptes`, `saisies`, `annonces`) VALUES
-(1, 1, 0, 0);
+(1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -486,8 +407,8 @@ INSERT INTO `notifications` (`id`, `comptes`, `saisies`, `annonces`) VALUES
 -- Structure de la table `susp_materiaux`
 --
 
-CREATE TABLE IF NOT EXISTS `susp_materiaux` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `susp_materiaux` (
+  `id` int(11) NOT NULL,
   `id_fab` int(11) NOT NULL,
   `ref` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `eq1` int(11) NOT NULL,
@@ -496,9 +417,8 @@ CREATE TABLE IF NOT EXISTS `susp_materiaux` (
   `mat` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `rupture` int(11) NOT NULL,
   `diam` int(11) NOT NULL,
-  `couleur` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `couleur` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `susp_materiaux`
@@ -517,14 +437,13 @@ INSERT INTO `susp_materiaux` (`id`, `id_fab`, `ref`, `eq1`, `eq2`, `eq3`, `mat`,
 -- Structure de la table `tarifs_articles`
 --
 
-CREATE TABLE IF NOT EXISTS `tarifs_articles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tarifs_articles` (
+  `id` int(11) NOT NULL,
   `nom` varchar(100) DEFAULT NULL,
   `tarifht` decimal(10,2) DEFAULT NULL,
   `tarifttc` decimal(10,2) DEFAULT NULL,
-  `pourcent` decimal(10,0) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `pourcent` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `tarifs_articles`
@@ -548,14 +467,13 @@ INSERT INTO `tarifs_articles` (`id`, `nom`, `tarifht`, `tarifttc`, `pourcent`) V
 -- Structure de la table `tarifs_reparation`
 --
 
-CREATE TABLE IF NOT EXISTS `tarifs_reparation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tarifs_reparation` (
+  `id` int(11) NOT NULL,
   `nom` varchar(100) DEFAULT NULL,
   `tarifht` decimal(10,2) DEFAULT NULL,
   `tarifttc` decimal(10,2) DEFAULT NULL,
-  `pourcent` decimal(10,0) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `pourcent` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `tarifs_reparation`
@@ -575,14 +493,13 @@ INSERT INTO `tarifs_reparation` (`id`, `nom`, `tarifht`, `tarifttc`, `pourcent`)
 -- Structure de la table `tarifs_revision`
 --
 
-CREATE TABLE IF NOT EXISTS `tarifs_revision` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tarifs_revision` (
+  `id` int(11) NOT NULL,
   `nom` varchar(100) DEFAULT NULL,
   `tarifht` decimal(10,2) DEFAULT NULL,
   `tarifttc` decimal(10,2) DEFAULT NULL,
-  `pourcent` decimal(10,0) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `pourcent` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `tarifs_revision`
@@ -596,7 +513,7 @@ INSERT INTO `tarifs_revision` (`id`, `nom`, `tarifht`, `tarifttc`, `pourcent`) V
 (5, 'Changement suspente', '9.00', '11.00', '50'),
 (6, 'Remplacement caisson partiel ', '50.00', '60.00', '50'),
 (7, 'Remplacement caisson', '100.00', '120.00', '50'),
-(8, 'Commande d''un Magic-bag', '33.00', '40.00', '50'),
+(8, 'Commande d\'un Magic-bag', '33.00', '40.00', '50'),
 (9, 'Pliage secours', '29.00', '35.00', '50'),
 (10, 'Heure atelier', '33.00', '40.00', '50');
 
@@ -606,8 +523,8 @@ INSERT INTO `tarifs_revision` (`id`, `nom`, `tarifht`, `tarifttc`, `pourcent`) V
 -- Structure de la table `voile`
 --
 
-CREATE TABLE IF NOT EXISTS `voile` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `voile` (
+  `id` int(11) NOT NULL,
   `nom` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `id_const` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `nb_tail` int(1) NOT NULL,
@@ -615,9 +532,8 @@ CREATE TABLE IF NOT EXISTS `voile` (
   `cert` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `plan` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `manuel` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `valider` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`,`nom`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
+  `valider` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `voile`
@@ -633,7 +549,7 @@ INSERT INTO `voile` (`id`, `nom`, `id_const`, `nb_tail`, `date_s`, `cert`, `plan
 -- Structure de la table `voile_assemblage_sup`
 --
 
-CREATE TABLE IF NOT EXISTS `voile_assemblage_sup` (
+CREATE TABLE `voile_assemblage_sup` (
   `idvoile` varchar(20) NOT NULL DEFAULT '',
   `A1` varchar(10) DEFAULT NULL,
   `A2` varchar(10) DEFAULT NULL,
@@ -784,8 +700,7 @@ CREATE TABLE IF NOT EXISTS `voile_assemblage_sup` (
   `BR22` varchar(10) DEFAULT NULL,
   `BR23` varchar(10) DEFAULT NULL,
   `BR24` varchar(10) DEFAULT NULL,
-  `BR25` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idvoile`)
+  `BR25` varchar(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -794,7 +709,7 @@ CREATE TABLE IF NOT EXISTS `voile_assemblage_sup` (
 -- Structure de la table `voile_controle_long`
 --
 
-CREATE TABLE IF NOT EXISTS `voile_controle_long` (
+CREATE TABLE `voile_controle_long` (
   `idvoile` varchar(20) NOT NULL DEFAULT '',
   `A1` varchar(10) DEFAULT NULL,
   `A2` varchar(10) DEFAULT NULL,
@@ -945,8 +860,7 @@ CREATE TABLE IF NOT EXISTS `voile_controle_long` (
   `BR22` varchar(10) DEFAULT NULL,
   `BR23` varchar(10) DEFAULT NULL,
   `BR24` varchar(10) DEFAULT NULL,
-  `BR25` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idvoile`)
+  `BR25` varchar(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -955,7 +869,7 @@ CREATE TABLE IF NOT EXISTS `voile_controle_long` (
 -- Structure de la table `voile_long_susp_cut`
 --
 
-CREATE TABLE IF NOT EXISTS `voile_long_susp_cut` (
+CREATE TABLE `voile_long_susp_cut` (
   `idvoile` varchar(20) NOT NULL,
   `r1` varchar(10) DEFAULT NULL,
   `r2` varchar(10) DEFAULT NULL,
@@ -1156,8 +1070,7 @@ CREATE TABLE IF NOT EXISTS `voile_long_susp_cut` (
   `r197` varchar(10) DEFAULT NULL,
   `r198` varchar(10) DEFAULT NULL,
   `r199` varchar(10) DEFAULT NULL,
-  `r200` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idvoile`)
+  `r200` varchar(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1166,7 +1079,7 @@ CREATE TABLE IF NOT EXISTS `voile_long_susp_cut` (
 -- Structure de la table `voile_mat_susp_cut`
 --
 
-CREATE TABLE IF NOT EXISTS `voile_mat_susp_cut` (
+CREATE TABLE `voile_mat_susp_cut` (
   `idvoile` varchar(20) NOT NULL,
   `r1` varchar(10) DEFAULT NULL,
   `r2` varchar(10) DEFAULT NULL,
@@ -1367,8 +1280,7 @@ CREATE TABLE IF NOT EXISTS `voile_mat_susp_cut` (
   `r197` varchar(10) DEFAULT NULL,
   `r198` varchar(10) DEFAULT NULL,
   `r199` varchar(10) DEFAULT NULL,
-  `r200` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idvoile`)
+  `r200` varchar(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1377,7 +1289,7 @@ CREATE TABLE IF NOT EXISTS `voile_mat_susp_cut` (
 -- Structure de la table `voile_ref_susp_cut`
 --
 
-CREATE TABLE IF NOT EXISTS `voile_ref_susp_cut` (
+CREATE TABLE `voile_ref_susp_cut` (
   `idvoile` varchar(20) NOT NULL,
   `r1` varchar(10) DEFAULT NULL,
   `r2` varchar(10) DEFAULT NULL,
@@ -1578,8 +1490,7 @@ CREATE TABLE IF NOT EXISTS `voile_ref_susp_cut` (
   `r197` varchar(10) DEFAULT NULL,
   `r198` varchar(10) DEFAULT NULL,
   `r199` varchar(10) DEFAULT NULL,
-  `r200` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idvoile`)
+  `r200` varchar(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -1598,7 +1509,7 @@ INSERT INTO `voile_ref_susp_cut` (`idvoile`, `r1`, `r2`, `r3`, `r4`, `r5`, `r6`,
 -- Structure de la table `voile_taille`
 --
 
-CREATE TABLE IF NOT EXISTS `voile_taille` (
+CREATE TABLE `voile_taille` (
   `idvoile` int(11) NOT NULL,
   `T1` varchar(11) NOT NULL,
   `T2` varchar(11) DEFAULT NULL,
@@ -1609,8 +1520,7 @@ CREATE TABLE IF NOT EXISTS `voile_taille` (
   `T7` varchar(11) DEFAULT NULL,
   `T8` varchar(11) DEFAULT NULL,
   `T9` varchar(11) DEFAULT NULL,
-  `T10` varchar(11) DEFAULT NULL,
-  PRIMARY KEY (`idvoile`)
+  `T10` varchar(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -1622,8 +1532,209 @@ INSERT INTO `voile_taille` (`idvoile`, `T1`, `T2`, `T3`, `T4`, `T5`, `T6`, `T7`,
 (58, 'zer', 'zer', 'zer', 'zer', NULL, NULL, NULL, NULL, NULL, NULL),
 (71, 'test', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (75, 'xl', '600', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(77, 'XS', 's', 'L', 'M', NULL, NULL, NULL, NULL, NULL, NULL);
+(76, 'XS', 's', 'L', 'M', NULL, NULL, NULL, NULL, NULL, NULL);
 
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `annonces`
+--
+ALTER TABLE `annonces`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `annonces_localisation`
+--
+ALTER TABLE `annonces_localisation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `annonces_ptv`
+--
+ALTER TABLE `annonces_ptv`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `annonces_surface`
+--
+ALTER TABLE `annonces_surface`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `departement`
+--
+ALTER TABLE `departement`
+  ADD PRIMARY KEY (`departement_id`),
+  ADD KEY `departement_slug` (`departement_slug`),
+  ADD KEY `departement_code` (`departement_code`),
+  ADD KEY `departement_nom_soundex` (`departement_nom_soundex`);
+
+--
+-- Index pour la table `fabricant`
+--
+ALTER TABLE `fabricant`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `susp_materiaux`
+--
+ALTER TABLE `susp_materiaux`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `tarifs_articles`
+--
+ALTER TABLE `tarifs_articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `tarifs_reparation`
+--
+ALTER TABLE `tarifs_reparation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `tarifs_revision`
+--
+ALTER TABLE `tarifs_revision`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `voile`
+--
+ALTER TABLE `voile`
+  ADD PRIMARY KEY (`id`,`nom`);
+
+--
+-- Index pour la table `voile_assemblage_sup`
+--
+ALTER TABLE `voile_assemblage_sup`
+  ADD PRIMARY KEY (`idvoile`);
+
+--
+-- Index pour la table `voile_controle_long`
+--
+ALTER TABLE `voile_controle_long`
+  ADD PRIMARY KEY (`idvoile`);
+
+--
+-- Index pour la table `voile_long_susp_cut`
+--
+ALTER TABLE `voile_long_susp_cut`
+  ADD PRIMARY KEY (`idvoile`);
+
+--
+-- Index pour la table `voile_mat_susp_cut`
+--
+ALTER TABLE `voile_mat_susp_cut`
+  ADD PRIMARY KEY (`idvoile`);
+
+--
+-- Index pour la table `voile_ref_susp_cut`
+--
+ALTER TABLE `voile_ref_susp_cut`
+  ADD PRIMARY KEY (`idvoile`);
+
+--
+-- Index pour la table `voile_taille`
+--
+ALTER TABLE `voile_taille`
+  ADD PRIMARY KEY (`idvoile`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `annonces`
+--
+ALTER TABLE `annonces`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+--
+-- AUTO_INCREMENT pour la table `annonces_localisation`
+--
+ALTER TABLE `annonces_localisation`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT pour la table `annonces_ptv`
+--
+ALTER TABLE `annonces_ptv`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT pour la table `annonces_surface`
+--
+ALTER TABLE `annonces_surface`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+--
+-- AUTO_INCREMENT pour la table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+--
+-- AUTO_INCREMENT pour la table `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT pour la table `departement`
+--
+ALTER TABLE `departement`
+  MODIFY `departement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+--
+-- AUTO_INCREMENT pour la table `fabricant`
+--
+ALTER TABLE `fabricant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT pour la table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT pour la table `susp_materiaux`
+--
+ALTER TABLE `susp_materiaux`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT pour la table `tarifs_articles`
+--
+ALTER TABLE `tarifs_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT pour la table `tarifs_reparation`
+--
+ALTER TABLE `tarifs_reparation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT pour la table `tarifs_revision`
+--
+ALTER TABLE `tarifs_revision`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT pour la table `voile`
+--
+ALTER TABLE `voile`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,10 +1,10 @@
 Site vitrine
-- Dans connexion, mettre en bas du bouton Connexion un lien pour rappeler qu'on peut s'inscrire
 - Modifier le bouton "Se connecter" pour qu'il devienne "Se déconnecter" lorsqu'on est connecté
 - Faire le menu en MVC
 
 Application
 - Revoir la surface et ptv pour que lorsque c'est non renseigné ne pas mettre kg ni m² et régler le pb des +
+- @Adrian -> Voir pourquoi l'inscription n'enregistre plus un nouvel utilisateur
 
 Autres
 - Rename le fichier 'mainvue.js' par 'application.js' dans '/addons/js/'
@@ -12,4 +12,3 @@ Autres
 - Transformer le fichier menu.php en classe
 - Refaire le noyau pour qu'il y ait qu'une seule condition pour checker la connexion
 - Créer un .htaccess
-

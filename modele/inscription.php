@@ -2,24 +2,24 @@
 
 	$error=0;
 
-	// connexion à la base de données
+	// connexion ï¿½ la base de donnï¿½es
 	$bdd =  $visiteur->OpenBDD();
 	
-	// vérification si le champ pseudo a bien été rempli
+	// vï¿½rification si le champ pseudo a bien ï¿½tï¿½ rempli
 	if (isset($_POST['e-mail']))
 	{
 	 
 	// Alors dans ce cas on met saisie du $_POST['pseudo'] dans la variable $pseudo
 		$email = ($_POST['e-mail']);
-		$pass = mysql_real_escape_string(htmlspecialchars($_POST['pass']));
-		$confirm = mysql_real_escape_string(htmlspecialchars($_POST['confirm']));
+		$pass = ($_POST['pass']);
+		$confirm = ($_POST['confirm']);
 
 		$query = $bdd->query("SELECT email FROM clients WHERE email='$email'");
 		$num_row = $query->num_rows;
 	 
 		if ($num_row >= 1)
 		{
-			// Si l'email est déjà utilisée on retourne un code d'erreur
+			// Si l'email est dï¿½jï¿½ utilisï¿½e on retourne un code d'erreur
 			$error=1;
 			
 		}
@@ -27,7 +27,7 @@
 		{
 			if($pass == $confirm)
 			{
-				// RECUPERATION des donnes de la base de données
+				// RECUPERATION des donnes de la base de donnï¿½es
 			$pass = sha1($_POST['pass']);
 			$name = $_POST['name'];
 			$surname = $_POST['surname'];
@@ -55,5 +55,5 @@
 	$sortie = file("vue/inscription.html");
 	$contenu= $visiteur->Inscription($error);	// gestion des erreurs avec la classe
 	print $html;
-	$visiteur->CloseBDD($bdd);// fermeture de la base de données 
+	$visiteur->CloseBDD($bdd);// fermeture de la base de donnï¿½es 
 ?>

@@ -5,14 +5,13 @@ if(!class_exists("Vitrine")){
 		{
 		}
 		public function prestations(){
-			return '<div class="container2">
-							<br/><br/><br/><br/><br/>
+			return '<div id="prestations" class="superbackground">
+							<br/>
 							<div class="col-md-12 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0 text-center">
-								<h2 style="color:white;">Contrôle et révision</h2>
+								<h2 style="color:white; text-shadow:0 0 5px #000">Contrôle et révision</h2>
 							</div>
-						</div>
 					
-						<div class="container superbackground fadeInLoad">
+						<div class="container fadeInLoad">
 							<div class="row">
 								<div class="fh5co-spacer fh5co-spacer-sm"></div>
 								<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
@@ -95,12 +94,14 @@ if(!class_exists("Vitrine")){
 									</div>
 								</div>
 							</div>
-						</div>';
+						</div>
+					</div>';
 		}
 		public function tarifs (){
-			$contenu = '<div class="tableau" style="background-color: white;">
+			$contenu = '<div id="tarifs" class="tableau">
 					
-								<h1>Tarifs public à partir du 1er septembre 2014.</h1>
+								<h1 style="color: white; text-shadow:0 0 5px #000;">Tarifs public à partir du 1er septembre 2014.</h1>
+								<br/>
 								<div class="fondgris">Tarifs atelier lors d\'une révision</div>
 									<table  border="1" width="70%">
 										<tr>
@@ -152,7 +153,7 @@ if(!class_exists("Vitrine")){
 			
 			$contenu.='</table>
 					
-    <p id="infotarif" align="left">Le tarif atelier est appliqué lorsque les coûts de révision d\'une voile dépassent 150€ TTC</p>
+    <p id="infotarif" align="left" style="text-shadow:0 0 5px #fff;">* Le tarif atelier est appliqué lorsque les coûts de révision d\'une voile dépassent 150€ TTC</p>
 					
     <div class="fondgris">Tarifs atelier réparation</div>
     <table  border="1" width="70%">
@@ -208,15 +209,15 @@ if(!class_exists("Vitrine")){
 			
 			$contenu.='</table>
 					
-<p id="infotarif" align="left">Le tarif atelier est appliqué lorsque les coûts de révision d\'une voile dépassent 150€ TTC</p>
+<p id="infotarif" align="left" style="text-shadow:0 0 5px #fff;">* Le tarif atelier est appliqué lorsque les coûts de révision d\'une voile dépassent 150€ TTC</p>
 <div class="fondgris">Tarifs articles</div>
 <table  border="1" width="70%">
 					
         <tr>
             <th width="50%" align="center"></th>
             <th width="15%" align="center">Tarif HT</th>
-            <th width="15%" align="left">Tarif TTC</th>
-            <th width="10%" align="left">% Pro</th>
+            <th width="15%" align="center">Tarif TTC</th>
+            <th width="10%" align="center">% Pro</th>
         </tr>';
 			
 			try
@@ -280,15 +281,12 @@ if(!class_exists("Vitrine")){
 		  	</ul>
 	  	</div>
 	</aside>
-					
 	<div id="best-deal">
 		<div class="container">
 			<div class="row">
-			<div class="alert alert-warning">
-  <strong>Avertissement :</strong> Le projet est actuellement en cours de développement. Pour vous rendre sur l\'application, veuillez vous connecter.
-</div>
+
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box" data-animate-effect="fadeIn">
-					<h2>Vente de voiles d\'occasion</h2>
+					<h2 style="color:#fff; text-shadow:0 0 5px #000">Vente de voiles d\'occasion</h2>
 				</div>
 				<div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
 					
@@ -345,8 +343,6 @@ if(!class_exists("Vitrine")){
 	            	</p>
 					</div>
 				</div>
-					
-					
 			</div>
 		</div>
 	</div>';

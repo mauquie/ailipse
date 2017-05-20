@@ -22,7 +22,6 @@ body {
 }
 
 
-
 a {
   color: #118DF0;
   -webkit-transition: 0.5s;
@@ -667,7 +666,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #best-deal {
-  background: #f7f7f7;
+	background-image: url("../images/vitrine/wall2.jpg");
 }
 
 #best-deal, .fh5co-services {
@@ -1294,6 +1293,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-footer {
   padding: 7em 0;
   float: left;
+  height: 1000px;
   width: 100%;
   position: relative;
   background: #333333;
@@ -1680,23 +1680,34 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .tableau {
-    padding-top: 8%;
-    height: 2000px;
+    padding-top: 2%;
+    height: 1200px;
 	text-align:center;
+	background: url("../images/vitrine/wall1.jpg");
+	color: black;
 }
 table {
     margin-left: 15%;
     margin-right: 15%;
+    background-color: #fafafa;
 }
 .fondgris {
-    background-color: rgba(128, 128, 128, 0.57);
-    color: black;
+    background-color: darkgrey;
+    color: white;
 	margin-left: 15%;
     margin-right: 15%;
 }
 
 p#infotarif {
     margin-left: 15%;
+}
+
+.superbackground {
+	background: url("../images/vitrine/wall3.jpg") top center;
+}
+
+.superbackground2 {
+	background: url("../images/vitrine/wall2.jpg");
 }
 
 /*# sourceMappingURL=style.css.map */

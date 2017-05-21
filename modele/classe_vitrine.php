@@ -281,7 +281,7 @@ if(!class_exists("Vitrine")){
 		  	</ul>
 	  	</div>
 	</aside>
-	<div id="best-deal">
+	<div id="annonces">
 		<div class="container">
 			<div class="row">
 
@@ -344,6 +344,7 @@ if(!class_exists("Vitrine")){
 					</div>
 				</div>
 			</div>
+			<strong><center><p style="color: white;">Accéder à l\'<a style="color: #2196F3;" href="index.php?a=application">application</a> pour en voir plus</p></center></strong>
 		</div>
 	</div>';
 		}

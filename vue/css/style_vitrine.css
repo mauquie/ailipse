@@ -665,35 +665,35 @@ h1, h2, h3, h4, h5, h6, figure {
   background-position: 50% 50%;
 }
 
-#best-deal {
+#annonces {
 	background-image: url("../images/vitrine/wall2.jpg");
 }
 
-#best-deal, .fh5co-services {
+#annonces, .fh5co-services {
   padding: 7em 0;
 }
 @media screen and (max-width: 768px) {
-  #best-deal, .fh5co-services {
+  #annonces, .fh5co-services {
     padding: 3em 0;
   }
 }
-#best-deal .item-block, .fh5co-services .item-block {
+#annonces .item-block, .fh5co-services .item-block {
   margin-bottom: 3em;
   float: left;
 }
-#best-deal .item-block .icon, .fh5co-services .item-block .icon {
+#annonces .item-block .icon, .fh5co-services .item-block .icon {
   display: block;
   margin-bottom: 30px;
 }
-#best-deal .item-block .icon img, .fh5co-services .item-block .icon img {
+#annonces .item-block .icon img, .fh5co-services .item-block .icon img {
   max-width: inherit;
   height: 90px;
   margin: 0 auto;
 }
-#best-deal .item-block h3, .fh5co-services .item-block h3 {
+#annonces .item-block h3, .fh5co-services .item-block h3 {
   font-size: 20px;
 }
-#best-deal .item-block p:last-child, .fh5co-services .item-block p:last-child {
+#annonces .item-block p:last-child, .fh5co-services .item-block p:last-child {
   margin-bottom: 0;
 }
 

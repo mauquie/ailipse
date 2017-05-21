@@ -6,6 +6,7 @@ Site vitrine
 Application
 - Annonces -> Revoir la surface et ptv pour que lorsque c'est non renseigné ne pas mettre kg ni m² et régler le pb des +
 - Notifications -> Faire en sorte d'enlever le tableau si il n'y a pas de notifications pour la section (annonce, suivi, clients)
+- Notifications -> Créer les notifications propres à l'utilisateur
 - @Adrian -> Voir pourquoi l'inscription n'enregistre plus un nouvel utilisateur
 
 Autres

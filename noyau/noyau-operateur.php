@@ -35,12 +35,6 @@
 			$contenu= $typeUtilisateur->AjoutMateriaux(); 
 		break;
 		
-		case "controle_voile":
-			$sortie=file("vue/application.html");
-			$nav_en_cours = 'operateur';
-			$contenu= $typeUtilisateur->ControleVoile(); 
-		break;
-		
 		
 		
 		// a partir d'un form 

@@ -2,3 +2,5 @@
 2017-05-03 14:43:34 --- Redirection vers la page "application" par "jacquestuning@test.fr"
 2017-05-03 14:43:50 --- Redirection vers la page "application" par "jacquestuning@test.fr"
 2017-05-03 14:48:44 --- Redirection vers la page "deconnexion" par "jacquestuning@test.fr"
+2017-05-21 11:18:12 --- Connexion de "utilisateur@test.fr" en tant que "Utilisateur"
+2017-05-21 11:19:07 --- Connexion de "utilisateur@test.fr" en tant que "Utilisateur"

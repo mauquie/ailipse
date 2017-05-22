@@ -5,7 +5,6 @@ Site vitrine
 
 Application
 - Utilisateur -> Régler le formulaire update quand on modifie les informations de son profil (ça vient des formulaires qui doivent être des méthodes de classe)
-- Notifications -> Faire en sorte d'enlever le tableau si il n'y a pas d'annonces à supprimer dans l'onglet annonce
 - Notifications -> Créer les notifications propres à l'utilisateur
 
 Autres

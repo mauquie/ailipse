@@ -4,10 +4,9 @@ Site vitrine
 - Rajouter le raccourci pour ouvrir l'application email quand on clique dans la rubrique contact, pareil pour le téléphone
 
 Application
-- Annonces -> Revoir la surface et ptv pour que lorsque c'est non renseigné ne pas mettre kg ni m² et régler le pb des +
-- Notifications -> Faire en sorte d'enlever le tableau si il n'y a pas de notifications pour la section (annonce, suivi, clients)
+- Utilisateur -> Régler le formulaire update quand on modifie les informations de son profil (ça vient des formulaires qui doivent être des méthodes de classe)
+- Notifications -> Faire en sorte d'enlever le tableau si il n'y a pas d'annonces à supprimer dans l'onglet annonce
 - Notifications -> Créer les notifications propres à l'utilisateur
-- Utilisateur -> Régler le formulaire update quand on modifie les informations de son profil
 
 Autres
 - Rename le fichier 'mainvue.js' par 'application.js' dans '/addons/js/'

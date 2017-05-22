@@ -258,3 +258,13 @@
 2017-05-22 13:46:42 --- Redirection vers la page "menu" par "admin@test.fr
 2017-05-22 13:46:44 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
 2017-05-22 13:46:47 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-22 13:54:28 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-22 15:54:32 --- Redirection vers la page "menu" par "admin@test.fr
+2017-05-22 16:18:05 --- Redirection vers la page "notifications" par "admin@test.fr
+2017-05-22 16:25:22 --- Redirection vers la page "notifications" par "admin@test.fr
+2017-05-22 16:25:29 --- Redirection vers la page "activer" par "admin@test.fr
+2017-05-22 16:25:29 --- Redirection vers la page "notifications" par "admin@test.fr
+2017-05-22 16:25:33 --- Redirection vers la page "notifications" par "admin@test.fr
+2017-05-22 16:26:13 --- Redirection vers la page "notifications" par "admin@test.fr
+2017-05-22 16:26:20 --- Redirection vers la page "activer" par "admin@test.fr
+2017-05-22 16:26:20 --- Redirection vers la page "notifications" par "admin@test.fr

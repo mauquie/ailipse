@@ -8,11 +8,10 @@ Application
 - Notifications -> Faire en sorte d'enlever le tableau si il n'y a pas de notifications pour la section (annonce, suivi, clients)
 - Notifications -> Créer les notifications propres à l'utilisateur
 - Utilisateur -> Régler le formulaire update quand on modifie les informations de son profil
-- @Adrian -> Voir pourquoi l'inscription n'enregistre plus un nouvel utilisateur
 
 Autres
 - Rename le fichier 'mainvue.js' par 'application.js' dans '/addons/js/'
 - Mettre toutes les images contenues dans 'images' dans 'images/application'
 - Transformer le fichier menu.php en classe
-- Refaire le noyau pour qu'il y ait qu'une seule condition pour checker la connexion
 - Créer un .htaccess
+- Enlever tous les formulaires pour en faire des méthodes de classe

@@ -341,7 +341,7 @@ if(!class_exists("Operateur"))
 					
 							<div class="content-grid mdl-grid hover01 column animated zoomInDown">
 								<div class="mdl-cell" style="margin-left: 25px; margin-bottom: 50px;">
-									<figure><img width="250" height="200" src="vue/images/controler.png" /></figure>
+									<figure><a href="index.php?d=operateur&a=controle_voile"><img width="250" height="200" src="vue/images/controler.png" /></a></figure>
 									<span>Contrôler une voile</span>
 								</div>
 						
@@ -581,6 +581,50 @@ if(!class_exists("Operateur"))
 			
 			
 			
+		}
+		public function ControleVoile()
+		{
+			
+			$connect = $this->openBDD();	// ouverture de la BDD avec l'objet créé dans session.php qui est accéssible dans le noyau
+
+			$queryconstr="SELECT * FROM `fabricant`";
+			$querymodele="SELECT * FROM `voile`";				
+
+			$resultconstr = mysqli_query($connect ,$queryconstr);		// recuperation de tous les clients
+			$resultmodele = mysqli_query($connect ,$querymodele);	
+			$constructeur = "<option value='-2'> </option>			
+									<option value='-1'> </option>";			// tampon pour l'affichage 
+			$modele = "<option value='-2'> </option>			
+									<option value='-1'> </option>";
+									
+			while($row = mysqli_fetch_array($resultconstr))
+			{
+				$constructeur = $constructeur."<option value=$row[0]>$row[1]</option>";		// ajout de tous les clients avec $row[0]=id 
+																					// et $row[1] leur email 
+			}
+			while($row = mysqli_fetch_array($resultmodele))
+			{
+				$modele = $modele."<option value=$row[0]>$row[1]</option>";		// ajout de tous les clients avec $row[0]=id 
+																					// et $row[1] leur email 
+			}
+			return('<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+
+				<div class="mdl-card__supporting-text card-background">
+
+				<form action="modele/confirm_xml.php" method="post">
+				<select id="constructeur" class="nice-select" name="constructeur" onchange="affich()">
+					<?php 
+						echo('.$constructeur.');
+					?>
+					</select>
+					
+					<select id="modele" class="nice-select" name="modele" onchange="affich()">
+					<?php 
+						echo('.$modele.');
+					?>
+					</select>
+					<button class="mdl-button mdl-js-button mdl-button--raised" type="button" onclick="affichTable()">Valider</button>
+					</form>');
 		}
 	}
 }

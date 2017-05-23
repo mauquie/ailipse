@@ -18,18 +18,23 @@
 			$nav_en_cours = 'profil';
 			$typeUtilisateur->recuData();
 			$contenu = $typeUtilisateur->ModifierProfil();
+			
+			if((isset($_POST["email"]))&&(isset($_POST["verification"]))&&(isset($_POST["adresseExpedition"]))&&(isset($_POST["codePostalExpedition"]))&&(isset($_POST["villeExpedition"]))&&(isset($_POST["adresseFacturation"]))
+					&&(isset($_POST["adresseFacturation"]))&&(isset($_POST["codePostalFacturation"]))&&(isset($_POST["villeFacturation"]))
+					&&(isset($_POST["nom"]))&&(isset($_POST["prenom"]))&&(isset($_POST["telephone"])))
+			{
+				
+				$typeUtilisateur->validerModifierProfil();
+			}
 		break;
 		// a partir d'un form
-		
-		
-		case "update":
-			require_once("modele/formulaires/update.php");
-		break;
+
 		
 		default:
 			//redirection page 404
 			$contenu = "";
 			$sortie = "";
+		break;
 	}
 
 ?>

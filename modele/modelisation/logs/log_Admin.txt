@@ -376,3 +376,9 @@
 2017-05-23 00:00:26 --- Redirection vers la page "activer" par "admin@test.fr
 2017-05-23 00:00:26 --- Redirection vers la page "notifications" par "admin@test.fr
 2017-05-23 08:51:38 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-23 09:08:38 --- Redirection vers la page "menu" par "admin@test.fr
+2017-05-23 09:08:42 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-23 09:08:48 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-23 09:08:53 --- Redirection vers la page "update_compte" par "admin@test.fr
+2017-05-23 09:10:10 --- Redirection vers la page "menu" par "admin@test.fr
+2017-05-23 09:10:15 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr

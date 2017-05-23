@@ -6,9 +6,8 @@ if(!class_exists("Vitrine")){
 		}
 		public function prestations(){
 			return '<div id="prestations" class="superbackground">
-							<br/>
 							<div class="col-md-12 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0 text-center">
-								<h2 style="color:white; text-shadow:0 0 5px #000">Contrôle et révision</h2>
+								<h2 style="padding-top:100px; color:white; text-shadow:0 0 5px #000">Contrôle et révision</h2>
 							</div>
 					
 						<div class="container fadeInLoad">
@@ -99,11 +98,10 @@ if(!class_exists("Vitrine")){
 		}
 		public function tarifs (){
 			$contenu = '<div id="tarifs" class="tableau">
-					
-								<h1 style="color: white; text-shadow:0 0 5px #000;">Tarifs public à partir du 1er septembre 2014.</h1>
+								<h1 style="color: white; padding-top:50px; text-shadow:0 0 5px #000;">Tarifs public à partir du 1er septembre 2014.</h1>
 								<br/>
 								<div class="fondgris">Tarifs atelier lors d\'une révision</div>
-									<table  border="1" width="70%">
+									<table  class="table table-bordered">
 										<tr>
 											<th width="50%" align="center"></th>
 											<th width="15%" align="center">Tarif HT</th>
@@ -156,7 +154,7 @@ if(!class_exists("Vitrine")){
     <p id="infotarif" align="left" style="text-shadow:0 0 5px #fff;">* Le tarif atelier est appliqué lorsque les coûts de révision d\'une voile dépassent 150€ TTC</p>
 					
     <div class="fondgris">Tarifs atelier réparation</div>
-    <table  border="1" width="70%">
+    <table class="table table-bordered">
         <tr>
             <th width="50%" align="center"></th>
             <th width="15%" align="center">Tarif HT</th>
@@ -211,7 +209,7 @@ if(!class_exists("Vitrine")){
 					
 <p id="infotarif" align="left" style="text-shadow:0 0 5px #fff;">* Le tarif atelier est appliqué lorsque les coûts de révision d\'une voile dépassent 150€ TTC</p>
 <div class="fondgris">Tarifs articles</div>
-<table  border="1" width="70%">
+<table  class="table table-bordered">
 					
         <tr>
             <th width="50%" align="center"></th>

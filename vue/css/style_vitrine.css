@@ -1292,7 +1292,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #fh5co-footer {
-  padding: 7em 0;
+  padding: 9em 0;
   float: left;
   height: 1000px;
   width: 100%;
@@ -1682,7 +1682,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .tableau {
     padding-top: 2%;
-    height: 1200px;
+    height: 1700px;
 	text-align:center;
 	background: url("../images/vitrine/wall1.jpg");
 	color: black;
@@ -1693,7 +1693,7 @@ table {
     background-color: #fafafa;
 }
 .fondgris {
-    background-color: darkgrey;
+    background-color: #ADB3B3;
     color: white;
 	margin-left: 15%;
     margin-right: 15%;

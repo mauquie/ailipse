@@ -9,8 +9,8 @@
 		
 		case "notifications":
 			$sortie=file("vue/application.html");			
-			$nav_en_cours = 'index';
-			$contenu=$notif->gestion_notif();	// appel de la fonction de notificatio			
+			$nav_en_cours = 'profil';
+			$contenu=$notif->gestionNotifications();	// appel de la fonction de notificatio			
 		break;
 		
 		case "menu":
@@ -28,16 +28,7 @@
 		case "gerer_tarifs":
 			$nav_en_cours = 'administration';
 			$sortie=file("vue/application.html");
-			if(!isset($login_session)){
-				
-				header("location: index.php");
-				
-			}
-			else {
-				
-				$contenu=$typeUtilisateur->gerer_tarifs();
-				
-			}
+			require_once('modele/gerer_tarifs.php');
 		break;
 		
 		case "gerer_utilisateurs":
@@ -54,18 +45,11 @@
 		// a partir de form 
 		
 		case "delete":
-			if(isset($_POST["client"]))
-			{
-				$typeUtilisateur->delete();
-			}
-			else
-			{
-				goto error404;
-			}
+			require_once('modele/formulaires/delete.php');
 		break;
 		
 		case "valider_tarif":
-			$typeUtilisateur->validerTarif();
+			require_once(" modele/formulaires/validation_tarif.php");
 		break;
 	 
 		case "ajout_tarif":
@@ -81,20 +65,13 @@
 		case "affiche":
 			$contenu = "";
 			$sortie="";
-			if(isset($_POST["id"]))
-			{
-				$typeUtilisateur->recuperationUtilisateur();
-			}
-			else
-			{
-				goto error404;
-			}
+			require_once("modele/formulaires/showUser.php");
 		break;
 		
 		case "update_compte":
 			$contenu="";
 			$sortie="";
-			$typeUtilisateur->gestionUtilisateurs();
+			require_once("modele/formulaires/updateAdm.php");
 		break;
 		
 		case "select_compte":
@@ -110,7 +87,6 @@
 		break;
 		
 		default:
-			error404:
 			//redirection page 404
 			$contenu = "";
 			$sortie = "";

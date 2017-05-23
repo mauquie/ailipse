@@ -6,10 +6,8 @@ Site vitrine
 Application
 - Utilisateur -> Régler le formulaire update quand on modifie les informations de son profil (ça vient des formulaires qui doivent être des méthodes de classe)
 - Notifications -> Créer les notifications propres à l'utilisateur
-- Enlever le bouton a cauter du non dans l'application
 
-Autres
-- déplacer le fichier 'application.js' qui est dans '/addons/js/' dans un autre fichier  
+Autres 
 - Mettre toutes les images contenues dans 'images' dans 'images/application'
 - Transformer le fichier menu.php en classe
 - Créer un .htaccess

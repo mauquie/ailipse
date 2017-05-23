@@ -65,13 +65,20 @@
 		case "affiche":
 			$contenu = "";
 			$sortie="";
-			require_once("modele/formulaires/showUser.php");
+			if(isset($_POST["id"]))
+			{
+				$typeUtilisateur->recuperationUtilisateur();
+			}
+			else
+			{
+				goto error404;
+			}
 		break;
 		
 		case "update_compte":
 			$contenu="";
 			$sortie="";
-			require_once("modele/formulaires/updateAdm.php");
+			$typeUtilisateur->gestionUtilisateurs();
 		break;
 		
 		case "select_compte":
@@ -87,6 +94,7 @@
 		break;
 		
 		default:
+			error404:
 			//redirection page 404
 			$contenu = "";
 			$sortie = "";

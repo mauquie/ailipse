@@ -28,7 +28,16 @@
 		case "gerer_tarifs":
 			$nav_en_cours = 'administration';
 			$sortie=file("vue/application.html");
-			require_once('modele/gerer_tarifs.php');
+			if(!isset($login_session)){
+				
+				header("location: index.php");
+				
+			}
+			else {
+				
+				$contenu=$typeUtilisateur->gerer_tarifs();
+				
+			}
 		break;
 		
 		case "gerer_utilisateurs":
@@ -45,11 +54,18 @@
 		// a partir de form 
 		
 		case "delete":
-			require_once('modele/formulaires/delete.php');
+			if(isset($_POST["client"]))
+			{
+				$typeUtilisateur->delete();
+			}
+			else
+			{
+				goto error404;
+			}
 		break;
 		
 		case "valider_tarif":
-			require_once(" modele/formulaires/validation_tarif.php");
+			$typeUtilisateur->validerTarif();
 		break;
 	 
 		case "ajout_tarif":

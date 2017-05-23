@@ -110,19 +110,19 @@
 		{
 			for (i=1;i<=12;i++)
 			{
-				document.getElementById(i).style.visibility='hidden';
+				document.getElementById(i).style.visibility='hidden';				document.getElementById("ajout_compte").style.visibility='visible';
 			}
 			document.getElementById("validation").style.visibility='hidden';
-			document.getElementById("start").style.visibility='hidden';
+			document.getElementById("start").style.visibility='hidden';						document.getElementById("ajout_compte").style.visiblity='visible';
 			document.getElementById("affichage").style.visibility='hidden';
 		}
 		else
 		{
-			// rend  tout les id vissible  
+			// rend tout les id visible  
 			if(document.getElementById("affichage").style.visibility==='hidden')
 			{
 				document.getElementById("validation").style.visibility='visible';
-				document.getElementById("start").style.visibility='visible';
+				document.getElementById("start").style.visibility='visible';								document.getElementById("ajout_compte").style.visibility='hidden';
 				document.getElementById("affichage").style.visibility='visible';
 				for (i=1;i<=12;i++)
 				{

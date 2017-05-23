@@ -4,6 +4,7 @@ Site vitrine
 - Rajouter le raccourci pour ouvrir l'application email quand on clique dans la rubrique contact, pareil pour le téléphone
 
 Application
+- Gestion des comptes -> Supprimer un compte ne fonctionne plus
 
 Autres
 - déplacer le fichier 'application.js' qui est dans '/addons/js/' dans un autre fichier  

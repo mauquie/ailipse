@@ -151,10 +151,10 @@
 				}else {
 					document.getElementById("activation_adm").checked = false;
 					document.getElementById("label_activation_adm").className= "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded";
-				}
+				}				if (email[11] == 2) {					document.getElementById("operateur_adm").checked = true;					document.getElementById("label_operateur_adm").className= "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded is-checked";				}else {					document.getElementById("operateur_adm").checked = false;					document.getElementById("label_operateur_adm").className= "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded";				}
 				document.getElementById("nom_adm").value=email[8];
 				document.getElementById("prenom_adm").value=email[9];
-				document.getElementById("telephone_adm").value=email[10];
+				document.getElementById("telephone_adm").value=email[10];				
 			}
 		});
 		}
@@ -175,7 +175,7 @@
 		 var nom = document.getElementById("nom_adm").value;
 		 var prenom = document.getElementById("prenom_adm").value;
 		 var telephone = document.getElementById("telephone_adm").value;
-		 var activation = document.getElementById("activation_adm").checked;
+		 var activation = document.getElementById("activation_adm").checked;		 		 var operateur = document.getElementById("operateur_adm").checked;
 		 // transfaire les donner  pour pouvoir utiliser dans du php requete sql
 		 $.ajax({
 		  url:"index.php?d=administrateur&a=update_compte",
@@ -190,7 +190,7 @@
 				  rue_fac:rue_fac,
 				  ville_fac:ville_fac,
 				  code_postal_fac:code_postal_fac,
-				  activation:activation,
+				  activation:activation,				  				  operateur:operateur,
 				  prenom:prenom,
 				  nom:nom,
 				  telephone:telephone

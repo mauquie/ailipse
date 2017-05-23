@@ -40,7 +40,7 @@ echo $client_email.",".
 	 $client_actif.",".
 	 $client_nom.",".
 	 $client_prenom.",".
-	 $client_telephone;
+	 $client_telephone.",".	 	 $client_permissions;
 
 
 	

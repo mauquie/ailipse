@@ -1,11 +1,10 @@
 Site vitrine
-- Modifier le bouton "Se connecter" pour qu'il devienne "Se déconnecter" lorsqu'on est connecté
 - Faire le menu en MVC
+- Modifier le bouton "Se connecter" pour qu'il devienne "Se déconnecter" lorsqu'on est connecté
 - Rajouter le raccourci pour ouvrir l'application email quand on clique dans la rubrique contact, pareil pour le téléphone
 
 Application
-- Gestion des comptes -> Supprimer un compte ne fonctionne plus
-- Terminer l'ajout d'un nouveau client dans la gestion des utilisateurs 
+
 
 Autres
 - déplacer le fichier 'application.js' qui est dans '/addons/js/' dans un autre fichier  

@@ -5,6 +5,7 @@ Site vitrine
 
 Application
 - Gestion des comptes -> Supprimer un compte ne fonctionne plus
+- Terminer l'ajout d'un nouveau client dans la gestion des utilisateurs
 
 Autres
 - déplacer le fichier 'application.js' qui est dans '/addons/js/' dans un autre fichier  

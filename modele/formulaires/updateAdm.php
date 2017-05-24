@@ -17,7 +17,7 @@ $villeFac=$_GET["ville_fac"];
 $prenom=$_GET["prenom"];
 $nom=$_GET["nom"];
 $telephone=$_GET["telephone"];
-$activa = $_GET["activation"];
+$activa = $_GET["activation"];$operateur = $_GET["operateur"];
 
 
 // A modifier : changer le champ de la base de données pour que ce soit un bool
@@ -28,7 +28,7 @@ if($activa == "true")
 if($activa =="false")
 {
 	$activation = 0;
-}
+}if($operateur == "true"){		$operateur = 2;	}if($operateur =="false"){		$operateur = 1;	}
 
 
 if(($new_password==$verification)&&($new_password!=""))
@@ -42,7 +42,7 @@ if(($new_password==$verification)&&($new_password!=""))
 	ville_facturation='$villeFac' ,
 	rue_facturation='$rueFac',
 	code_postal_facturation='$codeFac',
-	actif='$activation' ,
+	actif='$activation' ,	permissions ='$operateur',
 	telephone='$telephone',
 	nom='$nom',
 	prenom='$prenom' 
@@ -57,7 +57,7 @@ else
 	ville_facturation='$villeFac' ,
 	rue_facturation='$rueFac',
 	code_postal_facturation='$codeFac',
-	actif='$activation' ,
+	actif='$activation' ,	permissions ='$operateur',
 	telephone='$telephone',
 	nom='$nom',
 	prenom='$prenom'

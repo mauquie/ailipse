@@ -24,30 +24,30 @@
 			
 		}
 		else
-		{
-			if($pass == $confirm)
-			{
-				// RECUPERATION des donnes de la base de donn�es
-			$pass = sha1($_POST['pass']);
-			$name = $_POST['name'];
-			$surname = $_POST['surname'];
-			$tel = $_POST['tel'];
-			$ville = $_POST['ville'];
-			$adresse = $_POST['adresse'];
-			$cp = $_POST['cp'];
-			
-			// ajout a la basse de donner des client 
-			$bdd->query("INSERT INTO clients VALUES('','$email','$pass','$name','$surname', '$tel', '$ville','$adresse','$cp','$ville','$adresse','$cp','1','0')");
-			// ajoute une notification a  comptes 
-			$bdd->query("UPDATE notifications SET comptes = comptes+1 WHERE id = 1");
-			$error=3;
-			}
-			else{
-				// Si les mots de passe ne sont pas identiques on retourne un code d'erreur
-				$error=2;
-			}
+		{			if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W)#', $pass))				{
+					if($pass == $confirm)
+					{
+						// RECUPERATION des donnes de la base de donn�es
+						$pass = sha1($_POST['pass']);
+						$name = $_POST['name'];
+						$surname = $_POST['surname'];
+						$tel = $_POST['tel'];
+						$ville = $_POST['ville'];
+						$adresse = $_POST['adresse'];
+						$cp = $_POST['cp'];
+						
+						// ajout a la basse de donner des client 
+						$bdd->query("INSERT INTO clients VALUES('','$email','$pass','$name','$surname', '$tel', '$ville','$adresse','$cp','$ville','$adresse','$cp','1','0')");
+						// ajoute une notification a  comptes 
+						$bdd->query("UPDATE notifications SET comptes = comptes+1 WHERE id = 1");
+						$error=3;
+					}
+					else{
+						// Si les mots de passe ne sont pas identiques on retourne un code d'erreur
+						$error=2;
+					}				}					else{						$error=4;					}				}
 		}
-	}
+
 
 		
 	$html="";

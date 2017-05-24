@@ -23,14 +23,14 @@ if (isset($_POST['submit'])) {
 		$password = ($password);
 
 		// requête SQL qui vérifie que l'on a rentré un email et un mdp existant
-		$query = $connexionBdd->query("select * from clients where password='$password' AND email='$email'");				$getUser = $connexionBdd->query("select permissions from clients where password='$password' AND email='$email'");		
-		$rows = $query->num_rows;				
+		$query = $connexionBdd->query("select * from clients where password='$password' AND email='$email' AND actif=1");				$getUser = $connexionBdd->query("select permissions from clients where password='$password' AND email='$email'");		
+		$rows = $query->num_rows;		
 		if ($rows == 1) {
 			$_SESSION['login_user']=$email; // initialisation de la session			while($typeUser = $getUser->fetch_array())			{				if($typeUser['permissions']==1)				{					$user="Utilisateur";					$logfile = "log_User.txt";				}				elseif($typeUser['permissions']==2)				{					$user="Operateur";					$logfile = "log_Operator.txt";				}				elseif($typeUser['permissions']==3)				{					$user="Administrateur";					$logfile = "log_Admin.txt";				}				else				{					$user="Erreur";				}			}
 								$logs = date('Y-m-d H:i:s').' --- Connexion de "'.$email.'" en tant que "'.$user.'"'."\r\n";			//Ouverture du répertoire de destination			$fichier = fopen ("modele/modelisation/logs/".$logfile, "a+");			//Copie du fichier			fwrite($fichier, $logs);			//Fermeture du fichier			fclose ($fichier);			//Fin écriture
 			header("location: index.php?d=vitrine&a=application"); // on redirige vers une page à la connexion
-		} else {
-			$error = 1;
+		} else {			if ($getUser->num_rows == 1)			{				$error = -1;			}			else {
+				$error = 1;			}
 		}				
 		$visiteur->CloseBDD(); // on ferme la connexion avec la base de données
 	}

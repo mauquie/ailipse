@@ -108,19 +108,19 @@
 		{
 			for (i=1;i<=12;i++)
 			{
-				document.getElementById(i).style.visibility='hidden';
+				document.getElementById(i).style.visibility='hidden';				document.getElementById("ajout_compte").style.visibility='visible';
 			}
 			document.getElementById("validation").style.visibility='hidden';
-			document.getElementById("start").style.visibility='hidden';
+			document.getElementById("start").style.visibility='hidden';						document.getElementById("ajout_compte").style.visiblity='visible';
 			document.getElementById("affichage").style.visibility='hidden';
 		}
 		else
 		{
-			// rend  tout les id vissible  
+			// rend tout les id visible  
 			if(document.getElementById("affichage").style.visibility==='hidden')
 			{
 				document.getElementById("validation").style.visibility='visible';
-				document.getElementById("start").style.visibility='visible';
+				document.getElementById("start").style.visibility='visible';								document.getElementById("ajout_compte").style.visibility='hidden';
 				document.getElementById("affichage").style.visibility='visible';
 				for (i=1;i<=12;i++)
 				{
@@ -149,10 +149,10 @@
 				}else {
 					document.getElementById("activation_adm").checked = false;
 					document.getElementById("label_activation_adm").className= "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded";
-				}
+				}				if (email[11] == 2) {					document.getElementById("operateur_adm").checked = true;					document.getElementById("label_operateur_adm").className= "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded is-checked";				}else {					document.getElementById("operateur_adm").checked = false;					document.getElementById("label_operateur_adm").className= "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded";				}
 				document.getElementById("nom_adm").value=email[8];
 				document.getElementById("prenom_adm").value=email[9];
-				document.getElementById("telephone_adm").value=email[10];
+				document.getElementById("telephone_adm").value=email[10];				
 			}
 		});
 		}
@@ -173,7 +173,7 @@
 		 var nom = document.getElementById("nom_adm").value;
 		 var prenom = document.getElementById("prenom_adm").value;
 		 var telephone = document.getElementById("telephone_adm").value;
-		 var activation = document.getElementById("activation_adm").checked;
+		 var activation = document.getElementById("activation_adm").checked;		 		 var operateur = document.getElementById("operateur_adm").checked;
 		 // transfaire les donner  pour pouvoir utiliser dans du php requete sql
 		 $.ajax({
 		  url:"index.php?d=administrateur&a=update_compte",
@@ -188,7 +188,7 @@
 				  rue_fac:rue_fac,
 				  ville_fac:ville_fac,
 				  code_postal_fac:code_postal_fac,
-				  activation:activation,
+				  activation:activation,				  				  operateur:operateur,
 				  prenom:prenom,
 				  nom:nom,
 				  telephone:telephone

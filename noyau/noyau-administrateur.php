@@ -48,9 +48,9 @@
 			require_once('modele/formulaires/delete.php');
 		break;
 		
-		case "nouveau_client":
-			require_once(" modele/formulaires/nouveau_client.php");
-			break;
+		case "nouveau_compte":
+			$contenu = $typeUtilisateur->validationNouveauCompte();
+		break;
 		
 		case "valider_tarif":
 			require_once(" modele/formulaires/validation_tarif.php");

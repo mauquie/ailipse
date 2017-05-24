@@ -30,8 +30,7 @@
 			$bdd->query("INSERT INTO clients VALUES('','$email','$password','$nom','$prenom', '$telephone', '$ville','$adresse','$code_postal','$ville','$adresse','$code_postal','$operateur','1')");
 			}
 			else{
-				// Si les mots de passe ne sont pas identiques on retourne un code d'erreur				echo "<script>alert('Les mots de passe ne sont pas identiques.');</script>";
-				
+				// Si les mots de passe ne sont pas identiques on retourne un code d'erreur				echo "<script>alert('Les mots de passe ne sont pas identiques.');</script>";				
 			}
 		}
 	}	

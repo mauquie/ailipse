@@ -39,8 +39,8 @@
 		
 		case "tarifs":
 			$sortie=file("vue/application.html");
-			$nav_en_cours ='administration';
-			$contenu =$typeUtilisateur->validerTarif();
+			$nav_en_cours = 'administration';
+			require_once('modele/gerer_tarifs.php');
 		break;
 		// a partir de form 
 		
@@ -48,8 +48,8 @@
 			require_once('modele/formulaires/delete.php');
 		break;
 		
-		case "nouveau_compte":
-			$contenu = $typeUtilisateur->validationNouveauCompte();
+		case "nouveau_client":
+			$contenu = $typeUtilisateur->validationNouveauClient();
 		break;
 		
 		case "valider_tarif":

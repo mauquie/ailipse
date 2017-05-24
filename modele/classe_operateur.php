@@ -176,12 +176,25 @@ if(!class_exists("Operateur"))
 										<a href="#popup_tableau3" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">reference fabriquant des suspente </a>
 									</div>
 								</div>
+								<div class="mdl-cell">
+									<div class="materiauxSuspentecontin" name="materiauxSuspentecontin" id="materiauxSuspentecontin" style=" visibility: hidden">
+										<a href="#popup_tableau4" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">reference fabriquant des suspente </a>
+									</div>
+								</div>
+								<div class="mdl-cell">
+									<div class="materiauxSuspentecontin" name="materiauxSuspentecontin" id="materiauxSuspentecontin" style=" visibility: hidden">
+										<a href="#popup_tableau5" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">reference fabriquant des suspente </a>
+									</div>
+								</div>
+							</div>
+							<br />
+							<div class="boutons" name="boutons" id="boutons">
 							</div>
 						</div>
 						<br />
-						<div class="boutons" name="boutons" id="boutons">
+						<div class="segonde_etape" name="segonde_etape" id="segonde_etape">
+
 						</div>
-						<br />
 						</form>
 						<div id="popup_tableau" class="overlay">
 									<div class="popup">

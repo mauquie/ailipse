@@ -60,7 +60,7 @@
 		case"select_annonce":
 			$sortie="";
 			$contenu="";
-			require_once ('modele/formulaires/selectAnnonces.php');
+			$annonce->selectionAnonce();
 		break;
 		
 		default:

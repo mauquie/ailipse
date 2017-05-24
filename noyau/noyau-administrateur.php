@@ -48,8 +48,8 @@
 		
 		case "tarifs":
 			$sortie=file("vue/application.html");
-			$nav_en_cours = 'administration';
-			require_once('modele/gerer_tarifs.php');
+			$nav_en_cours ='administration';
+			$contenu =$typeUtilisateur->validerTarif();
 		break;
 		// a partir de form 
 		

@@ -69,6 +69,7 @@
 			$sortie = "";
 				require_once("modele/formulaires/recupMaterial.php");		
 		break;
+		
 		default:
 			//redirection page 404
 			$contenu = "";

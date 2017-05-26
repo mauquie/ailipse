@@ -407,4 +407,4 @@ _:-ms-input-placeholder, :root .demo-graph {
 .mdl-card__actions.mdl-card--border.card-background2 {
     position: absolute;
     bottom: 0;
-}
+}#global{	text-align:center;    width:100%;}#global #gauche {    float:left;    width:50%;}#global #droite {    float:right;    width:50%;}select#constructeur {    margin-left: 25%;}select#modele {    margin-left: 25%;}button.mdl-button.mdl-js-button.mdl-button--raised {    margin-right: 5%;}select#nbligne {    margin-left: 25%;}select#nbsuspentes {    margin-left: 25%;}div#colonne1 {    width: 5%;    /* height: 100%; */    padding-bottom: 870px;    background: lightblue;    display: -webkit-inline-box;}div#colonne2 {    background: #0d77d4;    width: 100%;    padding: 30px;}button#validtableau {	    margin-bottom: 3%;}div#tableur {    float: right;    width: 94%;}

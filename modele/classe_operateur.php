@@ -609,22 +609,53 @@ if(!class_exists("Operateur"))
 			}
 			return('<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 
-				<div class="mdl-card__supporting-text card-background">
+						<div class="mdl-card__supporting-text card-background">
 
-				<form action="modele/confirm_xml.php" method="post">
-				<select id="constructeur" class="nice-select" name="constructeur" onchange="affich()">
-					<?php 
-						echo('.$constructeur.');
-					?>
-					</select>
-					
-					<select id="modele" class="nice-select" name="modele" onchange="affich()">
-					<?php 
-						echo('.$modele.');
-					?>
-					</select>
-					<button class="mdl-button mdl-js-button mdl-button--raised" type="button" onclick="affichTable()">Valider</button>
-					</form>');
+							<form action="modele/confirm_xml.php" method="post">
+								<div id="global">
+									<div id="gauche">
+										<select style="padding-right: 150px;" id="constructeur" class="nice-select" name="constructeur" onchange="affich()">
+											<?php 
+												echo('.$constructeur.');
+											?>
+										</select>
+										<select id="nbligne" class="nice-select" name="ligne">
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											
+										</select>
+									</div>
+									<div id="droite">
+										<select style="padding-right: 150px;" id="modele" class="nice-select" name="modele" onchange="affich()">
+											<?php 
+												echo('.$modele.');
+											?>
+										</select>
+										<select id="nbsuspentes" class="nice-select" name="ligne">
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+								<button id="validtableau" class="mdl-button mdl-js-button mdl-button--raised" type="button" onclick="CreateTable()">Valider</button>									
+       									<div id="colonne2">Ligne</div>
+										<div id="colonne1">suspente</div>
+										<div id="tableur" class="mdl-cell">
+										<div class="table_suite" id="table_suite" style="width:1250px;"> 				
+										</div></br>
+									</div>
+									<center><button id="validvoile" class="mdl-button mdl-js-button mdl-button--raised" type="submit">Valider la voile</button></center>
+								</div>
+							</form>
+						</div>
+
+					</div>	');
 		}
 	}
 }

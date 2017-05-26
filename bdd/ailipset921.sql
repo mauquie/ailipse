@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Sam 20 Mai 2017 à 11:58
+-- Généré le :  Ven 26 Mai 2017 à 13:01
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -36,12 +36,12 @@ CREATE TABLE `annonces` (
   `marque` varchar(30) CHARACTER SET utf8 NOT NULL,
   `modele` varchar(30) CHARACTER SET utf8 NOT NULL,
   `taille` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `annee` int(4) NOT NULL,
+  `annee` varchar(30) CHARACTER SET utf8 NOT NULL,
   `surface` varchar(30) CHARACTER SET utf8 NOT NULL,
   `ptv` varchar(30) CHARACTER SET utf8 NOT NULL,
   `localisation` varchar(50) CHARACTER SET utf8 NOT NULL,
   `email` varchar(50) NOT NULL,
-  `telephone` varchar(10) NOT NULL DEFAULT '1',
+  `telephone` int(1) NOT NULL DEFAULT '1',
   `online` int(1) NOT NULL DEFAULT '1',
   `auteur` varchar(30) NOT NULL,
   `ville` varchar(50) NOT NULL,
@@ -54,7 +54,43 @@ CREATE TABLE `annonces` (
 --
 
 INSERT INTO `annonces` (`id`, `titre`, `contenu`, `prix`, `type_annonce`, `photo`, `marque`, `modele`, `taille`, `annee`, `surface`, `ptv`, `localisation`, `email`, `telephone`, `online`, `auteur`, `ville`, `date_publication`, `active`) VALUES
-(114, 'a', '<p>ddddd</p>\r\n', 1, 1, 'sample1_l.jpg,squid-avatar.jpg,', 'ijino_technique', 'moi', 'XS', 2003, '18', '70-75', 'Aquitaine', 'admin@test.fr', '0610203040', 1, 'Test A.', 'test', '20/05/2017', 0);
+(86, 'dfzdaz', 'dazda', 20, 1, 'slide13.jpg,', 'ijino_technique', 'moi', 'XS', '2005', 'Non renseignée', 'Non renseigné', 'Limousin', 'admin@test.fr', 610203040, 1, 'Test A.', 'test', '24/05/2017', 1),
+(85, 'dazda', 'daz', 20, 1, 'slide1.jpg,slide2.jpg,', 'ijino_technique', 'moi', 'XS', '2003', 'Non renseignée', 'Non renseigné', 'Lorraine', 'admin@test.fr', 610203040, 1, 'Test A.', 'test', '24/05/2017', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annonces_annee`
+--
+
+CREATE TABLE `annonces_annee` (
+  `id` int(4) NOT NULL,
+  `annee` int(4) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `annonces_annee`
+--
+
+INSERT INTO `annonces_annee` (`id`, `annee`) VALUES
+(1, 2000),
+(2, 2001),
+(3, 2002),
+(4, 2003),
+(5, 2004),
+(6, 2005),
+(7, 2006),
+(8, 2007),
+(9, 2008),
+(10, 2009),
+(11, 2010),
+(12, 2011),
+(13, 2012),
+(14, 2013),
+(15, 2014),
+(16, 2015),
+(17, 2016),
+(18, 2017);
 
 -- --------------------------------------------------------
 
@@ -93,7 +129,36 @@ INSERT INTO `annonces_localisation` (`id`, `region`) VALUES
 (19, 'Pays de la Loire'),
 (20, 'Picardie'),
 (21, 'Poitou Charente'),
-(22, 'Rhône Alpes');
+(22, 'Rhone Alpes');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annonces_marque`
+--
+
+CREATE TABLE `annonces_marque` (
+  `id` int(4) NOT NULL,
+  `marque` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `annonces_marque`
+--
+
+INSERT INTO `annonces_marque` (`id`, `marque`) VALUES
+(2, 'peugeot');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annonces_modele`
+--
+
+CREATE TABLE `annonces_modele` (
+  `id` int(4) NOT NULL,
+  `modele` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -174,6 +239,17 @@ INSERT INTO `annonces_surface` (`id`, `surface`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `annonces_taille`
+--
+
+CREATE TABLE `annonces_taille` (
+  `id` int(4) NOT NULL,
+  `taille` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `articles`
 --
 
@@ -205,13 +281,14 @@ CREATE TABLE `clients` (
   `password` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `nom` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `prenom` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `telephone` varchar(10) NOT NULL,
+  `telephone` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `ville_expedition` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `rue_expedition` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `code_postal_expedition` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `ville_facturation` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `rue_facturation` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `code_postal_facturation` varchar(5) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `avatar` varchar(50) NOT NULL DEFAULT 'default',
   `permissions` int(1) NOT NULL DEFAULT '1',
   `actif` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -220,10 +297,9 @@ CREATE TABLE `clients` (
 -- Contenu de la table `clients`
 --
 
-INSERT INTO `clients` (`id`, `email`, `password`, `nom`, `prenom`, `telephone`, `ville_expedition`, `rue_expedition`, `code_postal_expedition`, `ville_facturation`, `rue_facturation`, `code_postal_facturation`, `permissions`, `actif`) VALUES
-(17, 'jacquestuning@test.fr', 'dff4d36007d7e036512f9b148cede2ec1e4f6c9d', 'Tuning', 'Jacques', '888888869', 'test', '17 rue de la Jante ChromÃ©e', '59200', 'Tourcoing', '17 rue de la Jante ChromÃ©e', '59200', 1, 1),
-(3, 'admin@test.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', 'Test', '0610203040', 'test', '3 boulevard Herriot', '82000', 'Montauban', '3 boulevard Herriot', '82000', 3, 1),
-(19, 'jean.dupont@email.fr', '5be3abe776eaf5f251122aba6f291eb40b65aa3d', 'Dupont', 'Jean', '610245471', 'test', '3 rue des chÃªnes', '75000', 'Paris', '3 rue des chÃªnes', '75000', 1, 1);
+INSERT INTO `clients` (`id`, `email`, `password`, `nom`, `prenom`, `telephone`, `ville_expedition`, `rue_expedition`, `code_postal_expedition`, `ville_facturation`, `rue_facturation`, `code_postal_facturation`, `avatar`, `permissions`, `actif`) VALUES
+(1, 'admin@test.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Test', 'Admin', '0610203040', 'test', '3 boulevard Hérriot', '82000', 'Montauban', '3 boulevard Hérriot', '82000', 'admin@test_fr', 3, 1),
+(4, 'test@test.fr', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test', 'Test', '0610203040', 'Test', 'Test', '82000', 'Test', 'Test', '82000', 'test@test_fr', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -399,7 +475,33 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `comptes`, `saisies`, `annonces`) VALUES
-(1, 0, 0, 1);
+(1, 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notifications_utilisateur`
+--
+
+CREATE TABLE `notifications_utilisateur` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `message` text CHARACTER SET utf8 NOT NULL,
+  `active` int(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `notifications_utilisateur`
+--
+
+INSERT INTO `notifications_utilisateur` (`id`, `email`, `message`, `active`) VALUES
+(1, 'mathieu@test.fr', 'Votre annonce créée le 23/05/2017, portant le nom adza a été validée par un administrateur.', 0),
+(2, 'mathieu@test.fr', 'Votre annonce crÃ©Ã©e le 23/05/2017, portant le nom dazda a Ã©tÃ© validÃ©e par un administrateur.', 0),
+(3, 'mathieu@test.fr', 'Votre annonce crÃ©Ã©e le 23/05/2017, portant le nom \'fazef\' a Ã©tÃ© validÃ©e par un administrateur.', 0),
+(4, 'test@test.fr', 'Votre annonce crÃ©Ã©e le 24/05/2017, portant le nom \'grzegr\' a Ã©tÃ© validÃ©e par un administrateur.', 0),
+(5, 'test@test.fr', 'Votre annonce crÃ©Ã©e le 24/05/2017, portant le nom \'fzef\' a Ã©tÃ© validÃ©e par un administrateur.', 0),
+(6, 'admin@test.fr', 'Votre annonce crÃ©Ã©e le 24/05/2017, portant le nom \'dazda\' a Ã©tÃ© validÃ©e par un administrateur.', 0),
+(7, 'admin@test.fr', 'Votre annonce crÃ©Ã©e le 24/05/2017, portant le nom \'dfzdaz\' a Ã©tÃ© validÃ©e par un administrateur.', 0);
 
 -- --------------------------------------------------------
 
@@ -1545,9 +1647,27 @@ ALTER TABLE `annonces`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `annonces_annee`
+--
+ALTER TABLE `annonces_annee`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `annonces_localisation`
 --
 ALTER TABLE `annonces_localisation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `annonces_marque`
+--
+ALTER TABLE `annonces_marque`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `annonces_modele`
+--
+ALTER TABLE `annonces_modele`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1560,6 +1680,12 @@ ALTER TABLE `annonces_ptv`
 -- Index pour la table `annonces_surface`
 --
 ALTER TABLE `annonces_surface`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `annonces_taille`
+--
+ALTER TABLE `annonces_taille`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1593,6 +1719,12 @@ ALTER TABLE `fabricant`
 -- Index pour la table `notifications`
 --
 ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `notifications_utilisateur`
+--
+ALTER TABLE `notifications_utilisateur`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1669,12 +1801,27 @@ ALTER TABLE `voile_taille`
 -- AUTO_INCREMENT pour la table `annonces`
 --
 ALTER TABLE `annonces`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+--
+-- AUTO_INCREMENT pour la table `annonces_annee`
+--
+ALTER TABLE `annonces_annee`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT pour la table `annonces_localisation`
 --
 ALTER TABLE `annonces_localisation`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT pour la table `annonces_marque`
+--
+ALTER TABLE `annonces_marque`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `annonces_modele`
+--
+ALTER TABLE `annonces_modele`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `annonces_ptv`
 --
@@ -1686,6 +1833,11 @@ ALTER TABLE `annonces_ptv`
 ALTER TABLE `annonces_surface`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
+-- AUTO_INCREMENT pour la table `annonces_taille`
+--
+ALTER TABLE `annonces_taille`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT pour la table `articles`
 --
 ALTER TABLE `articles`
@@ -1694,7 +1846,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT pour la table `departement`
 --
@@ -1710,6 +1862,11 @@ ALTER TABLE `fabricant`
 --
 ALTER TABLE `notifications`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT pour la table `notifications_utilisateur`
+--
+ALTER TABLE `notifications_utilisateur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `susp_materiaux`
 --

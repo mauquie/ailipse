@@ -37,7 +37,7 @@
 						$cp = $_POST['cp'];
 						
 						// ajout a la basse de donner des client 
-						$bdd->query("INSERT INTO clients VALUES('','$email','$pass','$name','$surname', '$tel', '$ville','$adresse','$cp','$ville','$adresse','$cp','1','0')");
+						$bdd->query("INSERT INTO clients VALUES('','$email','$pass','$name','$surname', '$tel', '$ville','$adresse','$cp','$ville','$adresse','$cp','default','1','0')");
 						// ajoute une notification a  comptes 
 						$bdd->query("UPDATE notifications SET comptes = comptes+1 WHERE id = 1");
 						$error=3;

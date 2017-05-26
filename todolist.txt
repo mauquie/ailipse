@@ -7,7 +7,6 @@ Application
 - Gestion utilisateurs -> Enlever le bouton "operateur" si c'est un compte admin
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
 - Créer le formulaire de changement d'image d'avatar
-- Rajouter des alerts pour les modifications effectuées (profil, admin etc..)
 
 Autres
 - déplacer le fichier 'application.js' qui est dans '/addons/js/' dans un autre fichier  
@@ -15,8 +14,3 @@ Autres
 - Transformer le fichier menu.php en classe
 - Créer un .htaccess
 - Enlever tous les formulaires pour en faire des méthodes de classe
-
-Responsivité
-- Accueil -> Il faut que le texte du contenu soit en bas de page
-- Profil -> Régler les images pour qu'elles soient pas coupées
-- Annonces -> Régler la visualisation des annonces

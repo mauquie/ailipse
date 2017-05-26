@@ -3,7 +3,7 @@
 	$error=0;
 
 	// connexion � la base de donn�es
-	$bdd =  $visiteur->OpenBDD();
+	$bdd =  $visiteur->openBDD();
 	
 	// v�rification si le champ pseudo a bien �t� rempli
 	if (isset($_POST['e-mail']))
@@ -37,7 +37,7 @@
 						$cp = $_POST['cp'];
 						
 						// ajout a la basse de donner des client 
-						$bdd->query("INSERT INTO clients VALUES('','$email','$pass','$name','$surname', '$tel', '$ville','$adresse','$cp','$ville','$adresse','$cp','default','1','0')");
+						$bdd->query("INSERT INTO clients VALUES('','$email','$pass','$name','$surname', '$tel', '$ville','$adresse','$cp','$ville','$adresse','$cp','default',1,0)");
 						// ajoute une notification a  comptes 
 						$bdd->query("UPDATE notifications SET comptes = comptes+1 WHERE id = 1");
 						$error=3;
@@ -53,7 +53,7 @@
 	$html="";
 	// Appel du template de sortie
 	$sortie = file("vue/inscription.html");
-	$contenu= $visiteur->Inscription($error);	// gestion des erreurs avec la classe
+	$contenu= $visiteur->inscription($error);	// gestion des erreurs avec la classe
 	print $html;
-	$visiteur->CloseBDD($bdd);// fermeture de la base de donn�es 
+	$visiteur->closeBDD($bdd);// fermeture de la base de donn�es 
 ?>

@@ -17,9 +17,7 @@ $villeFac=$_GET["ville_fac"];
 $prenom=$_GET["prenom"];
 $nom=$_GET["nom"];
 $telephone=$_GET["telephone"];
-$activa = $_GET["activation"];$operateur = $_GET["operateur"];
-
-
+$activa = $_GET["activation"];$operateur = $_GET["operateur"];$result = $connect->query("SELECT * FROM clients WHERE email='$email'");if($result->num_rows > 0){	while($row = $result->fetch_assoc())	{		$permissions = $row["permissions"];	}}
 // A modifier : changer le champ de la base de données pour que ce soit un bool
 if($activa == "true")
 {
@@ -28,8 +26,7 @@ if($activa == "true")
 if($activa =="false")
 {
 	$activation = 0;
-}if($operateur == "true"){		$operateur = 2;	}if($operateur =="false"){		$operateur = 1;	}
-
+}if ($permissions != 3){	if ($operateur == "true")	{		$operateur = 2;	}		if ($operateur == "false")	{		$operateur = 1;		}}else{	$operateur = 3;}
 
 if(($new_password==$verification)&&($new_password!=""))
 {

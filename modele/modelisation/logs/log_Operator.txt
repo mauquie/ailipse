@@ -3,3 +3,5 @@
 2017-05-03 14:51:28 --- Redirection vers la page "annonces" par "operateur@test.fr"
 2017-05-03 15:02:21 --- Redirection vers la page "voile" par "operateur@test.fr"
 2017-05-03 15:03:26 --- Redirection vers la page "deconnexion" par "operateur@test.fr"
+2017-05-25 19:43:43 --- Connexion de "admin@test.fr" en tant que "Operateur"
+2017-05-26 12:51:50 --- Connexion de "test@test.fr" en tant que "Operateur"

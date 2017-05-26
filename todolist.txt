@@ -6,7 +6,7 @@ Site vitrine
 Application
 - Gestion utilisateurs -> Enlever le bouton "operateur" si c'est un compte admin
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
-- Créer le formulaire de changement d'image d'avatar
+- Avatar -> Remplacer la connexion bdd brute par la classe bdd
 
 Autres
 - déplacer le fichier 'application.js' qui est dans '/addons/js/' dans un autre fichier  

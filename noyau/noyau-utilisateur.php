@@ -19,6 +19,17 @@
 			$contenu = $notif->gestionNotifications();
 		break;
 		
+		case "avatar":
+			$sortie=file("vue/application.html");
+			$nav_en_cours = 'profil';
+			$typeUtilisateur->recuData();
+			$contenu = $typeUtilisateur->modifierAvatar();
+			if (!empty($_FILES['fileToUpload']['name']))
+			{
+				$typeUtilisateur->validerModifierAvatar();
+			}
+			break;
+		
 		case "profil":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'profil';

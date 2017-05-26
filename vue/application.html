@@ -48,20 +48,9 @@
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-          <img src="vue/images/user.png" class="demo-avatar">
-          <div class="demo-avatar-dropdown">
 			{#MENU_PROFIL}
             <div class="mdl-layout-spacer"></div>
-             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-              <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">Accounts</span>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect">
-              <!-- <li class="mdl-menu__item">Changer de mot de passe</li> -->
-			  <li class="mdl-menu__item">Visionner une voile par référence</li>
-              <!--<li class="mdl-menu__item"><i class="material-icons">add</i>Ajouter</li>-->
-            </ul>
-          </div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">              <i class="material-icons" role="presentation">arrow_drop_down</i>              <span class="visuallyhidden">Accounts</span>            </button>            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">              <a href="index.php?d=utilisateur&a=avatar" style="text-decoration: none;"><li class="mdl-menu__item">Modifier l'image de son avatar</li></a>            </ul>                        </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
 			{#MENU_NAVIGATION}

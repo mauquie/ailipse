@@ -632,7 +632,7 @@ if(!class_exists("Operateur"))
 										</select>
 									</div>
 									<div id="droite">
-										<select style="padding-right: 150px;" id="modele" class="nice-select" name="modele" onchange="affich()">
+										<select style="padding-right: 150px;" id="modèle" class="nice-select" name="modele" onchange="affich()">
 											<?php 
 												echo('.$modele.');
 											?>

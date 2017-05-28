@@ -7,6 +7,7 @@ Application
 - Gestion utilisateurs -> Enlever le bouton "operateur" si c'est un compte admin
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
 - Avatar -> Remplacer la connexion bdd brute par la classe bdd
+- Admin -> Faire un bouton générer un nouveau mdp au lieu des champs mdp et confirmation mdp + envoie d'un email à l'utilisateur
 
 Autres
 - déplacer le fichier 'application.js' qui est dans '/addons/js/' dans un autre fichier  

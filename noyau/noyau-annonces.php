@@ -70,6 +70,11 @@
 			$contenu="";
 			$annonce->selectModele();
 			break;
+		case"validation_suppression_annonce":
+			$sortie="";
+			$contenu="";
+			$annonce->ValidationSuppressionAnnonce();
+			break;
 		
 		default:
 			//redirection page 404

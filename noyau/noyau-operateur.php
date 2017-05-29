@@ -45,15 +45,21 @@
 		
 		// a partir d'un form 
 		case "valider_materiel":
-			require_once("modele/formulaires/valider_materiel.php");
+			$contenu="";
+			$sortie="";
+			$typeUtilisateur->valider_materiel();
 		break;
 		
 		case "valider_voile":
-			require_once("modele/formulaires/valider_voile.php");
+			$contenu="";
+			$sortie="";
+			$typeUtilisateur->valider_voile();
 		break;
 		
 		case "valider_constructeur":
-			require_once("modele/formulaires/valider_constructeur.php");
+			$contenu="";
+			$sortie="";
+			$typeUtilisateur->valider_constructeur();
 		break;
 		
 		
@@ -67,7 +73,7 @@
 		case"recupmateriaux":
 			$contenu="";
 			$sortie = "";
-				require_once("modele/formulaires/recupMaterial.php");		
+			require_once("modele/formulaires/recupMaterial.php");		
 		break;
 		default:
 			//redirection page 404

@@ -45,7 +45,7 @@
 		// a partir de form 
 		
 		case "delete":
-			require_once('modele/formulaires/delete.php');
+			$typeUtilisateur->supprimer();
 		break;
 		
 		case "nouveau_client":
@@ -69,25 +69,25 @@
 		case "affiche":
 			$contenu = "";
 			$sortie="";
-			require_once("modele/formulaires/showUser.php");
+			$typeUtilisateur->gestionUtilisateursRecup();
 		break;
 		
 		case "update_compte":
 			$contenu="";
 			$sortie="";
-			require_once("modele/formulaires/updateAdm.php");
+			$typeUtilisateur->gestionUtilisateursMAJ();
 		break;
 		
 		case "select_compte":
 			$contenu="";
 			$sortie="";
-			require_once('modele/formulaires/selectAdm.php');
+			$typeUtilisateur->selectComptesNonActifs();
 		break;
 		
 		case "activer":
 			$contenu="";
 			$sortie="";
-			require_once('modele/formulaires/activate.php');
+			$typeUtilisateur->activer();
 		break;
 		
 		default:

@@ -268,13 +268,13 @@ function showThumbnail(files){
   }
 }
           });
-		function delete_annonce(isFromPanel){		if(typeof(isFromPanel)!="undefined"){target = "notPanel";}	//si on vient pas du panel de gestion		else								{target = "delete";}//si on est dans la suppresion des annonces actives (admin) ou propre à l'utilisateur		ids = "";				if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)		{			$.ajax({			  url:"modele/formulaires/selectAnnonces.php",			  type : "GET",			  data: {target:target},			  success: function (rep)			 {				array=rep.split(',');								for(i=0;i<(array.length-1);i++)				{					if(document.getElementById(array[i]).classList.contains("is-selected")==true)					{						ids=ids+array[i]+";";					}				}				$.ajax({				  url:"modele/formulaires/delete_annonce.php",				  type : "GET",				  data: {ids:ids,target:target},				  success: function (rep)				 {					location.reload();				 }					 });			 }				 });		}		}	
+		function delete_annonce(isFromPanel){		if(typeof(isFromPanel)!="undefined"){target = "notPanel";}	//si on vient pas du panel de gestion		else								{target = "delete";}//si on est dans la suppresion des annonces actives (admin) ou propre à l'utilisateur		ids = "";				if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)		{			$.ajax({			  url:"index.php?d=annonces&a=supprimer_annonce",			  type : "GET",			  data: {target:target},			  success: function (rep)			 {				array=rep.split(',');								for(i=0;i<(array.length-1);i++)				{					if(document.getElementById(array[i]).classList.contains("is-selected")==true)					{						ids=ids+array[i]+";";					}				}				$.ajax({				  url:"index.php?d=annonces&a=supprimer_annonce",				  type : "GET",				  data: {ids:ids,target:target},				  success: function (rep)				 {					location.reload();				 }					 });			 }				 });		}		}	
 	function delete_notifications(){
 		ids=" ";
 		if(confirm("Êtes-vous sûr de vouloir continuer ?")==true)
 		{
 			$.ajax({
-			  url:"modele/formulaires/selectAdm.php",
+			  url:"index.php?d=administrateur&a=select_compte",
 			  type : "GET",
 			  success: function (rep)
 			 {
@@ -288,7 +288,7 @@ function showThumbnail(files){
 					}
 				}
 				$.ajax({
-				  url:"modele/formulaires/delete_notifications.php",
+				  url:"index.php?d=administrateur&a=supprimer",
 				  type : "GET",
 				  data: {ids:ids},
 				  success: function (rep)
@@ -301,4 +301,4 @@ function showThumbnail(files){
 			 });	
 			
 		}	
-	}			function annonce_select_marque()	{		var id_marque = document.getElementById("marque").value;		$.ajax({		  url:"modele/formulaires/annonce_select_marque.php",		  type : "POST",		  data: {id_marque:id_marque},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez un modèle</option>" + rep;			document.getElementById("modele").innerHTML = retour;			if(id_marque = -2)			{				document.getElementById("taille").innerHTML = "<option value='-2'>Sélectionnez la taille</option>";			}		 }			 });			}		function annonce_select_modele()	{		var id_modele = document.getElementById("modele").value;		$.ajax({		  url:"modele/formulaires/annonce_select_modele.php",		  type : "POST",		  data: {id_modele:id_modele},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez la taille</option>" + rep;			document.getElementById("taille").innerHTML = retour;		 }			 });			}		function choixRegion(id){		document.getElementById("selRegion").value=id;	}
+	}			function annonce_select_marque()	{		var id_marque = document.getElementById("marque").value;		$.ajax({		  url:"index.php?d=annonces&a=select_marque",		  type : "POST",		  data: {id_marque:id_marque},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez un modèle</option>" + rep;			document.getElementById("modele").innerHTML = retour;			if(id_marque = -2)			{				document.getElementById("taille").innerHTML = "<option value='-2'>Sélectionnez la taille</option>";			}		 }			 });			}		function annonce_select_modele()	{		var id_modele = document.getElementById("modele").value;		$.ajax({		  url:"index.php?d=annonces&a=select_modele",		  type : "POST",		  data: {id_modele:id_modele},		  success: function (rep)		 {			var retour = "<option value='-2'>Sélectionnez la taille</option>" + rep;			document.getElementById("taille").innerHTML = retour;		 }			 });			}		function choixRegion(id){		document.getElementById("selRegion").value=id;	}

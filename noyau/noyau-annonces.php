@@ -45,23 +45,31 @@
 			}
 			else{$contenu = $annonce->MenuAnnonce();}
 		break;
-		
-		// a partir d'un form 
+		 
 		case "confirm_annonce":
 			$sortie="";
 			$contenu="";
 			$annonce->confirmAnnonce();
-			//require_once('modele/formulaires/confirm_annonce.php');
 		break;
-		// Pour fonction ajax
-		case "confirm_annonce":  // vérife utiliter 
-		break; 
 		
+		// Ajax
 		case"select_annonce":
 			$sortie="";
 			$contenu="";
-			require_once ('modele/formulaires/selectAnnonces.php');
+			$annonce->selectAnnonces();
 		break;
+		
+		case"select_marque":
+			$sortie="";
+			$contenu="";
+			$annonce->selectMarque();
+			break;
+			
+		case"select_modele":
+			$sortie="";
+			$contenu="";
+			$annonce->selectModele();
+			break;
 		
 		default:
 			//redirection page 404

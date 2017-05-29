@@ -1,7 +1,6 @@
 Site vitrine
 - Faire le menu en MVC
 - Modifier le bouton "Se connecter" pour qu'il devienne "Se déconnecter" lorsqu'on est connecté
-- Rajouter le raccourci pour ouvrir l'application email quand on clique dans la rubrique contact, pareil pour le téléphone
 
 Application
 - Gestion utilisateurs -> Enlever le bouton "operateur" si c'est un compte admin

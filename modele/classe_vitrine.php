@@ -8,7 +8,7 @@ if(!class_exists("Vitrine")){
 			return '<div id="prestations" class="superbackground">
 							<br/>
 							<div class="col-md-12 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0 text-center">
-								<h2 style="color:white; text-shadow:0 0 5px #000">Contrôle et révision</h2>
+								<h2 style="color:white; margin-top:100px; text-shadow:0 0 5px #000">Contrôle et révision</h2>
 							</div>
 					
 						<div class="container fadeInLoad">
@@ -100,7 +100,7 @@ if(!class_exists("Vitrine")){
 		public function tarifs (){
 			$contenu = '<div id="tarifs" class="tableau">
 					
-								<h1 style="color: white; text-shadow:0 0 5px #000;">Tarifs public à partir du 1er septembre 2014.</h1>
+								<h1 style="color: white; margin-top:70px; text-shadow:0 0 5px #000;">Tarifs public à partir du 1er septembre 2014.</h1>
 								<br/>
 								<div class="fondgris">Tarifs atelier lors d\'une révision</div>
 									<table  border="1" width="70%">

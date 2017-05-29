@@ -1028,6 +1028,40 @@ if(!class_exists("Operateur"))
 			$this->closeBDD();// fermeture
 			header("location: index.php?d=operateur&a=ajouter_voile"); // redirection
 		}
+		public function recuperer_materiaux()
+		{
+			
+			$connect = $this->openBDD();
+			
+			$sql="SELECT id ,ref  From susp_materiaux";
+			
+			$result=$connect->query($sql);
+			$materiaux="<option value='-1'> </option>";
+			while($row = mysqli_fetch_array($result))
+			{
+				$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";
+			}
+			echo $materiaux;
+			$this->closeBDD();
+		}
+		public function  recuperer_voile()
+		{
+			$id=$_POST["id"];
+			$connect = $this->openBDD();
+			$sql="SELECT * FROM modele where id='$id'";
+			$result=$connect->query($sql);
+			$atsend="";
+			while($row = mysqli_fetch_array($result))
+			{
+				$atsend="$row[1],$row[2],$row[3],$row[4],$row[5]";
+			}
+			echo $atsend;
+			$sql="SELECT * FROM taille_voile where idvoile='$id'";
+			$resulta=$connect->query($sql);
+			$row = $resulta->fetch_array();
+			$atsend="$row[1],$row[2],$row[4],$row[5],$row[6],$row[7],$row[8],$row[9],$row[10]";
+			$this->closeBDD();
+		}
 	}
 }
 

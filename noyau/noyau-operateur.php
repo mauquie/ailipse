@@ -64,16 +64,16 @@
 		
 		
 		// pout les ajax (js)
-		case "recupvoile":
+		case "recuperer_voile":
 			$contenu="";
 			$sortie="";
-			require_once("modele/formulaires/recupVoile.php");
+			$typeUtilisateur->recuperer_voile();
 		break;
 		
-		case"recupmateriaux":
+		case"recuperer_materiaux":
 			$contenu="";
 			$sortie = "";
-			require_once("modele/formulaires/recupMaterial.php");		
+			$typeUtilisateur->recuperer_materiaux();
 		break;
 		default:
 			//redirection page 404

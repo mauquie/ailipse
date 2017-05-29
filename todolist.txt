@@ -1,12 +1,11 @@
 Site vitrine
-- Faire le menu en MVC
-- Modifier le bouton "Se connecter" pour qu'il devienne "Se déconnecter" lorsqu'on est connecté
+- Créer la partie annonces partie vitrine
 
 Application
-- Gestion utilisateurs -> Enlever le bouton "operateur" si c'est un compte admin
+- Gestion utilisateurs -> Enlever le bouton "operateur" + supprimer compte si c'est un compte admin
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
-- Annonces -> Donner les droits de suppression des annonces créées par un utilisateur dans le menu annonces
-- Admin -> Créer un envoi d'email après modification du mdp d'un utilisateur
+- Admin -> Supprimer la possibilité de modifier le mdp d'un utilisateur
+- Utilisateur -> Créer la possibilité de regénérer un mdp (mdp oublié ?) avec envoi de mail
 
 Autres
 - Mettre toutes les images contenues dans 'images' dans 'images/application'

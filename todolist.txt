@@ -6,10 +6,9 @@ Application
 - Gestion utilisateurs -> Enlever le bouton "operateur" si c'est un compte admin
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
 - Annonces -> Donner les droits de suppression des annonces créées par un utilisateur dans le menu annonces
-- Admin -> Faire un bouton générer un nouveau mdp au lieu des champs mdp et confirmation mdp + envoie d'un email à l'utilisateur
+- Admin -> Créer un envoi d'email après modification du mdp d'un utilisateur
 
 Autres
-- déplacer le fichier 'application.js' qui est dans '/addons/js/' dans un autre fichier  
 - Mettre toutes les images contenues dans 'images' dans 'images/application'
 - Créer un .htaccess
 - Enlever tous les formulaires pour en faire des méthodes de classe

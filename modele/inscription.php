@@ -77,7 +77,17 @@
 						// ajout a la basse de donner des client 
 
 						$bdd->query("INSERT INTO clients VALUES('','$email','$pass','$name','$surname', '$tel', '$ville','$adresse','$cp','$ville','$adresse','$cp','default',1,0)");
+						// Envoie d'un email a l'utilisateur qui viens de s'inscrire
+						$to      = $email;
+						$subject = 'Création de votre compte client Ailipse Technique';
+						$message = 'Bienvenue chez <strong>Ailipse Technique</strong>. <br/><br/> Votre demande de création de votre compte client a bien été prise en compte. <br/><br/>
+											Vous allez recevoir dans les plus brefs délais une confirmation par le biais de l\'administrateur. <br/><br/> 
+											Cet email est un message automatique, merci de ne pas y répondre. <br/><br/> <center><img src="http://www.ailipse-technique.fr/selAT/public/img/ailipse_logoweb.png"></img></center>';
 
+						$headers = "MIME-Version: 1.0" . "\r\n";
+						$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+					
+						mail($to, $subject, $message, $headers);
 						// ajoute une notification a  comptes 
 
 						$bdd->query("UPDATE notifications SET comptes = comptes+1 WHERE id = 1");

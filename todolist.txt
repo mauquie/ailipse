@@ -5,7 +5,7 @@ Application
 - Gestion utilisateurs -> Enlever le bouton "operateur" + supprimer compte si c'est un compte admin
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
 - Admin -> Supprimer la possibilité de modifier le mdp d'un utilisateur
-- Utilisateur -> Créer la possibilité de regénérer un mdp (mdp oublié ?) avec envoi de mail
+- Utilisateur -> Créer la possibilité de regénérer un mdp (mdp oublié ?) avec envoi de mail 
 
 Autres
 - Mettre toutes les images contenues dans 'images' dans 'images/application'

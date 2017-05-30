@@ -3,7 +3,7 @@ Site vitrine
 
 Application
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
-- Transformer connexion/inscription en MVC pour que ça utilise qu'une seule vue
+- Faire en sorte que l'avatar dans la recherche annonce soit lié à l'utilisateur ayant publié l'annonce
 
 Autres
 - Mettre toutes les images contenues dans 'images' dans 'images/application'

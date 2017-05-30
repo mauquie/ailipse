@@ -631,10 +631,6 @@
 
 		 var email = document.getElementById("email_adm").value;
 
-		 var password = document.getElementById("password_adm").value;
-
-		 var verification = document.getElementById("verification_adm").value;
-
 		 var rue_exp = document.getElementById("rue_exp_adm").value;
 
 		 var ville_exp = document.getElementById("ville_exp_adm").value;
@@ -668,10 +664,6 @@
 		  data:  {id:x,
 
 				  email:email,
-
-				  password:password,
-
-				  verification:verification,
 
 				  rue_exp:rue_exp,
 

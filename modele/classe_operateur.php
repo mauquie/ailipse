@@ -582,7 +582,7 @@ if(!class_exists("Operateur"))
 			
 			
 		}
-		public function ControleVoile()
+				public function ControleVoile()
 		{
 			
 			$connect = $this->openBDD();	// ouverture de la BDD avec l'objet créé dans session.php qui est accéssible dans le noyau
@@ -611,7 +611,7 @@ if(!class_exists("Operateur"))
 
 						<div class="mdl-card__supporting-text card-background">
 
-							<form action="modele/confirm_xml.php" method="post">
+							<form action="index.php?d=operateur&a=valider_controle" method="post">
 								<div id="global">
 									<div id="gauche">
 										<select style="padding-right: 150px;" id="constructeur" class="nice-select" name="constructeur" onchange="affich()">
@@ -628,6 +628,8 @@ if(!class_exists("Operateur"))
 											<option value="8">8</option>
 											<option value="9">9</option>
 											<option value="10">10</option>
+											<option value="12">11</option>
+											<option value="12">12</option>
 											
 										</select>
 									</div>
@@ -656,6 +658,33 @@ if(!class_exists("Operateur"))
 						</div>
 
 					</div>	');
+		}
+		
+		public function ValideControleVoile()
+		{
+			$datetime = date("Y-m-d H:i:s");
+			$anXMLString='<?xml version="1.0"?>
+					    <controle id="MAUQUIE">
+							<name>Controle</name>
+							<date>'.$datetime.'</date>
+									
+							<AR></AR><AR></AR><AR></AR><AR>-14</AR><AR>-22</AR><AR>-20</AR><AR>-20</AR><AR>-20</AR><AR>-24</AR><AR>-32</AR><AR>-26</AR><AR>-29</AR>
+							<BR>-23</BR><BR>-15</BR><BR>-20</BR><BR>-200</BR><BR>-19</BR><BR>-200</BR><BR>-17</BR><BR>-25</BR><BR>-23</BR><BR>-21</BR><BR>-21</BR><BR>-210</BR>
+							<CR>-21</CR><CR>-21</CR><CR>-17</CR><CR>-21</CR><CR>-25</CR><CR>-20</CR><CR>-27</CR><CR>-27</CR><CR>-20</CR><CR>-27</CR><CR>-26</CR><CR>-25</CR>
+							<DR>-30</DR><DR>-32</DR><DR>-270</DR><DR>-35</DR><DR>-24</DR><DR>-240</DR><DR>-27</DR><DR>-28</DR><DR>-28</DR><DR>-24</DR><DR>-310</DR><DR>-28</DR>
+									
+							<AL>-20</AL><AL>-17</AL><AL>-17</AL><AL>-22</AL><AL>-23</AL><AL>-23</AL><AL>-23</AL><AL>-20</AL><AL>-24</AL><AL>-29</AL><AL>-30</AL><AL>-30</AL>
+							<BL>-22</BL><BL>-19</BL><BL>-170</BL><BL>-23</BL><BL>-26</BL><BL>-26</BL><BL>-21</BL><BL>-23</BL><BL>-280</BL><BL>-27</BL><BL>-30</BL><BL>-29</BL>
+							<CL>-26</CL><CL>-24</CL><CL>-20</CL><CL>-22</CL><CL>-25</CL><CL>-240</CL><CL>-28</CL><CL>-29</CL><CL>-30</CL><CL>-29</CL><CL>-27</CL><CL>-32</CL>
+							<DL>-320</DL><DL>-32</DL><DL>-310</DL><DL>-36</DL><DL>-30</DL><DL>-29</DL><DL>-280</DL><DL>-32</DL><DL>-31</DL><DL>-27</DL><DL>-330</DL><DL>-36</DL>
+						</controle>';
+			
+			$doc = new  domDocument();
+			$doc->loadXML($anXMLString);
+			$doc->save("lool.xml");
+			
+			echo "fichier xml créer";
+					
 		}
 		public function valider_materiel()
 		{

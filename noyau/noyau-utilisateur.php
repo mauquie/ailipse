@@ -4,7 +4,7 @@
 	{
 		case "deconnexion":
 			$sortie=file("vue/application.html");
-			require_once('modele/logout.php');
+			$typeUtilisateur->deconnexion();
 		break;
 		
 		case "voile":
@@ -44,8 +44,6 @@
 				$typeUtilisateur->validerModifierProfil();
 			}
 		break;
-		// a partir d'un form
-
 		
 		default:
 			//redirection page 404

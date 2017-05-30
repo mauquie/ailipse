@@ -1832,9 +1832,53 @@
 =======
 2017-05-30 08:59:59 --- Connexion de "admin@test.fr" en tant que "Administrateur"
 >>>>>>> branch 'master' of https://github.com/mauquie/ailipse.git
+<<<<<<< HEAD
 2017-05-30 13:30:08 --- Redirection vers la page "menu" par "admin@test.fr
 2017-05-30 13:30:15 --- Redirection vers la page "voile" par "admin@test.fr
 2017-05-30 13:30:19 --- Redirection vers la page "menu" par "admin@test.fr
 2017-05-30 13:30:21 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
 2017-05-30 13:30:26 --- Redirection vers la page "menu" par "admin@test.fr
 2017-05-30 13:30:27 --- Redirection vers la page "gerer_tarifs" par "admin@test.fr
+=======
+2017-05-30 13:57:54 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 14:16:51 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 14:25:30 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 14:33:18 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 14:36:09 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 16:36:39 --- Redirection vers la page "notifications" par "admin@test.fr
+2017-05-30 16:58:23 --- Redirection vers la page "menu" par "admin@test.fr
+2017-05-30 16:58:55 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 16:58:57 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 15:00:47 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 17:00:48 --- Redirection vers la page "menu" par "admin@test.fr
+2017-05-30 17:00:50 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:00:58 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:01:06 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:01:18 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:01:23 --- Redirection vers la page "delete" par "admin@test.fr
+2017-05-30 17:01:23 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:01:31 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 15:07:25 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 17:07:26 --- Redirection vers la page "menu" par "admin@test.fr
+2017-05-30 15:13:47 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 17:13:48 --- Redirection vers la page "menu" par "admin@test.fr
+2017-05-30 17:13:49 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:13:51 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:14:32 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:14:34 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:15:06 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:15:07 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:15:27 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:15:28 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:15:30 --- Redirection vers la page "update_compte" par "admin@test.fr
+2017-05-30 17:15:33 --- Redirection vers la page "update_compte" par "admin@test.fr
+2017-05-30 17:15:34 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:15:35 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:15:38 --- Redirection vers la page "update_compte" par "admin@test.fr
+2017-05-30 17:15:39 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:15:41 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:15:42 --- Redirection vers la page "update_compte" par "admin@test.fr
+2017-05-30 17:15:44 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-05-30 17:15:46 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-05-30 17:16:13 --- Redirection vers la page "affiche" par "admin@test.fr
+>>>>>>> branch 'master' of https://github.com/mauquie/ailipse.git

@@ -1,6 +1,5 @@
 <?php
 include 'modele/classe_bdd.php';
-include 'modele/classe_visiteur.php';
 include 'modele/classe_utilisateur.php';
 include 'modele/classe_operateur.php';
 include 'modele/classe_admin.php';

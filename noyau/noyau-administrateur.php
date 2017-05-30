@@ -52,17 +52,14 @@
 			$contenu = $typeUtilisateur->validationNouveauClient();
 		break;
 		
-		case "valider_tarif":
-			require_once(" modele/formulaires/validation_tarif.php");
+		case "modification_tarif":
+			$typeUtilisateur->modificationTarif();
 		break;
 	 
 		case "ajout_tarif":
-			require_once("modele/formulaires/ajout_tarif.php");
+			$typeUtilisateur->ajoutTarif();
 		break;
 		
-		case "suppression_tarif":
-			require_once("modele/formulaires/suppressions_tarifs.php");
-		break;
 		
 		// pour les ajax 
 		

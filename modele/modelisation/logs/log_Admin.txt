@@ -1832,3 +1832,9 @@
 =======
 2017-05-30 08:59:59 --- Connexion de "admin@test.fr" en tant que "Administrateur"
 >>>>>>> branch 'master' of https://github.com/mauquie/ailipse.git
+2017-05-30 13:57:54 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 14:16:51 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 14:25:30 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 14:33:18 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 14:36:09 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-30 16:36:39 --- Redirection vers la page "notifications" par "admin@test.fr

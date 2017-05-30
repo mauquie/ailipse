@@ -348,8 +348,374 @@ if(!class_exists("Vitrine")){
 		</div>
 	</div>';
 		}
-		public function contact(){
-			//tu fais le contenu pour contacter le monsieur tavu
+		public function connexion(){
+			//session_start(); // on démarre la session
+			
+			$error=0; // variable qui stocke les messages d'erreur
+			
+			// si on appuie sur le bouton submit et que l'email ainsi que le mdp est vide
+			
+			if (isset($_POST['submit'])) 
+			{
+				
+				if (empty($_POST['email']) || empty($_POST['password'])) {
+					
+					$error = 1;
+					
+				}
+				
+				else
+				
+				{
+					// on définit les variables $email et $password
+					
+					$email=$_POST['email'];
+					
+					$password=$_POST['password'];
+					
+					// on crypte le mot de passe en utilisant SHA-1
+					
+					$password = sha1($password);
+					
+					// on établit la connexion avec le serveur par le biais de la base de données
+					
+					$connexionBdd = $this->openBDD();
+					
+					// protection contre l'injection SQL
+					
+					$email = stripslashes($email);
+					
+					$password = stripslashes($password);
+					
+					$email = ($email);
+					
+					$password = ($password);
+					
+					
+					
+					// requête SQL qui vérifie que l'on a rentré un email et un mdp existant
+					
+					$query = $connexionBdd->query("select * from clients where password='$password' AND email='$email' AND actif=1");
+					
+					$getUser = $connexionBdd->query("select permissions from clients where password='$password' AND email='$email'");
+					
+					$rows = $query->num_rows;
+					
+					if ($rows == 1) {
+						
+						$_SESSION['login_user']=$email; // initialisation de la session
+						while($typeUser = $getUser->fetch_array())
+						{
+							if($typeUser['permissions']==1)
+							{
+								$user="Utilisateur";
+								$logfile = "log_User.txt";
+							}
+							elseif($typeUser['permissions']==2)
+							{
+								$user="Operateur";
+								$logfile = "log_Operator.txt";
+							}
+							elseif($typeUser['permissions']==3)
+							{
+								$user="Administrateur";
+								$logfile = "log_Admin.txt";
+							}
+							else
+							{
+								$user="Erreur";
+							}
+						}
+						
+						$logs = date('Y-m-d H:i:s').' --- Connexion de "'.$email.'" en tant que "'.$user.'"'."\r\n";
+						//Ouverture du répertoire de destination
+						$fichier = fopen ("modele/modelisation/logs/".$logfile, "a+");
+						//Copie du fichier
+						fwrite($fichier, $logs);
+						//Fermeture du fichier
+						fclose ($fichier);
+						//Fin écriture
+						
+						header("location: index.php?d=vitrine&a=application"); // on redirige vers une page à la connexion
+						
+					} else {
+						if ($getUser->num_rows == 1)
+						{
+							$error = -1;
+						}
+						else {
+							$error = 1;
+						}
+						
+					}
+					
+					
+					$this->closeBDD(); // on ferme la connexion avec la base de données
+				}
+				
+			}
+			 
+			
+				
+			
+			
+			
+			// Appel du template de sortie
+			
+			
+			
+			
+			if ($error== 1) {
+				
+				$message_erreur = '<div class="alert alert-danger fade in animated shake">
+						
+					<strong>Nom d\'utilisateur</strong> ou <strong>mot de passe</strong> incorrect. Veuillez réessayer.
+						
+					</div>';
+				
+			}
+			else
+			{
+				
+				$message_erreur =  '';
+				
+			}
+			return ('<div class="login animated zoomInDown connexion">
+
+			<h1>Connexion</h1>
+
+			<p><br /></p>
+
+			<form method="post">
+
+				<input type="text" name="email" placeholder="Adresse e-mail" required=required; />
+
+				<input type="password" name="password" placeholder="Mot de passe"  required=required; />
+
+				<p><br /></p>
+
+				<button name="submit" type="submit" class="btn btn-primary btn-block btn-large">Se connecter</button>
+				
+				<p style="font-size: 13px; color: #fff; text-align: center;"><br/>Besoin d\'un compte ? &nbsp; <a href="index.php?d=vitrine&a=inscription" style="color: #6eb6de;">S\'inscrire</a><br/><a href="index.php?d=vitrine&a=connexion#recuperer_mdp" style="color: #6eb6de;">Mot de passe oublié</a></p>
+
+			</form>
+
+			<div id="recuperer_mdp" class="overlay">
+					<div class="popup_recuperer_mdp">
+						<h2>Récupération de votre mot de passe</h2>
+						<a class="close" href="#">&times;</a>
+						<form action="index.php?d=vitrine&a=recuperer_mdp" method="post">
+							<div class="content" style="overflow: hidden;">
+								<div class="row">
+									<br/>
+										<div class="col-lg-12">
+											<label for="email">Email</label>
+											<input class="form-control" type="email" id="email" name="email" required="required">
+										  <div class="col-lg-12">
+											<p>Vous allez recevoir automatiquement par email un nouveau mot de passe à l\'adresse rentrée ci-dessus.</p>
+										  </div>
+										</div>
+									</div>
+								</div>
+								
+								<br/>
+								
+								<button type="submit" class="btn btn-primary" style="text-decoration:none; color: white;">Regénérer un mot de passe</button>
+
+						
+					</div>
+					</form>
+				</div>
+
+			<br>
+
+			'.$message_erreur.'
+
+		</div>');
+			
+			
+		}
+		
+		public function inscription() {
+			$error=0;
+			
+			// connexion � la base de donn�es
+			
+			$bdd =  $this->openBDD();
+
+			// v�rification si le champ pseudo a bien �t� rempli
+			
+			if (isset($_POST['e-mail']))
+			
+			{
+				
+			
+				// Alors dans ce cas on met saisie du $_POST['pseudo'] dans la variable $pseudo
+				
+				$email = ($_POST['e-mail']);
+				
+				$pass = ($_POST['pass']);
+				
+				$confirm = ($_POST['confirm']);
+				
+				
+				
+				$query = $bdd->query("SELECT email FROM clients WHERE email='$email'");
+				
+				$num_row = $query->num_rows;
+				
+				
+				
+				if ($num_row >= 1)
+				
+				{
+					
+					// Si l'email est d�j� utilis�e on retourne un code d'erreur
+					
+					$error=1;
+					
+					
+					
+				}
+				
+				else
+				
+				{
+					if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])#', $pass))
+					{
+						if($pass == $confirm)
+						{
+							
+							// RECUPERATION des donnes de la base de donn�es
+							
+							$pass = sha1($_POST['pass']);
+							
+							$name = $_POST['name'];
+							
+							$surname = $_POST['surname'];
+							
+							$tel = $_POST['tel'];
+							
+							$ville = $_POST['ville'];
+							
+							$adresse = $_POST['adresse'];
+							
+							$cp = $_POST['cp'];
+							
+							
+							
+							// ajout a la basse de donner des client
+							
+							$bdd->query("INSERT INTO clients VALUES('','$email','$pass','$name','$surname', '$tel', '$ville','$adresse','$cp','$ville','$adresse','$cp','default',1,0)");
+							// Envoie d'un email a l'utilisateur qui viens de s'inscrire
+							$to      = $email;
+							$subject = 'Création de votre compte client Ailipse Technique';
+							$message = 'Bienvenue chez <strong>Ailipse Technique</strong>. <br/><br/> Votre demande de création de votre compte client a bien été prise en compte. <br/><br/>
+											Vous allez recevoir dans les plus brefs délais une confirmation par le biais de l\'administrateur. <br/><br/>
+											Cet email est un message automatique, merci de ne pas y répondre. <br/><br/> <center><img src="http://www.ailipse-technique.fr/selAT/public/img/ailipse_logoweb.png"></img></center>';
+							
+							$headers = "MIME-Version: 1.0" . "\r\n";
+							$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+							
+							mail($to, $subject, $message, $headers);
+							// ajoute une notification a  comptes
+							
+							$bdd->query("UPDATE notifications SET comptes = comptes+1 WHERE id = 1");
+							
+							$error=3;
+							
+						}
+						
+						else{
+							
+							// Si les mots de passe ne sont pas identiques on retourne un code d'erreur
+							
+							$error=2;
+							
+						}
+					}
+					else{
+						$error=4;
+					}
+				}
+				
+			}
+			
+			if($error==0)
+			
+			{
+				
+				$message_erreur=  '';
+				
+			}
+			else
+			{
+				
+				if($error==1)
+				
+				{
+					$message_erreur='<div class="alert alert-danger fade in animated shake"><strong>E-Mail</strong> déjà utilisé. Veuillez réessayer.</div>';
+					
+				}
+				
+				else if($error == 2)
+				
+				{
+					$message_erreur='<div class="alert alert-danger fade in animated shake">Les<strong> mots de passe</strong> ne correspondent pas. Veuillez réessayer.</div>';
+					
+				}
+				
+				else if($error == 3)
+				
+				{
+					// On redirige vers la page d'accueil en affichant un message de succès pour la création de compte
+					$message_erreur='<div class="alert alert-success fade in animated shake"><p>Compte créé avec <strong>succès</strong>.</p> <p>Un administrateur va procéder à la validation de votre compte.</p> <p>Vous allez être redirigé dans 5 secondes.</p></div>'.header("Refresh:5; url=index.php");;
+					
+				}
+				else if($error == 4)
+				
+				{
+					$message_erreur='<div class="alert alert-danger fade in animated shake">Le<strong> mot de passe</strong> doit contenir au moins une majuscule, une minuscule et un chiffre. Veuillez réessayer.</div>';
+					
+				}
+				
+			}
+			
+			return('<div class="login animated zoomInDown">
+
+			<h1>Inscription</h1>
+
+			<p><br /></p>
+
+			<form method="post">
+				<input type="email" name="e-mail" placeholder="E-mail"  required=required; />
+				<input type="password" name="pass" placeholder="Mot de passe"  required=required; />
+				<input type="password" name="confirm" placeholder="Confirmation du mot de passe"  required=required; />
+				
+				<p><br /></p>
+
+				<input type="text" name="name" placeholder="Nom"  required=required; />
+				<input type="text" name="surname" placeholder="Prénom"  required=required; />
+				<input type="text" name="tel" placeholder="Téléphone"  required=required; />
+				<input type="text" name="adresse" placeholder="Adresse"  required=required; />
+				<input class="dbl" type="text" name="cp" placeholder="Code postal"  required=required; />
+				<input class="dbl" type="text" name="ville" placeholder="Ville"  required=required; />
+
+				<p><br/></p>
+
+				<button name="submit" type="submit" class="btn btn-primary btn-block btn-large">S\'inscrire</button>
+
+			</form>
+
+			<br>
+
+			'.$message_erreur.'
+
+		</div>
+
+	');
+			
+			$this->closeBDD();// fermeture de la base de donn�es 
 		}
 	}
 }

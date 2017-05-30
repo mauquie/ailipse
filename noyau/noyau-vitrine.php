@@ -20,11 +20,13 @@
 			break;
 		
 		case "connexion":
-			require_once ('modele/connexion.php');
+			$sortie=file("vue/identification.html");
+			$contenu=$vitrine->connexion();
 		break;
 
 		case "inscription":
-			require_once ('modele/inscription.php');
+			$sortie=file("vue/identification.html");
+			$contenu=$vitrine->inscription();
 		break;
 		
 		case "":

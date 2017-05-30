@@ -61,6 +61,12 @@
 			$sortie="";
 			$typeUtilisateur->valider_constructeur();
 		break;
+			
+		case "valider_controle":
+			$contenu="";
+			$sortie="";
+			$typeUtilisateur->ValideControleVoile();
+		break;
 		
 		
 		// pout les ajax (js)

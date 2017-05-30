@@ -983,6 +983,7 @@ if(!class_exists("Operateur"))
 					}
 				}
 				// Check if file already exists
+				
 				while (file_exists($target_file)) {
 					$extension = pathinfo($filename, PATHINFO_EXTENSION);
 					$filename = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename);

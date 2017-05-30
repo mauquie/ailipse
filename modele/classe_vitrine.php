@@ -348,8 +348,55 @@ if(!class_exists("Vitrine")){
 		</div>
 	</div>';
 		}
-		public function contact(){
-			//tu fais le contenu pour contacter le monsieur tavu
+		
+		public function recupererMotDePasse()
+		{
+			function generationMotDePasse($taille = 10) {
+				$chaine = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+				$chaineTaille = strlen($chaine);
+				$motDePasse = '';
+				for ($i = 0; $i < $taille; $i++) {
+					$motDePasse .= $chaine[rand(0, $chaineTaille - 1)];
+				}
+				return $motDePasse;
+			}
+			
+			// connexion à la base de données
+			$bdd =  $this->openBDD();
+			
+			$email = ($_POST['email']);
+			
+			$query = $bdd->query("SELECT email FROM clients WHERE email='$email'");
+			$num_row = $query->num_rows;
+			if ($num_row >= 1)
+			{
+				// Si l'email est déjà utilisée on procède à la regénération du mot de passe
+				
+				// Génération du mot de passe
+				$password = generationMotDePasse();
+				$password_crypt = sha1($password);
+				
+				// Mise à jour du mot de passe dans la base de données des clients
+				$bdd->query("UPDATE clients SET password = '$password_crypt' WHERE email = '$email'");
+				
+				// Préparation du mail qui renvoie le nouveau mot de passe à l'utilisateur
+				$to      = $email;
+				$subject = 'Regénération de votre mot de passe Ailipse Technique';
+				$message = 'Votre demande de changement de mot de passe a bien été effectuée. <br/><br/> <strong>Votre nouveau mot de passe</strong> : '.$password.'<br/><br/> Pour une raison de sécurité, vous êtes invité à changer votre mot de passe dès votre première reconnexion via notre site internet. <br/><br/> Cet email est un message automatique, merci de ne pas y répondre. <br/><br/> <center><img src="http://www.ailipse-technique.fr/selAT/public/img/ailipse_logoweb.png"></img></center>';
+				
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+				
+				mail($to, $subject, $message, $headers);
+				
+				echo "<script>alert('Regénération de votre mot de passe effectué avec succès.'); location.href = 'index.php?d=vitrine&a=connexion';</script>";
+			}
+			
+			else
+			{
+				echo "<script>alert('L\'adresse email que vous avez rentré ne fait référence à aucun compte sur notre site internet. Veuillez réessayer.'); location.href = 'index.php?d=vitrine&a=connexion#recuperer_mdp';</script>";
+			}
+			$this->closeBDD($bdd);// fermeture de la base de données
 		}
 	}
 }

@@ -29,6 +29,53 @@
   transition: all 5s ease-in-out;
 }
 
+.popup_recuperer_mdp {
+  margin: 100px auto;
+  padding-right: 1%;
+  padding-left: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-right: 12.8%;
+  background:radial-gradient(#FFF,#E0E0E0);
+  width: 60%;
+  height: auto;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup_recuperer_mdp h2 {
+  margin-top: -1.7%;
+  margin-left: -1.7%;
+  margin-right: -1.7%;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  padding-left: 5%;
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 30px;
+  background: url('../images/popup_bg.jpg') center;
+}
+
+.popup_recuperer_mdp .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+.popup_recuperer_mdp .close:hover {
+  color: #F44336;
+}
+
+.popup_recuperer_mdp .content {
+  max-height: 70%;
+  overflow: auto;
+  font-family: 'Roboto', sans-serif;
+}
+
 .popup_nouveau_client {
   margin: 100px auto;
   padding-right: 1%;

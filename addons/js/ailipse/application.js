@@ -108,13 +108,13 @@
 		// rend  tout les id  hidden 
 		if(x<0)
 		{
-			for (i=1;i<=12;i++)
+			for (i=1;i<=10;i++)
 			{
 				document.getElementById(i).style.visibility='hidden';				document.getElementById("ajout_compte").style.visibility='visible';
 			}
 			document.getElementById("validation").style.visibility='hidden';
-			document.getElementById("start").style.visibility='hidden';						document.getElementById("ajout_compte").style.visiblity='visible';
-			document.getElementById("affichage").style.visibility='hidden';
+			document.getElementById("supprimer").style.visibility='hidden';						document.getElementById("ajout_compte").style.visiblity='visible';
+			document.getElementById("affichage").style.visibility='hidden';						document.getElementById("permissions_adm").style.visibility='hidden';
 		}
 		else
 		{
@@ -122,9 +122,9 @@
 			if(document.getElementById("affichage").style.visibility==='hidden')
 			{
 				document.getElementById("validation").style.visibility='visible';
-				document.getElementById("start").style.visibility='visible';								document.getElementById("ajout_compte").style.visibility='hidden';
+				document.getElementById("supprimer").style.visibility='visible';								document.getElementById("ajout_compte").style.visibility='hidden';
 				document.getElementById("affichage").style.visibility='visible';
-				for (i=1;i<=12;i++)
+				for (i=1;i<=10;i++)
 				{
 					document.getElementById(i).style.visibility='visible';
 				}
@@ -136,8 +136,8 @@
 			type : "POST",
 			success :function(rep)	
 			{
-				// rempli les casse afficher par les valeur renvoiller du fichier php 
-				var email = rep.split(',');
+				// rempli les casse afficher par les valeur renvoiller du fichier php 								
+				var email = rep.split(',');				if(email[11]==3){					document.getElementById("permissions_adm").style.visibility="hidden";					document.getElementById("supprimer").style.visibility='hidden';				}				else{					document.getElementById("permissions_adm").style.visibility="visible";					document.getElementById("supprimer").style.visibility='visible';				}				
 				document.getElementById("email_adm").value=email[0];
 				document.getElementById("rue_exp_adm").value=email[1];
 				document.getElementById("ville_exp_adm").value=email[2];

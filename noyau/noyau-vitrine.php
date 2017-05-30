@@ -15,7 +15,9 @@
 			}
 		break;
 		
-		
+		case "recuperer_mdp":
+			$vitrine->recupererMotDePasse();
+			break;
 		
 		case "connexion":
 			require_once ('modele/connexion.php');

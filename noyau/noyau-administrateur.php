@@ -98,7 +98,7 @@
 		
 	}
 	
-		//Ecriture du tarif ajouté dans le fichier logfile.txt
+		/*//Ecriture du tarif ajouté dans le fichier logfile.txt
 		date_default_timezone_set('Europe/Brussels');
 		$logs = date('Y-m-d H:i:s').' --- Redirection vers la page "'.$action.'" par "'.$login_session."\r\n";
 		//Ouverture du répertoire de destination
@@ -107,7 +107,7 @@
 		fwrite($fichier, $logs);
 		//Fermeture du fichier
 		fclose ($fichier);
-		//Fin écriture
+		//Fin écriture*/
 
 
 ?>

@@ -1726,6 +1726,7 @@
 2017-05-30 04:19:38 --- Redirection vers la page "menu" par "admin@test.fr
 2017-05-30 04:19:40 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
 2017-05-30 04:19:43 --- Redirection vers la page "affiche" par "admin@test.fr
+<<<<<<< HEAD
 2017-05-30 11:24:21 --- Connexion de "admin@test.fr" en tant que "Administrateur"
 2017-05-30 11:33:37 --- Redirection vers la page "menu" par "admin@test.fr
 2017-05-30 11:33:39 --- Redirection vers la page "gerer_tarifs" par "admin@test.fr
@@ -1828,3 +1829,6 @@
 2017-05-30 13:25:48 --- Redirection vers la page "tarifs" par "admin@test.fr
 2017-05-30 13:25:53 --- Redirection vers la page "modification_tarif" par "admin@test.fr
 2017-05-30 13:25:53 --- Redirection vers la page "tarifs" par "admin@test.fr
+=======
+2017-05-30 08:59:59 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+>>>>>>> branch 'master' of https://github.com/mauquie/ailipse.git

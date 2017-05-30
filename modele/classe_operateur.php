@@ -967,7 +967,7 @@ if(!class_exists("Operateur"))
 				$filename = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename);
 				$filename =$nomc.".".$extension;
 				
-				$target_dir = "../../vue/images/fabricant/logo/"; // la ou se situera l'image enregistrée
+				$target_dir = "../../vue/images/application/fabricant/logo/"; // la ou se situera l'image enregistrée
 				$target_file = $target_dir . basename($filename);
 				$uploadOk = 1;
 				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);

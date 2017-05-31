@@ -17,6 +17,8 @@
 		
 		case "recuperer_mdp":
 			$vitrine->recupererMotDePasse();
+			$contenu='';
+			$sortie='';
 			break;
 		
 		case "connexion":

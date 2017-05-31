@@ -5,7 +5,7 @@ Application
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
 - Faire en sorte que l'avatar dans la recherche annonce soit lié à l'utilisateur ayant publié l'annonce
 
-Autres
+Autres 
 - Mettre toutes les images contenues dans 'images' dans 'images/application'
 - Créer un .htaccess
 - Enlever tous les formulaires pour en faire des méthodes de classe (en cours)

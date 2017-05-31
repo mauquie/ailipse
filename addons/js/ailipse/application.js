@@ -960,7 +960,7 @@ function showThumbnail(files){
 				
 				for(i=0;i<(array.length-1);i++)
 				{
-					if(document.getElementByID(array[i])!==null)
+					if(document.getElementById(array[i])!==null)
 						{
 							if(document.getElementById(array[i]).classList.contains("is-selected")==true)
 							{

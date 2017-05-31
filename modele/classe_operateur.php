@@ -383,8 +383,7 @@ if(!class_exists("Operateur"))
 			$sql="SELECT * from fabricant";
 			$result= $connect->query($sql);
 			
-			$fabricant="<option value='-2'> </option>
-						<option value='-1'> </option>";
+			$fabricant="<option value='-1'> le fabricant</option>";
 			while($row=mysqli_fetch_array($result))
 			{
 				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
@@ -392,7 +391,7 @@ if(!class_exists("Operateur"))
 			$sql="SELECT id ,ref  From susp_materiaux";
 			
 			$result=$connect->query($sql);
-			$materiaux="<option value='-1'> </option>";
+			$materiaux="<option value='-1'>aucun</option>";
 			while($row = mysqli_fetch_array($result))
 			{
 				$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";
@@ -411,9 +410,7 @@ if(!class_exists("Operateur"))
 							<h5> Informations du materiaux par le constructeur </h5>
 							<div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
 								<select id='id_fab' class='nice-select' name='id_fab'>
-									<?php
-											echo(".$fabricant.");
-									?>
+										".$fabricant."
 								</select>
 							</div>
 							<br />
@@ -427,26 +424,20 @@ if(!class_exists("Operateur"))
 							<h5>  equivalence avec  d'autre materiaux</h5>
 							<div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
 							<select id='eq1' class='nice-select' name='eq1'>
-									<?php
-											echo(".$materiaux.");
-									?>
+									".$materiaux."
 								</select>
 							</div>
 							<br />
 						<br />
 							<div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
 								<select id='eq2' class='nice-select' name='eq2'>
-									<?php
-											echo(".$materiaux.");
-									?>
+									".$materiaux."
 								</select>
 							</div><br />
 						<br />
 							<div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
 								<select id='eq3' class='nice-select' name='eq3'>
-									<?php
-											echo(".$materiaux.");
-									?>
+									".$materiaux."
 								</select>
 							</div>
 							</div>
@@ -720,7 +711,11 @@ if(!class_exists("Operateur"))
 				$connect->query($sql);
 			}
 			$this->closeBDD();
-			header("location: index.php?d=operateur&a=ajouter_voile");
+			echo '
+					<script>
+						alert("Succès : Votre materiel a bien etait crée");
+						location.href = "index.php?d=vitrine&a=ajouter_voile";
+				</script>';
 			
 		}
 		public function valider_voile()
@@ -1056,7 +1051,11 @@ if(!class_exists("Operateur"))
 			
 			
 			$this->closeBDD();// fermeture
-			header("location: index.php?d=operateur&a=ajouter_voile"); // redirection
+			echo '
+					<script>
+						alert("Succès : Votre constructeur a bien etait crée");
+						location.href = "index.php?d=vitrine&a=ajouter_voile";
+				</script>';
 		}
 		public function recuperer_materiaux()
 		{
@@ -1086,11 +1085,6 @@ if(!class_exists("Operateur"))
 				$atsend="$row[1],$row[2],$row[3],$row[4],$row[5]";
 			}
 			echo $atsend;
-			$sql="SELECT * FROM taille_voile where idvoile='$id'";
-			$resulta=$connect->query($sql);
-			$row = $resulta->fetch_array();
-			$atsend="$row[1],$row[2],$row[4],$row[5],$row[6],$row[7],$row[8],$row[9],$row[10]";
-			$this->closeBDD();
 		}
 	}
 }

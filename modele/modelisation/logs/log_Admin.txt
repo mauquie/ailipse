@@ -1890,3 +1890,5 @@
 2017-05-31 10:15:22 --- Redirection vers la page "notifications" par "admin@test.fr
 2017-05-31 08:16:32 --- Connexion de "admin@test.fr" en tant que "Administrateur"
 2017-05-31 08:23:52 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-31 11:10:19 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-05-31 11:28:23 --- Redirection vers la page "voile" par "admin@test.fr

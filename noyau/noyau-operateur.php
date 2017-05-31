@@ -41,6 +41,20 @@
 			$contenu= $typeUtilisateur->ControleVoile(); 
 		break;
 		
+		case "suivi":
+			$sortie=file("vue/application.html");
+			$nav_en_cours = 'operateur';
+			$contenu= $typeUtilisateur->suiviVoile(); 
+		break;
+		
+		case "creer_suivi":
+			$sortie=file("vue/application.html");
+			$nav_en_cours = 'operateur';
+			$contenu= $typeUtilisateur->creerSuiviVoile(); 
+		break;
+		
+		
+		
 		
 		
 		// a partir d'un form 
@@ -68,6 +82,12 @@
 			$typeUtilisateur->ValideControleVoile();
 		break;
 		
+		case "valider_creer_suivi":
+			$contenu="";
+			$sortie="";
+			$contenu= $typeUtilisateur->validerCreerSuivi($login_session);
+		break;
+		
 		
 		// pout les ajax (js)
 		case "recuperer_voile":
@@ -81,6 +101,7 @@
 			$sortie = "";
 			$typeUtilisateur->recuperer_materiaux();
 		break;
+		
 		default:
 			//redirection page 404
 			$contenu = "";

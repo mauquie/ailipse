@@ -810,15 +810,15 @@ if(!class_exists("Vitrine")){
 					
 					echo "<script>alert('Regénération de votre mot de passe effectué avec succès. Veuillez contacter un administrateur pour avoir connaissance de votre nouveau mot de passe.'); location.href = 'index.php?d=vitrine&a=connexion';</script>";
 				}
-				else 
+				else
 				{
-					echo "<script>alert('Vous ne pouvez pas regénérer le mot de passe d'un administrateur.'); location.href = 'index.php?d=vitrine&a=connexion';</script>";
+					echo "<script>alert('Vous ne pouvez pas regénérer le mot de passe d\'un administrateur.'); location.href = 'index.php?d=vitrine&a=connexion';</script>";
 				}
 			}
 			
 			else
 			{
-				echo '<script>alert("L\'adresse email que vous avez rentré ne fait référence à aucun compte sur notre site internet. Veuillez réessayer."); location.href = "index.php?d=vitrine&a=connexion#recuperer_mdp";</script>';
+				echo "<script>alert('L\'adresse email que vous avez rentré ne fait référence à aucun compte sur notre site internet. Veuillez réessayer.'); location.href = 'index.php?d=vitrine&a=connexion#recuperer_mdp';</script>";
 			}
 			$this->closeBDD($bdd);// fermeture de la base de données
 		}

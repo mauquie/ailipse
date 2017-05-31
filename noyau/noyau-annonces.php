@@ -73,7 +73,7 @@
 		case"validation_suppression_annonce":
 			$sortie="";
 			$contenu="";
-			$annonce->ValidationSuppressionAnnonce();
+			$annonce->validationSuppressionAnnonce();
 			break;
 		
 		default:

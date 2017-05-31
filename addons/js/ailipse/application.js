@@ -960,11 +960,13 @@ function showThumbnail(files){
 				
 				for(i=0;i<(array.length-1);i++)
 				{
-					if(document.getElementById(array[i]).classList.contains("is-selected")==true)
-					{
-						ids=ids+array[i]+";";
-					}
-
+					if(document.getElementByID(array[i])!==null)
+						{
+							if(document.getElementById(array[i]).classList.contains("is-selected")==true)
+							{
+								ids=ids+array[i]+";";
+							}
+						}
 				}
 				$.ajax({
 				  url:"index.php?d=annonces&a=validation_suppression_annonce",

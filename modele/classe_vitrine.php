@@ -395,36 +395,38 @@ if(!class_exists("Vitrine")){
 					
 					// requête SQL qui vérifie que l'on a rentré un email et un mdp existant
 					
+					$result = $connexionBdd->query("select * from clients where password='$password' AND email='$email' AND actif=0");
+									
+					
 					$query = $connexionBdd->query("select * from clients where password='$password' AND email='$email' AND actif=1");
 					
-					$getUser = $connexionBdd->query("select permissions from clients where password='$password' AND email='$email'");
+					
 					
 					$rows = $query->num_rows;
 					
 					if ($rows == 1) {
 						
 						$_SESSION['login_user']=$email; // initialisation de la session
-						while($typeUser = $getUser->fetch_array())
+						while($typeUser = $query->fetch_array())
 						{
-							if($typeUser['permissions']==1)
+							switch($typeUser['permissions'])
 							{
-								$user="Utilisateur";
-								$logfile = "log_User.txt";
-							}
-							elseif($typeUser['permissions']==2)
-							{
-								$user="Operateur";
-								$logfile = "log_Operator.txt";
-							}
-							elseif($typeUser['permissions']==3)
-							{
-								$user="Administrateur";
-								$logfile = "log_Admin.txt";
-							}
-							else
-							{
-								$user="Erreur";
-							}
+								case 1:
+									$user="Utilisateur";
+									$logfile = "log_User.txt";
+									break;
+								case 2:
+									$user="Operateur";
+									$logfile = "log_Operator.txt";
+									break;
+								case 3:
+									$user="Administrateur";
+									$logfile = "log_Admin.txt";
+									break;
+									default:
+										break;
+									
+							}	
 						}
 						
 						$logs = date('Y-m-d H:i:s').' --- Connexion de "'.$email.'" en tant que "'.$user.'"'."\r\n";
@@ -439,9 +441,13 @@ if(!class_exists("Vitrine")){
 						header("location: index.php?d=vitrine&a=application"); // on redirige vers une page à la connexion
 						
 					} else {
-						if ($getUser->num_rows == 1)
+						if ($query->num_rows == 1)
 						{
 							$error = -1;
+						}
+						else if ($result->num_rows == 1)
+						{
+							$error = 2;
 						}
 						else {
 							$error = 1;
@@ -465,14 +471,19 @@ if(!class_exists("Vitrine")){
 			
 			
 			
-			if ($error== 1) {
+			if ($error == 1)
+			{
 				
 				$message_erreur = '<div class="alert alert-danger fade in animated shake">
-						
-					<strong>Nom d\'utilisateur</strong> ou <strong>mot de passe</strong> incorrect. Veuillez réessayer.
-						
-					</div>';
+										<strong>Nom d\'utilisateur</strong> ou <strong>mot de passe</strong> incorrect. Veuillez réessayer.
+							       </div>';
 				
+			}
+			else if ($error == 2)
+			{
+				$message_erreur = '<div class="alert alert-danger fade in animated shake">
+								   		Votre compte n\'a pas encore été <strong>validé</strong> par un administrateur. Vous recevrez un <strong>email</strong> lors de la validation de votre compte.
+								   </div>';
 			}
 			else
 			{
@@ -717,6 +728,57 @@ if(!class_exists("Vitrine")){
 			
 			$this->closeBDD();// fermeture de la base de donn�es 
 		}
+		
+		public function recupererMotDePasse()
+		{
+			function generationMotDePasse($taille = 10) {
+				$chaine = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+				$chaineTaille = strlen($chaine);
+				$motDePasse = '';
+				for ($i = 0; $i < $taille; $i++) {
+					$motDePasse .= $chaine[rand(0, $chaineTaille - 1)];
+				}
+				return $motDePasse;
+			}
+			
+			// connexion à la base de données
+			$bdd =  $this->openBDD();
+			
+			$email = ($_POST['email']);
+			
+			$query = $bdd->query("SELECT email FROM clients WHERE email='$email'");
+			$num_row = $query->num_rows;
+			if ($num_row >= 1)
+			{
+				// Si l'email est déjà utilisée on procède à la regénération du mot de passe
+				
+				// Génération du mot de passe
+				$password = generationMotDePasse();
+				$password_crypt = sha1($password);
+				
+				// Mise à jour du mot de passe dans la base de données des clients
+				$bdd->query("UPDATE clients SET password = '$password_crypt' WHERE email = '$email'");
+				
+				// Préparation du mail qui renvoie le nouveau mot de passe à l'utilisateur
+				$to      = $email;
+				$subject = 'Regénération de votre mot de passe Ailipse Technique';
+				$message = 'Votre demande de changement de mot de passe a bien été effectuée. <br/><br/> <strong>Votre nouveau mot de passe</strong> : '.$password.'<br/><br/> Pour une raison de sécurité, vous êtes invité à changer votre mot de passe dès votre première reconnexion via notre site internet. <br/><br/> Cet email est un message automatique, merci de ne pas y répondre. <br/><br/> <center><img src="http://www.ailipse-technique.fr/selAT/public/img/ailipse_logoweb.png"></img></center>';
+				
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+				
+				mail($to, $subject, $message, $headers);
+				
+				echo "<script type='text/javascript' charset='utf-8'>alert('Regénération de votre mot de passe effectué avec succès.'); location.href = 'index.php?d=vitrine&a=connexion';</script>";
+			}
+			
+			else
+			{
+				echo "<script>alert('L\'adresse email que vous avez rentré ne fait référence à aucun compte sur notre site internet. Veuillez réessayer.'); location.href = 'index.php?d=vitrine&a=connexion#recuperer_mdp';</script>";
+			}
+			$this->closeBDD($bdd);// fermeture de la base de données
+		}
+		
 	}
 }
 ?>

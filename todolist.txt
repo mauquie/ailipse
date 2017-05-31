@@ -9,3 +9,10 @@ Autres
 - Mettre toutes les images contenues dans 'images' dans 'images/application'
 - Créer un .htaccess
 - Enlever tous les formulaires pour en faire des méthodes de classe (en cours)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Lien vers la version de développement "BinarySioux" : https://drive.google.com/open?id=0B9FQLwZz8CQqdEFyMUMzVjk3bEE
+// A télécharger impérativement
+// J'ai fait un fichier "Envoi des mails.txt" à la racine d'Uwamp pour expliquer comment activer facilement le serveur smtp pour que les // mails s'envoient en local
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

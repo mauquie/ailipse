@@ -1,7 +1,11 @@
 eclipse.preferences.version=1
 encoding//addons/js/ailipse/application.js=UTF-8
-encoding//modele/Class_BDD.php=UTF-8
-encoding//modele/Class_annonce.php=UTF-8
+encoding//modele/classe_BDD.php=UTF-8
+encoding//modele/classe_admin.php=UTF-8
+encoding//modele/classe_menu.php=UTF-8
+encoding//modele/classe_operateur.php=UTF-8
+encoding//modele/classe_utilisateur.php=UTF-8
+encoding//modele/classe_notification.php=UTF-8
 encoding//modele/classe_annonce.php=UTF-8
 encoding//modele/classe_vitrine.php=UTF-8
 encoding/<project>=UTF-8

@@ -6,6 +6,7 @@ if(!class_exists("Operateur"))
 		
 		public function __construct()
 		{
+			$this->_bdd=new Bdd;
 		}
 		
 		public function ajoutVoile()

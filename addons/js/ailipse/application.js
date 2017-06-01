@@ -394,8 +394,6 @@
 
 			{
 				var tabl3="";
-				alert(rep);
-
 				tabl3="<h6> listes des matériaux de la suspentes </h6>"+
 
 				"<table border='1'> <tr>"+
@@ -464,12 +462,11 @@
 
 					'<center>'+
 
-					'<button type="submit" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >'+
-
-					'valider toutes les données rentrées  '+
-
-					'</button>'+
-
+					'<div class="materiauxSuspentecontin" name="materiauxSuspentecontin" id="materiauxSuspentecontin">'+
+					'<a href="#popup_tableau4" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">compisition d\'une ligne </a>'+
+					
+					'<a href="#popup_tableau5" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">longueurs de contrôle</a>'+
+					'</div>'+
 					'</center>';
 
 			document.getElementById('boutons').innerHTML = "";

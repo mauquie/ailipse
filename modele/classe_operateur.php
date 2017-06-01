@@ -218,6 +218,24 @@ if(!class_exists("Operateur"))
 								</div>
 							</div>
 						</div>
+						<div id="popup_tableau4" class="overlay">
+							<div class="popup">
+								<h2>compisition d\'une ligne</h2>
+								<a class="close" href="#">&times;</a>
+								<div class="longeurdesuspente" id="longeurdesuspente">
+					
+								</div>
+							</div>
+						</div>
+						<div id="popup_tableau5" class="overlay">
+							<div class="popup">
+								<h2>longueurs de contrôle </h2>
+								<a class="close" href="#">&times;</a>
+								<div class="longeurdesuspente" id="longeurdesuspente">
+					
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>');
 		}

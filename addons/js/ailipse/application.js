@@ -472,7 +472,25 @@
 			document.getElementById('boutons').innerHTML = "";
 
 			$(".boutons").append(bouton);
-
+			var letre=['a','b','c','d','E','br'];
+			var composition = "<h6> composition d'une ligne</h6>"+
+			"<table border='1'> <tr>"+
+			"<th width='5%'>test</th>";
+			lengt=letre.length;
+			alert(lengt);
+			for(j=0;i<lengt;i++)
+			{
+				for(i=1;i<=25;i++)
+				{
+					composition=composition+"<th width='"+5+"%'>"+letre[j]+i+" </th>";
+				}
+			}
+			alert("test");
+			composition+="</tr><tr>";
+			composition+="</tr></table>";
+			
+			document.getElementById('compositionligne').innerHTML = "";
+			$(".compositionligne").append(composition);
 	}
 
 	function affich() {

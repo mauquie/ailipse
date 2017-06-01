@@ -1,10 +1,14 @@
 <?php
 if(!class_exists("Vitrine")){
-	class Vitrine extends Bdd{
+	class Vitrine
+	{
+		private $_bdd; 
 		public function __construct()
 		{
+			$this->_bdd=new Bdd;
 		}
 		public function prestations(){
+
 			return '<div id="prestations" class="superbackground">
 							<br/>
 							<div class="col-md-12 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0 text-center">
@@ -113,7 +117,7 @@ if(!class_exists("Vitrine")){
 			try
 			{
 				// On se connecte à MySQL
-				$bdd= $this->openBDD();
+				$bdd= $this->_bdd->openbdd();
 			}
 			catch(Exception $e)
 			{
@@ -167,7 +171,7 @@ if(!class_exists("Vitrine")){
 			try
 			{
 				// On se connecte à MySQL
-				$bdd= $this->openBDD();
+				$bdd= $this->_bdd->openBDD();
 			}
 			catch(Exception $e)
 			{
@@ -223,7 +227,7 @@ if(!class_exists("Vitrine")){
 			try
 			{
 				// On se connecte à MySQL
-				$bdd= $this->openBDD();
+				$bdd= $this->_bdd->openBDD();
 			}
 			catch(Exception $e)
 			{
@@ -379,7 +383,7 @@ if(!class_exists("Vitrine")){
 					
 					// on établit la connexion avec le serveur par le biais de la base de données
 					
-					$connexionBdd = $this->openBDD();
+					$connexionBdd = $this->_bdd->openBDD();
 					
 					// protection contre l'injection SQL
 					
@@ -456,7 +460,7 @@ if(!class_exists("Vitrine")){
 					}
 					
 					
-					$this->closeBDD(); // on ferme la connexion avec la base de données
+					$this->_bdd->closeBDD(); // on ferme la connexion avec la base de données
 				}
 				
 			}
@@ -552,7 +556,7 @@ if(!class_exists("Vitrine")){
 			
 			// connexion � la base de donn�es
 			
-			$bdd =  $this->openBDD();
+			$bdd =  $this->_bdd->openBDD();
 
 			// v�rification si le champ pseudo a bien �t� rempli
 			
@@ -726,7 +730,7 @@ if(!class_exists("Vitrine")){
 
 	');
 			
-			$this->closeBDD();// fermeture de la base de donn�es 
+			$this->_bdd->closeBDD();// fermeture de la base de donn�es 
 		}
 		
 		public function recupererMotDePasse()
@@ -742,7 +746,7 @@ if(!class_exists("Vitrine")){
 			}
 			
 			// connexion à la base de données
-			$bdd =  $this->openBDD();
+			$bdd =  $this->_bdd->openBDD();
 			
 			$email = ($_POST['email']);
 			
@@ -820,7 +824,7 @@ if(!class_exists("Vitrine")){
 			{
 				echo "<script>alert('L\'adresse email que vous avez rentré ne fait référence à aucun compte sur notre site internet. Veuillez réessayer.'); location.href = 'index.php?d=vitrine&a=connexion#recuperer_mdp';</script>";
 			}
-			$this->closeBDD($bdd);// fermeture de la base de données
+			$this->_bdd->closeBDD($bdd);// fermeture de la base de données
 		}
 		
 	}

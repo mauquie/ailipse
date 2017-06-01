@@ -10,7 +10,7 @@ if(!class_exists("Operateur"))
 		
 		public function ajoutVoile()
 		{
-			$connect = $this->openBDD();
+			$connect = $this->_bdd->openBDD();
 			$sql="SELECT * from fabricant";
 			$result= $connect->query($sql);
 			
@@ -30,7 +30,7 @@ if(!class_exists("Operateur"))
 			}
 			$materiaux=$materiaux."</select>";
 			
-			$this->closeBDD();
+			$this->_bdd->CloseBDD();
 			$selectSuspente="<select id='nbSuspente' name='nbSuspente' class='nice-select' style='width:50%'>";
 			for($i=1;$i<=200;$i++)
 			{
@@ -379,7 +379,7 @@ if(!class_exists("Operateur"))
 		}
 		public function ajoutMateriaux()
 		{
-			$connect = $this->openBDD();
+			$connect = $this->_bdd->openBDD();
 			$sql="SELECT * from fabricant";
 			$result= $connect->query($sql);
 			
@@ -397,7 +397,7 @@ if(!class_exists("Operateur"))
 				$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";
 			}
 			$materiaux;
-			$this->closeBDD();
+			$this->_bdd->CloseBDD();
 			
 			return"
 					<div class='demo-card-wide mdl-card mdl-shadow--2dp'>
@@ -479,7 +479,7 @@ if(!class_exists("Operateur"))
 		
 		public function modifierVoile()
 		{
-			$connect = $this->openBDD();
+			$connect = $this->_bdd->openBDD();
 			
 			$sql="SELECT * from voile WHERE valider=0 ";
 			$result= $connect->query($sql);
@@ -499,7 +499,7 @@ if(!class_exists("Operateur"))
 			{
 				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
 			}
-			$this->closeBDD();
+			$this->_bdd->CloseBDD();
 			return("
 				<div class='demo-card-wide mdl-card mdl-shadow--2dp'>
 					<div class='mdl-card__title mdl-card-operateur__background animated slideInDown'>
@@ -576,7 +576,7 @@ if(!class_exists("Operateur"))
 				public function ControleVoile()
 		{
 			
-			$connect = $this->openBDD();	// ouverture de la BDD avec l'objet créé dans session.php qui est accéssible dans le noyau
+			$connect = $this->_bdd->openBDD();	// ouverture de la BDD avec l'objet créé dans session.php qui est accéssible dans le noyau
 
 			$queryconstr="SELECT * FROM `fabricant`";
 			$querymodele="SELECT * FROM `voile`";				
@@ -689,7 +689,7 @@ if(!class_exists("Operateur"))
 			$rupture=$_POST['rupture'];
 			$diam=$_POST['diam'];
 			$couleur=$_POST['couleur'];
-			$connect = $this->openBDD();
+			$connect = $this->_bdd->openBDD();
 			
 			
 			if($eq1==-1)
@@ -710,7 +710,7 @@ if(!class_exists("Operateur"))
 				$sql="INSERT INTO `susp_materiaux`( `id_fab`, `ref`, `eq1`, `eq2`, `eq3`, `mat`, `rupture`, `diam`, `couleur`) VALUES ('$id_fab','$ref','$eq1','$eq2','$eq3','$materiaux','$rupture','$diam','$couleur')";
 				$connect->query($sql);
 			}
-			$this->closeBDD();
+			$this->_bdd->CloseBDD();
 			echo '
 					<script>
 						alert("Succès : Votre materiel a bien etait crée");
@@ -730,7 +730,7 @@ if(!class_exists("Operateur"))
 			$valid_annonce = true;
 			$manuelToUpload= "test";
 			
-			$connect = $this->openBDD();
+			$connect = $this->_bdd->openBDD();
 			
 			if (count($_FILES['planToUpload']['name'])==1 && $_FILES['planToUpload']['name'][0]=='')
 			{
@@ -948,7 +948,7 @@ if(!class_exists("Operateur"))
 				}
 				
 			}
-			$this->closeBDD();
+			$this->_bdd->CloseBDD();
 		}
 		public function valider_constructeur()
 		{
@@ -971,11 +971,11 @@ if(!class_exists("Operateur"))
 			//initalise la variable
 			$photos = "test";
 			$valid_annonce= true;
-			$connect = $this->openBDD(); // connexion
+			$connect = $this->_bdd->openBDD(); // connexion
 			if (count($_FILES['photos']['name'])==1 && $_FILES['photos']['name'][0]=='')
 			{
 				$valid_annonce = false;
-				$this->closeBDD();
+				$this->_bdd->CloseBDD();
 				echo '<script>
             alert("Veuillez ajouter une image minimum.");
 			location="index.php?d=operateur&a=ajouter_voile";
@@ -1050,7 +1050,7 @@ if(!class_exists("Operateur"))
 			
 			
 			
-			$this->closeBDD();// fermeture
+			$this->_bdd->CloseBDD();// fermeture
 			echo '
 					<script>
 						alert("Succès : Votre constructeur a bien etait crée");
@@ -1060,7 +1060,7 @@ if(!class_exists("Operateur"))
 		public function recuperer_materiaux()
 		{
 			
-			$connect = $this->openBDD();
+			$connect = $this->_bdd->openBDD();
 			
 			$sql="SELECT id ,ref  From susp_materiaux";
 			
@@ -1071,12 +1071,12 @@ if(!class_exists("Operateur"))
 				$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";
 			}
 			echo $materiaux;
-			$this->closeBDD();
+			$this->_bdd->CloseBDD();
 		}
 		public function  recuperer_voile()
 		{
 			$id=$_POST["id"];
-			$connect = $this->openBDD();
+			$connect = $this->_bdd->openBDD();
 			$sql="SELECT * FROM modele where id='$id'";
 			$result=$connect->query($sql);
 			$atsend="";

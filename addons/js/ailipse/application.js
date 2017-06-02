@@ -1116,3 +1116,96 @@ function showThumbnail(files){
 	function choixRegion(id){
 		document.getElementById("selRegion").value=id;
 	}
+	
+	function afficherSuivi(){
+		var id_select = document.getElementById("select_suivi").value;
+		if(id_select!=-2){
+			$.ajax({
+				 url:"index.php?d=operateur&a=recuperer_suivi",
+				 type : "POST",
+				 data: {id_select:id_select},
+				 success: function (rep)
+				 {
+					tableau=rep.split(',');
+					document.getElementById("id").innerHTML = id_select;
+					document.getElementById("date_ouverture").innerHTML = tableau[0];
+					document.getElementById("commentaire").innerHTML = tableau[1];
+					document.getElementById("statut").innerHTML = tableau[2];
+					document.getElementById("operateur").innerHTML = tableau[3];
+				 }	
+
+			});
+			$.ajax({
+				  url:"index.php?d=operateur&a=recuperer_evenements_suivi",
+				  type : "POST",
+				  data: {id_select:id_select},
+				  success: function (rep)
+				  {
+					  tableau=rep.split(',');
+					  tableau_suivi =	'<h5 class="animated fade-in">Évènements du suivi</h5>'+
+						  				'<table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">'+
+											'<thead>'+
+												'<tr>'+
+											  		'<th class="mdl-data-table__cell--non-numeric">commentaire</th>'+
+											  		'<th class="mdl-data-table__cell--non-numeric">date</th>'+
+											  		'<th class="mdl-data-table__cell--non-numeric">opérateur</th>'+
+												'</tr>'+
+											'</thead>'+
+											'<tbody>';												
+					  for(var i=0;i<(tableau.length)-1;i++){
+						  if(i%3==0){
+							  tableau_suivi+='<tr>'+
+												'<td class="mdl-data-table__cell--non-numeric">'+tableau[i]+'</td>';
+						  }
+						  else if(i%3==1){
+							  tableau_suivi+='<td class="mdl-data-table__cell--non-numeric">'+tableau[i]+'</td>';
+						  }
+						  else{
+							  tableau_suivi+='<td class="mdl-data-table__cell--non-numeric">'+tableau[i]+'</td>'+
+							  				'</tr>';
+						  }
+					  }
+					  tableau_suivi+= '</tbody></table>';
+					  tableau_suivi+='<div class="mdl-textfield mdl-js-textfield">'+
+										'<textarea class="mdl-textfield__input" type="text" maxlength="200" rows= "8" id="nouveau_commentaire" name="nouveau_commentaire"></textarea>'+
+										'<label class="mdl-textfield__label" for="sample5">Commentaire</label>'+
+									'</div><br/><br/>'+
+									'<button onclick="gestionSuivi(\'ajout_evenement\')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">'+
+									'Créer un nouvel évènement'+
+									'</button>';
+					  //on va passer deux strings pour savoir si c'est une cloturation ou un ajout d'évènement
+					  $("#tableau_evenement").html(tableau_suivi);
+				  }	
+
+			});
+		}
+		else
+		{
+			document.getElementById("id").innerHTML = "";
+			document.getElementById("date_ouverture").innerHTML = "";
+			document.getElementById("commentaire").innerHTML = "";
+			document.getElementById("statut").innerHTML = "";
+			document.getElementById("operateur").innerHTML = "";
+			$("#tableau_evenement").html("");
+			
+		}
+	}
+	function gestionSuivi(type){
+		if(type=="ajout_evenement"){
+			commentaire = document.getElementById("nouveau_commentaire").value;
+			id = document.getElementById("select_suivi").value;
+			$.ajax({
+				 url:"index.php?d=operateur&a=ajouter_evenement_suivi",
+				 type : "POST",
+				 data: {commentaire:commentaire,id:id},
+				 success: function (rep)
+				 {
+					location.href="index.php?d=operateur&a=menu";
+				 }	
+
+			});
+		}
+		else{
+			
+		}
+	}

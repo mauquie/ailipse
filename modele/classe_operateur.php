@@ -1105,6 +1105,209 @@ if(!class_exists("Operateur"))
 			}
 			echo $atsend;
 		}
+		public function suiviVoile()
+		{
+			$select_suivi = "";
+			$connect = $this->_bdd->openBDD();
+			
+			// recuperation de tous les suivis
+			$result = $connect->query("SELECT id,date_ouverture FROM suivi WHERE statut <> 'cloturé'");
+			if(gettype($result)=="object"){
+				if($result->num_rows>0){
+					while($row = $result->fetch_array())
+					{
+						$select_suivi= $select_suivi."<option value=".$row[0].">".$row[1]."&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;".$row[0]."</option>";
+					}
+				}
+			}
+			$this->_bdd->closeBDD();
+			return '<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+						<div class="mdl-card__title mdl-card-operateur__background animated slideInDown">
+							<h2 class="mdl-card__title-text">Suivi des voiles</h2>
+						</div>
+						<div class="mdl-card__supporting-text card-background">
+							<center>
+								<a href="index.php?d=operateur&a=creer_suivi" ><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+									Créer un nouveau suivi
+								</button></a>
+							</center>
+							<hr/>
+							<select id="select_suivi" class="nice-select" name="select_suivi" onchange="afficherSuivi()">
+								<option value="-2">Sélectionnez un suivi</option>			
+								'.$select_suivi.'
+							</select>
+							<br/><br/><br/>
+							<h5 class="animated fade-in">Suivi</h5>
+							<table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+								<thead>
+									<tr>
+								  		<th class="mdl-data-table__cell--non-numeric">ID</th>
+								  		<th class="mdl-data-table__cell--non-numeric">date d\'ouverture</th>
+								  		<th class="mdl-data-table__cell--non-numeric">commentaire</th>
+										<th class="mdl-data-table__cell--non-numeric">statut</th>
+										<th class="mdl-data-table__cell--non-numeric">opérateur</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="mdl-data-table__cell--non-numeric" id="id"></td>
+										<td class="mdl-data-table__cell--non-numeric" id="date_ouverture"></td>
+										<td class="mdl-data-table__cell--non-numeric" id="commentaire"></td>
+										<td class="mdl-data-table__cell--non-numeric" id="statut"></td>
+										<td class="mdl-data-table__cell--non-numeric" id="operateur"></td>
+									</tr>
+								</tbody>
+							</table>
+							<div id="tableau_evenement">
+							</div>
+							<script>afficherSuivi()</script>
+						</div>
+					</div>';
+		}
+		public function creerSuiviVoile()
+		{
+			//récupérer un nouvel ID unique de suivi
+			$connect = $this->_bdd->openBDD();
+			$deroulant_client = "";
+			$result = $connect->query("SELECT id,nom,prenom FROM clients WHERE permissions = 1");
+			while($row = $result->fetch_array()){
+				$deroulant_client.='<option value="'.$row[0].'">'.$row[1].' '.$row[2].'</option>';
+			}
+			
+			$this->_bdd->closeBDD();
+			return '<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+						<div class="mdl-card__title mdl-card-operateur__background animated slideInDown">
+							<h2 class="mdl-card__title-text">Création d\'un nouveau suivi</h2>
+						</div>
+						<div class="mdl-card__supporting-text card-background">
+							<h5 class="animated fade-in">Créer un suivi</h5>
+							<div class="content-grid mdl-grid">
+								<div class="mdl-cell">
+									<form  action="index.php?d=operateur&a=valider_creer_suivi" method="post" enctype="multipart/form-data">
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<select id="client" style="width: 100%"; class="nice-select" name="client">
+												<option value="-2">Client non utilisateur</option>
+												'.$deroulant_client.'
+											</select>
+										</div>
+										<div class="mdl-textfield mdl-js-textfield">
+								  			<textarea class="mdl-textfield__input" type="text" maxlength="300" rows= "9" id="commentaire" name="commentaire"></textarea>
+								  			<label class="mdl-textfield__label" for="commentaire">Commentaire</label>
+								   		</div>
+										</br>
+										<button type="submit" value="Submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Créer</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>';
+		}
+		public function validerCreerSuivi($login_session)
+		{
+			if((isset($_POST["client"]))&&(isset($_POST["commentaire"])))
+			{
+				
+				$connect = $this->_bdd->openBDD();
+				date_default_timezone_set('Europe/Brussels');
+				
+				//on génère un ID de suivi unique
+				$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+				$myString ="";
+				for($i=0;$i<5;$i++){
+					$myString .= $chars[rand(0,61)];
+				}
+				
+				//on affecte les bonnes valeurs aux variables utilisés pour les requêtes
+				$id_suivi = date("HidmY").$myString;
+				$id_client = $_POST["client"];
+				$commentaire = $_POST["commentaire"];
+				$date = date('d/m/Y');
+				
+				//Création du suivi dans la table
+				$connect->query("INSERT INTO suivi VALUES ('$id_suivi','$date','en cours','$commentaire','receptionné','$id_client','$login_session')");
+				
+				//Création d'un évènement dans la table suivi_évènement
+				$connect->query("INSERT INTO suivi_evenement (id_suivi,operateur,commentaire,date) VALUES ('$id_suivi','$login_session','$commentaire','$date')");
+				
+				//Récupération du mail du client pour créer une notification
+				$result = $connect->query("SELECT email FROM clients WHERE id='$id_client'");
+				if(gettype($result)=="object"){
+					if($result->num_rows>0){
+						while($row = $result->fetch_array()){
+							$email = $row[0];
+						}
+						$message = "Nouvel événement disponible dans le suivi de votre voile.";
+						
+						//Création d'une notification dans la table correspondante
+						$connect->query("INSERT INTO notifications_utilisateur (email,message,active) VALUES ('$email','$message',1)");
+					}
+				}
+				$this->_bdd->closeBDD();
+				header("location: index.php?d=operateur&a=menu");
+			}
+		}
+		function recupererEvenementsSuivis(){
+			//on récupère tous les événements liés à l'ID de suivi pour formater les données à retourner au javascript
+			$id_select = $_POST["id_select"];
+			$connect = $this->_bdd->openBDD();
+			$result = $connect->query("SELECT commentaire,date,operateur FROM suivi_evenement WHERE id_suivi='$id_select'");
+			if(gettype($result)=="object"){
+				if($result->num_rows>0){
+					while($row = $result->fetch_array()){
+						echo $row[0].",".$row[1].",".$row[2].",";
+					}
+				}
+			}
+		}
+		function recupererSuivi(){
+			//On récupère les informations d'un suivi grâce à son ID
+			$id_select = $_POST["id_select"];
+			$connect = $this->_bdd->openBDD();
+			$result = $connect->query("SELECT date_ouverture,commentaire,statut,operateur FROM suivi WHERE id='$id_select'");
+			if(gettype($result)=="object"){
+				if($result->num_rows>0){
+					while($row = $result->fetch_array()){
+						echo $row[0].",".$row[1].",".$row[2].",".$row[3];
+					}
+				}
+			}
+		}
+		function ajouterEvenementSuivi($login_session){
+			if((isset($_POST["commentaire"]))&&(isset($_POST["id"]))){
+				date_default_timezone_set('Europe/Brussels');
+				$date = date('d/m/Y');
+				$id=$_POST["id"];
+				$commentaire= str_replace("'","\'",$_POST["commentaire"]);
+				$connect = $this->_bdd->openBDD();
+				
+				//ajout de l'événement dans la base de données
+				$connect->query("INSERT INTO suivi_evenement (id_suivi,operateur,commentaire,date) VALUES ('$id','$login_session','$commentaire','$date')");
+				
+				//On récupère l'ID client lié au suivi
+				$result = $connect->query("SELECT id_client FROM suivi WHERE id='$id'");
+				if(gettype($result)=="object"){
+					if($result->num_rows>0){
+						while($row = $result->fetch_array()){
+							if($row[0]!=-2){
+								
+								//on récupère l'email grâce à l'ID retrouvé
+								$result = $connect->query("SELECT email FROM clients WHERE id='$row[0]'");
+								if(gettype($result)=="object"){
+									if($result->num_rows>0){
+										$message = "Nouvel événement disponible dans le suivi de votre voile.";
+										while($row = $result->fetch_array()){
+											
+											//On notifie l'utilisateur qu'un nouvel évènement est présent dans le suivi de sa voile
+											$connect->query("INSERT INTO notifications_utilisateur (email,message,active) VALUES ('$row[0]','$message',1)");
+										}
+									}
+								}
+							}
+						}
+					}
+				}	
+			}
+		}
 	}
 }
 

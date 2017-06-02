@@ -89,6 +89,7 @@
 		break;
 		
 		
+		
 		// pout les ajax (js)
 		case "recuperer_voile":
 			$contenu="";
@@ -100,6 +101,24 @@
 			$contenu="";
 			$sortie = "";
 			$typeUtilisateur->recuperer_materiaux();
+		break;
+		
+		case "recuperer_suivi":
+			$contenu="";
+			$sortie = "";
+			$typeUtilisateur->recupererSuivi();
+		break;
+		
+		case "recuperer_evenements_suivi":
+			$contenu="";
+			$sortie = "";
+			$typeUtilisateur->recupererEvenementsSuivis();
+			break;
+			
+		case "ajouter_evenement_suivi":
+			$contenu="";
+			$sortie = "";
+			$typeUtilisateur->ajouterEvenementSuivi($login_session);
 		break;
 		
 		default:

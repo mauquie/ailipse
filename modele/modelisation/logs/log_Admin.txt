@@ -1994,3 +1994,7 @@
 2017-06-01 09:22:52 --- Redirection vers la page "menu" par "admin@test.fr
 2017-06-01 08:29:48 --- Connexion de "admin@test.fr" en tant que "Administrateur"
 2017-06-02 06:04:14 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-02 09:21:51 --- Redirection vers la page "menu" par "admin@test.fr
+2017-06-02 09:21:53 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-06-02 09:21:54 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-06-02 09:22:17 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr

@@ -1998,3 +1998,5 @@
 2017-06-02 09:21:53 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
 2017-06-02 09:21:54 --- Redirection vers la page "affiche" par "admin@test.fr
 2017-06-02 09:22:17 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-06-06 06:27:16 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-06 08:27:27 --- Redirection vers la page "voile" par "admin@test.fr

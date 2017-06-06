@@ -2000,3 +2000,12 @@
 2017-06-02 09:22:17 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
 2017-06-06 06:27:16 --- Connexion de "admin@test.fr" en tant que "Administrateur"
 2017-06-06 08:27:27 --- Redirection vers la page "voile" par "admin@test.fr
+2017-06-06 07:53:42 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-06 10:22:05 --- Redirection vers la page "menu" par "admin@test.fr
+2017-06-06 10:22:07 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-06-06 10:22:10 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-06-06 10:22:13 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-06-06 10:24:49 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr
+2017-06-06 10:24:52 --- Redirection vers la page "affiche" par "admin@test.fr
+2017-06-06 10:24:54 --- Redirection vers la page "delete" par "admin@test.fr
+2017-06-06 10:24:54 --- Redirection vers la page "gerer_utilisateurs" par "admin@test.fr

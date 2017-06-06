@@ -183,6 +183,11 @@ if(!class_exists("Operateur"))
 						<div class="boutons" name="boutons" id="boutons">
 						</div>
 						<br />
+						<div class="boutonvalider" name="boutonvalider" id="boutonvalider" style="visibility: hidden">
+							<button type="submit" name="submit" class="mdl-button mdl-js-button">
+	  							valider la saisie
+							</button>
+						</div>
 						</form>
 						<div id="popup_tableau" class="overlay">
 									<div class="popup">
@@ -231,7 +236,7 @@ if(!class_exists("Operateur"))
 							<div class="popup">
 								<h2>longueurs de contrôle </h2>
 								<a class="close" href="#">&times;</a>
-								<div class="longeurdesuspente" id="longeurdesuspente">
+								<div class="longueursdecontrole" id="longueursdecontrole">
 					
 								</div>
 							</div>

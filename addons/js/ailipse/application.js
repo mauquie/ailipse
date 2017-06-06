@@ -444,7 +444,7 @@
 
 				document.getElementById('materiauxSuspente').innerHTML = "";
 
-				if(document.getElementById('materiauxSuspentecontin').style.visibility=='hidden')
+			if(document.getElementById('materiauxSuspentecontin').style.visibility=='hidden')
 			{
 				document.getElementById('materiauxSuspentecontin').style.visibility='visible';
 			}
@@ -474,23 +474,42 @@
 			$(".boutons").append(bouton);
 			var letre=['a','b','c','d','E','br'];
 			var composition = "<h6> composition d'une ligne</h6>"+
-			"<table border='1'> <tr>"+
-			"<th width='5%'>test</th>";
-			lengt=letre.length;
-			alert(lengt);
-			for(j=0;i<lengt;i++)
+			"<table border='1'>" +
+			"<tr>"+
+			"<th width='5%'>nom</th>"
+			for( var t=1;t<=nb;t++)
 			{
-				for(i=1;i<=25;i++)
+				composition=composition+"<th width='"+5+"%'> taille"+t+" </th>";
+			}
+			composition+="</tr><tr>";		
+			lengt=letre.length;
+			for( var j=0;j<lengt;j++)
+			{
+				
+				for(var i=1;i<=25;i++)
 				{
 					composition=composition+"<th width='"+5+"%'>"+letre[j]+i+" </th>";
+					for(var test=1;test<=nb;test++)
+						{
+						composition=composition+'<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+								'<input name="composition'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="composition'+j+i+'"><label style=" width:100%" class="mdl-textfield__label" for="composition'+j+i+'"></label>'+
+							'</div>'+'</td>';
+						}
+					composition=composition+"</tr><tr>";
 				}
 			}
-			alert("test");
-			composition+="</tr><tr>";
+			
 			composition+="</tr></table>";
 			
 			document.getElementById('compositionligne').innerHTML = "";
 			$(".compositionligne").append(composition);
+			document.getElementById('longueursdecontrole').innerHTML = "";
+			$(".longueursdecontrole").append(composition);
+			
+			if(document.getElementById('boutonvalider').style.visibility=='hidden')
+			{
+				document.getElementById('boutonvalider').style.visibility='visible';
+			}
 	}
 
 	function affich() {

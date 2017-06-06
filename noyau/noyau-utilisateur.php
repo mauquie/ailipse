@@ -45,6 +45,12 @@
 			}
 		break;
 		
+		case "suivi":
+			$sortie=file("vue/application.html");
+			$nav_en_cours = 'suivi';
+			$contenu = $typeUtilisateur->suivi();
+		break;
+		
 		default:
 			//redirection page 404
 			$contenu = "";

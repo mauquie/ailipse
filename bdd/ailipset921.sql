@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 02 Juin 2017 à 09:38
--- Version du serveur :  5.7.11
+-- Généré le :  Mar 06 Juin 2017 à 14:48
+-- Version du serveur :  5.6.20-log
 -- Version de PHP :  7.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -300,7 +300,8 @@ CREATE TABLE `clients` (
 INSERT INTO `clients` (`id`, `email`, `password`, `nom`, `prenom`, `telephone`, `ville_expedition`, `rue_expedition`, `code_postal_expedition`, `ville_facturation`, `rue_facturation`, `code_postal_facturation`, `avatar`, `permissions`, `actif`) VALUES
 (1, 'admin@test.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Test', 'Admin', '0610203040', 'test', '3 boulevard Hérriot', '82000', 'Montauban', '3 boulevard Hérriot', '82000', 'admin@test_fr', 3, 1),
 (4, 'test@test.fr', '89cb44342cc93225ba11ce09c5845e73b83ede8c', 'Test', 'Test', '0610203040', 'Test', 'Test', '82000', 'Test', 'Test', '82000', 'test@test_fr', 2, 1),
-(8, 'test1@test.fr', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test', 'Test', '0610203040', 'Test', 'Test', '82000', 'Test', 'Test', '82000', 'test@test_fr', 1, 1);
+(8, 'test1@test.fr', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test', 'Test', '0610203040', 'Test', 'Test', '82000', 'Test', 'Test', '82000', 'test@test_fr', 1, 1),
+(54, 'test2@test.fr', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test', 'Test', '0610203040', 'Test', 'Test', '82000', 'Test', 'Test', '82000', 'test@test_fr', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -504,12 +505,13 @@ INSERT INTO `notifications_utilisateur` (`id`, `email`, `message`, `active`) VAL
 (6, 'admin@test.fr', 'Votre annonce crÃ©Ã©e le 24/05/2017, portant le nom \'dazda\' a Ã©tÃ© validÃ©e par un administrateur.', 0),
 (7, 'admin@test.fr', 'Votre annonce crÃ©Ã©e le 24/05/2017, portant le nom \'dfzdaz\' a Ã©tÃ© validÃ©e par un administrateur.', 0),
 (8, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 0),
-(12, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 1),
-(11, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 1),
-(13, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 1),
-(14, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 1),
-(15, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 1),
-(16, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 1);
+(12, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 0),
+(11, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 0),
+(13, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 0),
+(14, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 0),
+(15, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 0),
+(16, 'test1@test.fr', 'Nouvel évènement disponible dans le suivi de votre voile.', 0),
+(17, 'test1@test.fr', 'Nouvel événement disponible dans le suivi de votre voile.', 0);
 
 -- --------------------------------------------------------
 
@@ -521,7 +523,7 @@ CREATE TABLE `suivi` (
   `id` varchar(17) CHARACTER SET utf8 NOT NULL,
   `date_ouverture` varchar(10) NOT NULL,
   `date_cloture` varchar(10) NOT NULL,
-  `commentaire` text CHARACTER SET utf8 NOT NULL,
+  `commentaire` varchar(300) CHARACTER SET utf8 NOT NULL,
   `statut` varchar(30) CHARACTER SET utf8 NOT NULL,
   `id_client` int(10) NOT NULL,
   `operateur` varchar(50) CHARACTER SET utf8 NOT NULL
@@ -532,6 +534,7 @@ CREATE TABLE `suivi` (
 --
 
 INSERT INTO `suivi` (`id`, `date_ouverture`, `date_cloture`, `commentaire`, `statut`, `id_client`, `operateur`) VALUES
+('144206062017eT92G', '06/06/2017', 'en cours', 'ptitest', 'cloturé', 8, 'admin@test.fr'),
 ('151531052017FXTlq', '31/05/2017', 'en cours', 'non utilisateur', 'receptionné', -2, 'admin@test.fr'),
 ('151531052017ZYgDp', '31/05/2017', 'en cours', 'non utilisateur', 'receptionné', -2, 'admin@test.fr'),
 ('151631052017WISO4', '31/05/2017', 'en cours', 'commentaire de ouf qui fait une notif', 'receptionné', 8, 'admin@test.fr'),
@@ -551,7 +554,7 @@ CREATE TABLE `suivi_evenement` (
   `id` int(10) NOT NULL,
   `id_suivi` varchar(17) NOT NULL,
   `operateur` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `commentaire` text CHARACTER SET utf8 NOT NULL,
+  `commentaire` varchar(200) CHARACTER SET utf8 NOT NULL,
   `date` varchar(10) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -567,7 +570,9 @@ INSERT INTO `suivi_evenement` (`id`, `id_suivi`, `operateur`, `commentaire`, `da
 (13, '1526310520179Evap', 'admin@test.fr', 'fgjn', '31/05/2017'),
 (14, '173031052017t7BBQ', 'admin@test.fr', 'sqdqsd', '31/05/2017'),
 (15, '173031052017e4Kca', 'admin@test.fr', 'dddddddddd', '31/05/2017'),
-(16, '173431052017eJZEp', 'admin@test.fr', 'khbhjuik', '31/05/2017');
+(16, '173431052017eJZEp', 'admin@test.fr', 'khbhjuik', '31/05/2017'),
+(17, '144206062017eT92G', 'admin@test.fr', 'ptitest', '06/06/2017'),
+(18, '151631052017WISO4', 'admin@test.fr', 'commentaire de ouf qui fait une notif2', '04/05/2017');
 
 -- --------------------------------------------------------
 
@@ -1924,7 +1929,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT pour la table `departement`
 --
@@ -1944,12 +1949,12 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT pour la table `notifications_utilisateur`
 --
 ALTER TABLE `notifications_utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT pour la table `suivi_evenement`
 --
 ALTER TABLE `suivi_evenement`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT pour la table `susp_materiaux`
 --

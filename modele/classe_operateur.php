@@ -227,7 +227,7 @@ if(!class_exists("Operateur"))
 								<h2>compisition d\'une ligne</h2>
 								<a class="close" href="#">&times;</a>
 								<div class="compositionligne" id="compositionligne">
-									test
+									
 								</div>
 							</div>
 						</div>
@@ -508,7 +508,7 @@ if(!class_exists("Operateur"))
 			$sql="SELECT * from voile WHERE valider=0 ";
 			$result= $connect->query($sql);
 			
-			$voile="<option value='-1'> </option>";
+			$voile="<option value='-1'>Voile</option>";
 			while($row=mysqli_fetch_array($result))
 			{
 				$voile=$voile."<option value=$row[0]>$row[1]</option>";
@@ -517,8 +517,7 @@ if(!class_exists("Operateur"))
 			$sql="SELECT * from fabricant";
 			$result= $connect->query($sql);
 			
-			$fabricant="<option value='-2'> </option>
-						<option value='-1'> </option>";
+			$fabricant="<option value='-1'>Fabricant </option>";
 			while($row=mysqli_fetch_array($result))
 			{
 				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
@@ -530,6 +529,7 @@ if(!class_exists("Operateur"))
 					<h2 class='mdl-card__title-text'>modification de voile non valider</h2>
 					</div>
 					<div class='mdl-card__supporting-text card-background'>
+					<form>
 					<select name='voileat' id='voileart' onchange='affichvoile()' class='nice-select'>
 					".$voile."
 					</select>
@@ -581,15 +581,85 @@ if(!class_exists("Operateur"))
 						<div name='taile'  class='taile'  style='visibility: hidden' id='taile'>
 					
 						</div>
-						//a metre les diferent tableux en pop up par fonction js sur le selecte
+						
 						</div>
-						<div class='mdl-cell'>
-						<input name='nom' class='mdl-textfield__input' type='text' id='nom'>
-								<label class='mdl-textfield__label' for='nom'>nom12</label>
-						//a metre les diferent tableux en pop up par fonction js sur le selecte
+						<div class='mdl-cell'>					
+							<div class='valeur_taille_containt' name='valeur_taille_containt' id='valeur_taille_containt' style=' visibility: hidden'>
+								<a href='#popup_tableau' class='mdl-button mdl-js-button mdl-button--primary' style='text-decoration:none; color:rgb(96,125,139)'>reference fabriquant des suspente </a>
+							</div>
+							<br />
+							<div class='longerSuspentecontain' name='longerSuspentecontain' id='longerSuspentecontain'  style='visibility: hidden'>
+								<a href='#popup_tableau2' class='mdl-button mdl-js-button mdl-button--primary' style='text-decoration:none; color:rgb(96,125,139)'>longueur des suspentes</a>
+							</div>
+							<br />
+							<div class='materiauxSuspentecontin' name='materiauxSuspentecontin' id='materiauxSuspentecontin' style=' visibility: hidden'>
+								<a href='#popup_tableau3' class='mdl-button mdl-js-button mdl-button--primary' style='text-decoration:none; color:rgb(96,125,139)'>reference fabriquant des suspente </a>
+							</div>
+							<br />
+							<div class='composition' name='composition' id='composition' style=' visibility: hidden'>
+								<a href='#popup_tableau4' class='mdl-button mdl-js-button mdl-button--primary' style='text-decoration:none; color:rgb(96,125,139)'>compisition d\une ligne </a>
+							</div>
+							<br />
+							<div class='longeur' name='longeur' id='longeur' style=' visibility: hidden'>
+								<a href='#popup_tableau5' class='mdl-button mdl-js-button mdl-button--primary' style='text-decoration:none; color:rgb(96,125,139)'>longueurs de contrôle</a>
+							</div>
+							</center>
+							</div>
+					</div>
+						<div id='popup_tableau' class='overlay'>
+									<div class='popup'>
+								<h2>Référance fabricant des suspentes</h2>
+								<a class='close' href='#'>&times;</a>
+								<div class='valeur_taille' id='valeur_taille'>
+					
+								</div>
+								<br />
+								<hr />
+							</div>
 						</div>
-					</div>
-					</div>
+					
+					
+						<div id='popup_tableau2' class='overlay'>
+							<div class='popup'>
+								<h2>longeur des supente </h2>
+								<a class='close' href='#'>&times;</a>
+								<div class='longerSuspente' id='longerSuspente'>
+					
+								</div>
+								<br />
+								<hr />
+							</div>
+						</div>
+					
+						<div id='popup_tableau3' class='overlay'>
+							<div class='popup'>
+								<h2>materiaux des suspente </h2>
+								<a class='close' href='#'>&times;</a>
+								<div class='materiauxSuspente' id='materiauxSuspente'>
+					
+								</div>
+							</div>
+						</div>
+						<div id='popup_tableau4' class='overlay'>
+							<div class='popup'>
+								<h2>compisition d\'une ligne</h2>
+								<a class='close' href='#'>&times;</a>
+								<div class='compositionligne' id='compositionligne'>
+									
+								</div>
+							</div>
+						</div>
+						<div id='popup_tableau5' class='overlay'>
+							<div class='popup'>
+								<h2>longueurs de contrôle </h2>
+								<a class='close' href='#'>&times;</a>
+								<div class='longueursdecontrole' id='longueursdecontrole'>
+					
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 			");
 			
@@ -1048,7 +1118,9 @@ if(!class_exists("Operateur"))
 				}
 				
 			}
+			
 			$this->_bdd->CloseBDD();
+			header("location: index.php?d=operateur&a=menu");
 		}
 		public function valider_constructeur()
 		{
@@ -1177,14 +1249,25 @@ if(!class_exists("Operateur"))
 		{
 			$id=$_POST["id"];
 			$connect = $this->_bdd->openBDD();
-			$sql="SELECT * FROM modele where id='$id'";
+			$sql="SELECT * FROM voile where id='$id'";
 			$result=$connect->query($sql);
 			$atsend="";
-			while($row = mysqli_fetch_array($result))
+			while($row = $result->fetch_array())
 			{
 				$atsend="$row[1],$row[2],$row[3],$row[4],$row[5]";
+				$nbtaille=$row[3];
+			}
+			
+			$sql="SELECT * FROM `voile_taille` WHERE idvoile='$id'";
+			$result=$connect->query($sql);
+			$row = $result->fetch_array();
+			
+			for($i=0;$i<$nbtaille;$i++)
+			{
+				$atsend.=$row[$i].",";
 			}
 			echo $atsend;
+			
 		}
 		public function suiviVoile()
 		{

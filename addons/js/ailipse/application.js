@@ -59,12 +59,8 @@
 
 		var voile=document.getElementById("voileart").value;
 
-		alert(voile);
 
-		$.ajax({
-
-			
-
+		$.ajax({	
 			url:"index.php?d=operateur&a=recuperer_voile",
 
 			data:{id:voile},
@@ -72,11 +68,7 @@
 			type : "POST",
 
 			success :function(rep)
-
 			{
-
-				alert(rep);
-
 				var reponce=rep.split(',');
 
 				if(document.getElementById("donner").style.visibility==='hidden')
@@ -96,7 +88,7 @@
 					
 
 				}
-
+				
 				document.getElementById("nom").value=reponce[0];
 
 				document.getElementById("fabriquand").value=reponce[1];
@@ -106,17 +98,15 @@
 				document.getElementById("date").value=reponce[3];
 
 				document.getElementById("cert").value=reponce[4];
-
-				alert("test");
-
+			
 				var table;
 
 				var wid=100/reponce[2];
 
 				table="<table class='mdl-data-table' style='margin:auto;'>";
 
-				alert("test2");
-
+				
+				
 				for(i=1;i<reponce[2];i++)
 
 				{
@@ -127,36 +117,78 @@
 
 				table=table+"</tr><tr> ";
 
-				alert("test3");
-
-				for(i=1; i<=nb;i++)
+				
+				
+				for(i=1; i<reponce[2];i++)
 
 				{
 
 					table=table+ '<td style=" width:'+wid+'%">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
 
-								'<input name="taille'+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="taille'+i+'">'+
+								'<input name="taille'+i+'" style=" width:100%" class="mdl-textfield__input" type="text"  value="'+reponce[i+4]+'"id="taille'+i+'">'+
 
 								'<label style=" width:100%" class="mdl-textfield__label" for="taille'+i+'"></label>'+
 
 								'</div>'+'</td>';
 
 				}
-
 				table=table+"  </tr> </table>";
 
 				document.getElementById("taile").innerHTML = "";
 
-				alert("test4");
-
 				$(".taile").append(table);
-
-				alert("testfin");
-
+				/*
+				if(document.getElementById('valeur_taille_containt').style.visibility=='hidden')
+				{
+					document.getElementById('valeur_taille_containt').style.visibility='visible';
+				}
+				if(document.getElementById('longerSuspentecontain').style.visibility=='hidden')
+				{
+					document.getElementById('longerSuspentecontain').style.visibility='visible';
+				}
+				if(document.getElementById('materiauxSuspentecontin').style.visibility=='hidden')
+				{
+					document.getElementById('materiauxSuspentecontin').style.visibility='visible';
+				}
+				if(document.getElementById('composition').style.visibility=='hidden')
+				{
+					document.getElementById('composition').style.visibility='visible';
+				}
+				
+				if(document.getElementById('longeur').style.visibility=='hidden')
+				{
+					document.getElementById('longeur').style.visibility='visible';
+				}
+				*/
+				
 			}
 
 			});
-
+	
+		/*
+		var  tablmateriaux="<h6> listes des matériaux de la suspentes </h6>"+
+		"<table border='1'> <tr>"+
+		"<th width='60px'> taille </th>";
+		for(i=1; i<=nb;i++)
+		{
+			tablmateriaux+="<th width='"+wid+"%'>taile"+i+"</th>";
+		}
+		tablmateriaux+="</tr><tr> ";
+		for(j=1;j<=nbSuspente;j++)
+		{
+			tablmateriaux+="<th width='"+wid+"px'> supsente"+j+" </th>";
+			for(i=1; i<=nb;i++)
+			{
+				tablmateriaux+='<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+							'<select  name="materiaux'+i+j+'"  id="materiaux'+i+j+'"  style="width:100%">'+
+							rep+
+							'</select>'+
+							'</div>'+'</td>';
+			}
+			tablmateriaux+="</tr><tr>";
+		}
+		tablmateriaux+="  </tr> </table>";
+		*/
 	}
 
 	function affichTable()

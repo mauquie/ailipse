@@ -275,7 +275,7 @@
 
 			{
 
-				tabl=tabl+"<th style='width:'"+wid+"px;'>ref"+i+"</th>";
+				tabl=tabl+"<th style='width:'"+wid+"px;'>taille"+i+"</th>";
 
 			}
 
@@ -336,7 +336,7 @@
 
 			{
 
-				tabl2=tabl2+"<th width='45px'> ru"+i+"</th>";
+				tabl2=tabl2+"<th width='45px'> taille"+i+"</th>";
 
 			}
 
@@ -352,7 +352,7 @@
 
 			{
 
-				tabl2=tabl2+"<th width='"+wid+"px'> taille"+j+" </th>";
+				tabl2=tabl2+"<th width='"+wid+"px'> suspente"+j+" </th>";
 
 				for(i=1; i<=nb;i++)
 
@@ -382,7 +382,7 @@
 			}
 			document.getElementById('longerSuspente').innerHTML = "";
 
-			wid= 15;
+			wid= 100/nb;
 
 			$(".longerSuspente").append(tabl2);
 
@@ -404,7 +404,7 @@
 
 				{
 
-					tabl3=tabl3+"<th width='"+wid+"px'>suspentes"+i+"</th>";
+					tabl3=tabl3+"<th width='"+wid+"%'>taile"+i+"</th>";
 
 				}
 
@@ -416,7 +416,7 @@
 
 				{
 
-					tabl3=tabl3+"<th width='"+wid+"px'> taille"+j+" </th>";
+					tabl3=tabl3+"<th width='"+wid+"px'> supsente"+j+" </th>";
 
 					for(i=1; i<=nb;i++)
 
@@ -472,7 +472,7 @@
 			document.getElementById('boutons').innerHTML = "";
 
 			$(".boutons").append(bouton);
-			var letre=['a','b','c','d','E','br'];
+			var letre=['A','B','C','D','E','br'];
 			var composition = "<h6> composition d'une ligne</h6>"+
 			"<table border='1'>" +
 			"<tr>"+
@@ -490,11 +490,11 @@
 				{
 					composition=composition+"<th width='"+5+"%'>"+letre[j]+i+" </th>";
 					for(var test=1;test<=nb;test++)
-						{
+					{
 						composition=composition+'<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
-								'<input name="composition'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="composition'+j+i+'"><label style=" width:100%" class="mdl-textfield__label" for="composition'+j+i+'"></label>'+
+								'<input name="composition'+j+i+test+'" style=" width:100%" class="mdl-textfield__input" type="text" id="composition'+j+i+test+'"><label style=" width:100%" class="mdl-textfield__label" for="composition'+j+i+'"></label>'+
 							'</div>'+'</td>';
-						}
+					}
 					composition=composition+"</tr><tr>";
 				}
 			}

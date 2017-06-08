@@ -15,8 +15,7 @@ if(!class_exists("Operateur"))
 			$sql="SELECT * from fabricant";
 			$result= $connect->query($sql);
 			
-			$fabricant="<option value='-2'> </option>
-						  <option value='-1'> </option>";
+			$fabricant=" <option value='-1'> fabricant à sélectionner </option>";
 			while($row=mysqli_fetch_array($result))
 			{
 				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
@@ -24,7 +23,7 @@ if(!class_exists("Operateur"))
 			$sql="SELECT id ,ref from susp_materiaux";
 			$result=$connect->query($sql);
 			$materiaux="<select id='materiaux' class='nice-select' style='width:50%'>
-							<option value='-1'> </option>";
+							<option value='-1'>materiaux possible</option>";
 			while($row = mysqli_fetch_array($result))
 			{
 				$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";
@@ -55,9 +54,9 @@ if(!class_exists("Operateur"))
 								</div>
 								<h6>Fabriquant:</h6>
 								<select id="id_const" class="nice-select" name="client" >
-									<?php
-											echo('.$fabricant.');
-									?>
+									
+											'.$fabricant.'
+									
 								</select>
 								<br />
 								<br />
@@ -145,7 +144,7 @@ if(!class_exists("Operateur"))
 									<br />
 									<br />
 									<button type="button" onclick="window.location=\'index.php?d=operateur&a=ajout_materiaux\'" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >
-										Ajouter matriaux
+										Ajouter materiaux
 									</button>
 									<br />
 									<br />
@@ -188,7 +187,7 @@ if(!class_exists("Operateur"))
 	  							valider la saisie
 							</button>
 						</div>
-						</form>
+						
 						<div id="popup_tableau" class="overlay">
 									<div class="popup">
 								<h2>Référance fabricant des suspentes</h2>
@@ -241,6 +240,7 @@ if(!class_exists("Operateur"))
 								</div>
 							</div>
 						</div>
+					</form>
 					</div>
 				</div>');
 		}
@@ -776,7 +776,7 @@ if(!class_exists("Operateur"))
 				$filename = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename);
 				$filename =$nom."_plan.".$extension;
 				
-				$target_dir ="../../vue/images/modeleVoile/plan/";
+				$target_dir ="vue/images/modeleVoile/plan/";
 				$target_file = $target_dir . basename($filename);
 				$uploadOk = 1;
 				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -827,7 +827,7 @@ if(!class_exists("Operateur"))
 					$filename = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename);
 					$filename =$nom."_manuel.".$extension;
 					
-					$target_dir ="../../vue/images/modeleVoile/manuel/";
+					$target_dir ="vue/images/modeleVoile/manuel/";
 					$target_file = $target_dir . basename($filename);
 					$uploadOk = 1;
 					$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -863,7 +863,8 @@ if(!class_exists("Operateur"))
 					$pathManuel=$filename;
 				}
 			}
-			if($valid_annonce){
+			if($valid_annonce)
+			{
 				$id_voile="etst";
 				if($pathManuel=="")
 				{
@@ -901,7 +902,7 @@ if(!class_exists("Operateur"))
 				}
 				$sql=$sql.")";
 				$connect->query($sql);
-				// pour la basse de denner des reference fabriquand
+				// pour la base de dennée des reference fabriquand
 				for($fois=1;$fois<=$taill;$fois++)
 				{
 					$Id_une=$id_voile.$array[$fois];
@@ -954,7 +955,7 @@ if(!class_exists("Operateur"))
 					$value=[];
 					for($i=1;$i<=$nb_susp ; $i++)
 					{
-						$value[$i]=$_POST['materiaux'.$i.$fois];
+						$value[$i]=$_POST['materiaux'.$fois.$i];
 					}
 					$sql="INSERT INTO  ` voile_mat_susp_cut` (`idvoile`";
 					for($i=1;$i<=$nb_susp;$i++)
@@ -965,6 +966,45 @@ if(!class_exists("Operateur"))
 					for($i=1;$i<=$nb_susp;$i++)
 					{
 						$sql=$sql.",'$value[$i]'";
+					}
+					$sql=$sql.")";
+					$connect->query($sql);
+					echo $sql."\r\n";
+				}
+				$composition=[];
+				$letre=array('A','B','C','D','E','br');
+				for($all=1;$all<=$taill;$all++)
+				{
+					for($fois=0;$fois<6;$fois++)
+					{
+						for($i=1;$i<=25;$i++)
+						{
+							$composition[$fois.$i.$all]=$_POST['composition'.$fois.$i.$all];
+						}
+						
+					}
+					$sql="INSERT INTO `voile_assemblage_sup`(`idvoile`";
+					
+					foreach ($letre as $sortie)
+					{
+						for($i=1;$i<=25;$i++)
+						{
+							$sql.=",`$sortie$i`";
+						}
+						
+					}
+					$Id_une=$id_voile.$array[$all];
+					$sql=$sql.") VALUES ('$id_voile'";
+					for($fois=0;$fois<6;$fois++)
+					{
+						for($i=1;$i<=25;$i++)
+						{
+							$valeur=$fois.$i.$all;
+							echo $valeur;
+							$sql=$sql.",'$composition[$valeur]'";
+						}
+						
+						
 					}
 					$sql=$sql.")";
 					$connect->query($sql);
@@ -1089,7 +1129,7 @@ if(!class_exists("Operateur"))
 			$sql="SELECT id ,ref  From susp_materiaux";
 			
 			$result=$connect->query($sql);
-			$materiaux="<option value='-1'> </option>";
+			$materiaux="<option value='-1'>a rentré</option>";
 			while($row = mysqli_fetch_array($result))
 			{
 				$materiaux=$materiaux."<option value=$row[0]>$row[1]</option>";

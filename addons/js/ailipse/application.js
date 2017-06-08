@@ -498,13 +498,39 @@
 					composition=composition+"</tr><tr>";
 				}
 			}
+			var longeur = "<h6> longeur d'une ligne</h6>"+
+			"<table border='1'>" +
+			"<tr>"+
+			"<th width='5%'>nom</th>"
+			for( var t=1;t<=nb;t++)
+			{
+				longeur=longeur+"<th width='"+5+"%'> taille"+t+" </th>";
+			}
+			longeur+="</tr><tr>";		
+			lengt=letre.length;
+			for( var j=0;j<lengt;j++)
+			{
+				
+				for(var i=1;i<=25;i++)
+				{
+					longeur=longeur+"<th width='"+5+"%'>"+letre[j]+i+" </th>";
+					for(var test=1;test<=nb;test++)
+					{
+						longeur=longeur+'<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+								'<input name="longeur'+j+i+test+'" style=" width:100%" class="mdl-textfield__input" type="text" id="longeur'+j+i+test+'"><label style=" width:100%" class="mdl-textfield__label" for="composition'+j+i+'"></label>'+
+							'</div>'+'</td>';
+					}
+					longeur=longeur+"</tr><tr>";
+				}
+			}
 			
 			composition+="</tr></table>";
 			
 			document.getElementById('compositionligne').innerHTML = "";
 			$(".compositionligne").append(composition);
+			
 			document.getElementById('longueursdecontrole').innerHTML = "";
-			$(".longueursdecontrole").append(composition);
+			$(".longueursdecontrole").append(longeur);
 			
 			if(document.getElementById('boutonvalider').style.visibility=='hidden')
 			{

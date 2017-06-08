@@ -1000,7 +1000,6 @@ if(!class_exists("Operateur"))
 						for($i=1;$i<=25;$i++)
 						{
 							$valeur=$fois.$i.$all;
-							echo $valeur;
 							$sql=$sql.",'$composition[$valeur]'";
 						}
 						
@@ -1008,7 +1007,44 @@ if(!class_exists("Operateur"))
 					}
 					$sql=$sql.")";
 					$connect->query($sql);
-					echo $sql."\r\n";
+					
+				}
+				// la longeur d
+				for($all=1;$all<=$taill;$all++)
+				{
+					for($fois=0;$fois<6;$fois++)
+					{
+						for($i=1;$i<=25;$i++)
+						{
+							$longeur[$fois.$i.$all]=$_POST['longeur'.$fois.$i.$all];
+						}
+						
+					}
+					$sql="INSERT INTO `voile_assemblage_sup`(`idvoile`";
+					
+					foreach ($letre as $sortie)
+					{
+						for($i=1;$i<=25;$i++)
+						{
+							$sql.=",`$sortie$i`";
+						}
+						
+					}
+					$Id_une=$id_voile.$array[$all];
+					$sql=$sql.") VALUES ('$id_voile'";
+					for($fois=0;$fois<6;$fois++)
+					{
+						for($i=1;$i<=25;$i++)
+						{
+							$valeur=$fois.$i.$all;
+							$sql=$sql.",'$longeur[$valeur]'";
+						}
+						
+						
+					}
+					$sql=$sql.")";
+					$connect->query($sql);
+					
 				}
 				
 			}

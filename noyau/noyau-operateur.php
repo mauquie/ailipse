@@ -57,6 +57,7 @@
 		
 		
 		
+		
 		// a partir d'un form 
 		case "valider_materiel":
 			$contenu="";
@@ -88,6 +89,11 @@
 			$contenu= $typeUtilisateur->validerCreerSuivi($login_session);
 		break;
 		
+		case "valider_modifier_voile":
+			$contenu="";
+			$sortie="";
+			$typeUtilisateur->validerModificationVoile();
+			break;
 		
 		
 		// pout les ajax (js)

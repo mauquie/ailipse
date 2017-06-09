@@ -529,7 +529,7 @@ if(!class_exists("Operateur"))
 					<h2 class='mdl-card__title-text'>modification de voile non valider</h2>
 					</div>
 					<div class='mdl-card__supporting-text card-background'>
-					<form>
+					<form action='index.php?d=operateur&a=valider_modifier_voile' method='post' enctype='multipart/form-data'>
 					<select name='voileat' id='voileart' onchange='affichvoile()' class='nice-select'>
 					".$voile."
 					</select>
@@ -550,7 +550,7 @@ if(!class_exists("Operateur"))
 								<br />
 								<br />
 								<h6> nombre de taille </h6>
-								<select id='nbtaile' class='nice-select' name='taille'>
+								<select id='nbtaile' class='nice-select' name='nbtaile'>
 									<option value='0'> </option>
 									<option value='1'>1</option>
 									<option value='2'>2</option>
@@ -605,6 +605,13 @@ if(!class_exists("Operateur"))
 							</div>
 							</center>
 							</div>
+					</div>
+						<center>
+					<div classe='valider' id='valider' name='valider' style='visibility:hidden;'>
+							<button name='submit' type='submit' class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'>
+								Valider les modifications
+						</button>
+						</center>
 					</div>
 						<div id='popup_tableau' class='overlay'>
 									<div class='popup'>
@@ -1254,20 +1261,20 @@ if(!class_exists("Operateur"))
 			$atsend="";
 			while($row = $result->fetch_array())
 			{
-				$atsend="$row[1],$row[2],$row[3],$row[4],$row[5]";
+				$atsend="$row[1],$row[2],$row[3],$row[4],$row[5],";
 				$nbtaille=$row[3];
+				
 			}
 			
 			$sql="SELECT * FROM `voile_taille` WHERE idvoile='$id'";
 			$result=$connect->query($sql);
 			$row = $result->fetch_array();
 			
-			for($i=0;$i<$nbtaille;$i++)
+			for($i=1;$i<=$nbtaille;$i++)
 			{
 				$atsend.=$row[$i].",";
 			}
 			echo $atsend;
-			
 		}
 		public function suiviVoile()
 		{
@@ -1471,6 +1478,37 @@ if(!class_exists("Operateur"))
 					}
 				}	
 			}
+		}
+		public  function validerModificationVoile()
+		{
+			$connect=$this->_bdd->openBDD();
+			$id=$_POST["voileat"];
+			$nbTaile=$_POST["nbtaile"];
+			$constructeur=$_POST["fabriquand"];
+			$date=$_POST["date"];
+			$certification=$_POST["cert"];
+			$nom=$_POST["nom"];
+			$sql=" UPDATE `voile` SET `nom`='$nom',`id_const`='$constructeur',`nb_tail`='$nbTaile',`date_s`='$date',`cert`='$certification' WHERE `id`='$id' ";
+			
+			$connect->query($sql);
+			$sql="UPDATE `voile_taille` SET ";
+			for($i=1;$i<=$nbTaile;$i++)
+			{
+				$taile[$i]=$_POST["taille".$i];
+				if($i==1)
+				{
+					$sql.="t".$i."="."'$taile[$i]'";
+				}
+				else {
+					$sql.=",t".$i."="."'$taile[$i]'";
+				}
+				
+			}
+			$sql.="WHERE idvoile='$id'";
+			$connect->query($sql);
+			
+			$this->_bdd->closeBDD();
+			header("location: index.php?d=operateur&a=menu");
 		}
 	}
 }

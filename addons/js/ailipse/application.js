@@ -59,7 +59,8 @@
 
 		var voile=document.getElementById("voileart").value;
 
-
+			if(voile!=-1)
+				{
 		$.ajax({	
 			url:"index.php?d=operateur&a=recuperer_voile",
 
@@ -69,6 +70,7 @@
 
 			success :function(rep)
 			{
+			
 				var reponce=rep.split(',');
 
 				if(document.getElementById("donner").style.visibility==='hidden')
@@ -107,7 +109,7 @@
 
 				
 				
-				for(i=1;i<reponce[2];i++)
+				for(i=1;i<=reponce[2];i++)
 
 				{
 
@@ -119,7 +121,7 @@
 
 				
 				
-				for(i=1; i<reponce[2];i++)
+				for(i=1; i<=reponce[2];i++)
 
 				{
 
@@ -137,6 +139,10 @@
 				document.getElementById("taile").innerHTML = "";
 
 				$(".taile").append(table);
+				if(document.getElementById('valider').style.visibility=='hidden')
+				{
+					document.getElementById('valider').style.visibility='visible';
+				}
 				/*
 				if(document.getElementById('valeur_taille_containt').style.visibility=='hidden')
 				{
@@ -164,7 +170,7 @@
 			}
 
 			});
-	
+				}
 		/*
 		var  tablmateriaux="<h6> listes des matériaux de la suspentes </h6>"+
 		"<table border='1'> <tr>"+

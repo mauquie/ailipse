@@ -54,7 +54,11 @@
 		break;
 		
 		
-		
+		case "activer_voile":
+			$sortie=file("vue/application.html");
+			$nav_en_cours = 'operateur';
+			$contenu= $typeUtilisateur->affichage_validation();
+			break;
 		
 		
 		

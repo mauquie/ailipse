@@ -349,7 +349,7 @@ if(!class_exists("Operateur"))
 			if($this->_permissions==3)
 			{
 				$add=	'<div class="mdl-cell"  style="margin-bottom: 50px;">
-								<figure><a href="index.php?d=operateur&a=valider_addmin"><img width="250" height="200" src="vue/images/valider.png" /></a></figure>
+								<figure><a href="index.php?d=operateur&a=activer_voile"><img width="250" height="200" src="vue/images/valider.png" /></a></figure>
 								<span>Valider constructeur</span>
 							</div>';
 			}
@@ -1509,6 +1509,10 @@ if(!class_exists("Operateur"))
 			
 			$this->_bdd->closeBDD();
 			header("location: index.php?d=operateur&a=menu");
+		}
+		public function affichage_validation()
+		{
+			return('');
 		}
 	}
 }

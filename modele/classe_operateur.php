@@ -1514,6 +1514,94 @@ if(!class_exists("Operateur"))
 		{
 			return('');
 		}
+		
+		public function modificationSuivi($id_suivi,$commentaire,$statut,$operateur){
+			/////////////////////////////////////////////////////////////////////////////////
+			//utilisation: L'id du suivi est obligatoire ainsi que le mail de l'operateur. //
+			//$commentaire et $statut sont optionnels, on peut mettre une string vide.	   //
+			//Dans le cas où $commentaire et $statut sont vides, rien ne se passe.		   //
+			//Si au moins un de ces deux champs n'est pas vide,							   //
+			//On met à jour le suivi, on crée un évènement de suivi et on notifie le client//
+			/////////////////////////////////////////////////////////////////////////////////
+			
+			
+			//On récupère l'ID client lié au suivi
+			$connect = $this->_bdd->openBDD();
+			$result = $connect->query("SELECT id_client FROM suivi WHERE id='$id_suivi'");
+			if(gettype($result)=="object"){
+				if($result->num_rows>0){
+					while($row = $result->fetch_array()){
+						if($row[0]!=-2){
+							
+							//on récupère l'email grâce à l'ID retrouvé
+							$result = $connect->query("SELECT email FROM clients WHERE id='$row[0]'");
+							if(gettype($result)=="object"){
+								if($result->num_rows>0){
+									while($row = $result->fetch_array()){
+										$mail_client = $row[0];
+					
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			echo $mail_client;
+			
+			$case="";
+			date_default_timezone_set('Europe/Brussels');
+			$date = date('d/m/Y');
+			if($statut=="cloturé"){	
+				$case = "cloturation";
+				if($commentaire!=''){
+					$commentaire = str_replace("'","\'",$commentaire);
+					$connect->query("UPDATE `suivi` SET `commentaire`='$commentaire',`date_cloture`='$date',`statut`='$statut',`operateur`='$operateur' WHERE `id`='$id_suivi'");
+				}
+				else{
+					$connect->query("UPDATE suivi SET `date_cloture`='$date',`statut`='$statut',`operateur`='$operateur' WHERE `id`='$id_suivi'");
+				}
+				$commentaire = "Cloturation du suivi";
+				$connect->query("INSERT INTO suivi_evenement (id_suivi,operateur,commentaire,date) VALUES ('$id_suivi','$operateur','$commentaire','$date')");
+			}
+			else if ($statut!=''){
+				$case="MaJ";
+				$statut = str_replace("'","\'",$statut);
+				if($commentaire!=''){
+					$commentaire = str_replace("'","\'",$commentaire);
+					$connect->query("UPDATE `suivi` SET `commentaire`='$commentaire',`statut`='$statut',`operateur`='$operateur' WHERE `id`='$id_suivi'");
+					
+				}
+				else{
+					$connect->query("UPDATE `suivi` SET `statut`='$statut',`operateur`='$operateur' WHERE `id`='$id_suivi'");
+				}
+				$commentaire = "Mise à jour du suivi de la voile";
+				$connect->query("INSERT INTO suivi_evenement (id_suivi,operateur,commentaire,date) VALUES ('$id_suivi','$operateur','$commentaire','$date')");
+			}
+			else{
+				$case="MaJ";
+				if($commentaire!=''){
+					$connect->query("UPDATE `suivi` SET `commentaire`='$commentaire',`operateur`='$operateur' WHERE `id`='$id_suivi'");
+					$commentaire = "Mise à jour du suivi de la voile";
+					$connect->query("INSERT INTO suivi_evenement (id_suivi,operateur,commentaire,date) VALUES ('$id_suivi','$operateur','$commentaire','$date')");
+				}				
+			}
+			switch($case){
+				case "cloturation":
+					//On notifie l'utilisateur que le suivi a été cloturé
+					$message = "Le suivi de votre voile a été cloturé";
+					$connect->query("INSERT INTO notifications_utilisateur (email,message,active) VALUES ('$mail_client','$message',1)");
+				break;
+				case "MaJ":
+					//On notifie l'utilisateur que le suivi a été mis à jour
+					$message = "Le suivi de votre voile a été mis à jour";
+					$connect->query("INSERT INTO notifications_utilisateur (email,message,active) VALUES ('$mail_client','$message',1)");
+				break;
+				default:
+					echo "Bad arguments given when calling the function modificationSuivi";
+			}
+			$this->_bdd->closeBDD();
+		}
 	}
 }
 

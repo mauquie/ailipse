@@ -1602,10 +1602,7 @@ if(!class_exists("Operateur"))
 			}
 			$this->_bdd->closeBDD();
 		}
-		public function affichage_validation()
-		{
-			return('');
-		}
+
 	}
 }
 

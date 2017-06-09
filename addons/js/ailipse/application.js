@@ -51,7 +51,7 @@
 		}
 	}
 
-
+	
 
 	function affichvoile()
 
@@ -1291,4 +1291,47 @@ function showThumbnail(files){
 		else{
 			
 		}
+	}
+	function redimensionnement()
+	{
+		//alert("appel");
+		var nbtaille= document.getElementById('nbtaile').value;
+		
+		
+		var wid=100/nbtaille;
+
+		var  table="<table class='mdl-data-table' style='margin:auto;'>";
+
+		
+		//alert(nbtaille);
+		for(i=1;i<=nbtaille;i++)
+
+		{
+
+			table=table+"<th width='"+wid+"%'>taille"+i+"</th>";
+
+		}
+
+		table=table+"</tr><tr> ";
+		//alert("premier for");
+		
+		
+		for(i=1; i<=nbtaille;i++)
+		{
+
+			table=table+ '<td style=" width:'+wid+'%">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+
+						'<input name="taille'+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="taille'+i+'">'+
+
+						'<label style=" width:100%" class="mdl-textfield__label" for="taille'+i+'"></label>'+
+
+						'</div>'+'</td>';
+
+		}
+		table=table+"  </tr> </table>";
+		//alert("second for");
+		document.getElementById("taile").innerHTML = "";
+		//alert(table);
+		$(".taile").append(table);
+		//alert('fin');
 	}

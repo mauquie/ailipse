@@ -550,7 +550,7 @@ if(!class_exists("Operateur"))
 								<br />
 								<br />
 								<h6> nombre de taille </h6>
-								<select id='nbtaile' class='nice-select' name='nbtaile'>
+								<select id='nbtaile' class='nice-select'  onchange='affichvoile()' name='nbtaile'>
 									<option value='0'> </option>
 									<option value='1'>1</option>
 									<option value='2'>2</option>
@@ -1601,6 +1601,10 @@ if(!class_exists("Operateur"))
 					echo "Bad arguments given when calling the function modificationSuivi";
 			}
 			$this->_bdd->closeBDD();
+		}
+		public function affichage_validation()
+		{
+			return('');
 		}
 	}
 }

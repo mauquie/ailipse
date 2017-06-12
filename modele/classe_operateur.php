@@ -1299,13 +1299,15 @@ if(!class_exists("Operateur"))
 						<div class="mdl-card__supporting-text card-background">
 							<div class="mdl-grid">
 								<div class="mdl-cell mdl-cell--6-col graybox">
-									<select id="select_suivi" class="nice-select" name="select_suivi" onchange="afficherSuivi()" style="visibility:hidden;">
-										<option value="-2">Sélectionnez un suivi</option>			
-										'.$select_suivi.'
-									</select>
-									<a href="#" id="controle" style="visibility:hidden;"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-										Création/Modification du contrôle
-									</button></a>
+									<form action="index.php?d=operateur&a=controle_voile" method="post" enctype="multipart/form-data">
+										<select id="select_suivi" class="nice-select" name="select_suivi" onchange="afficherSuivi()" style="visibility:hidden;">
+											<option value="-2">Sélectionnez un suivi</option>			
+											'.$select_suivi.'
+										</select>
+										<button id="controle" type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+											Création/Modification du contrôle
+										</button>
+									</form>
 									<br/><br/><br/>
 									<h5 id="titre" class="animated fade-in" style="visibility:hidden;">Suivi</h5>
 									<table id="table" class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" style="visibility:hidden;">

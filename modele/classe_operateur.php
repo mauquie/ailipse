@@ -1297,43 +1297,71 @@ if(!class_exists("Operateur"))
 							<h2 class="mdl-card__title-text">Suivi des voiles</h2>
 						</div>
 						<div class="mdl-card__supporting-text card-background">
-							<center>
-								<a href="index.php?d=operateur&a=creer_suivi" ><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-									Créer un nouveau suivi
-								</button></a>
-							</center>
-							<hr/>
-							<select id="select_suivi" class="nice-select" name="select_suivi" onchange="afficherSuivi()">
-								<option value="-2">Sélectionnez un suivi</option>			
-								'.$select_suivi.'
-							</select>
-							<br/><br/><br/>
-							<h5 class="animated fade-in">Suivi</h5>
-							<table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-								<thead>
-									<tr>
-								  		<th class="mdl-data-table__cell--non-numeric">ID</th>
-								  		<th class="mdl-data-table__cell--non-numeric">date d\'ouverture</th>
-								  		<th class="mdl-data-table__cell--non-numeric">commentaire</th>
-										<th class="mdl-data-table__cell--non-numeric">statut</th>
-										<th class="mdl-data-table__cell--non-numeric">opérateur</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="mdl-data-table__cell--non-numeric" id="id"></td>
-										<td class="mdl-data-table__cell--non-numeric" id="date_ouverture"></td>
-										<td class="mdl-data-table__cell--non-numeric" id="commentaire"></td>
-										<td class="mdl-data-table__cell--non-numeric" id="statut"></td>
-										<td class="mdl-data-table__cell--non-numeric" id="operateur"></td>
-									</tr>
-								</tbody>
-							</table>
-							<div id="tableau_evenement">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--6-col graybox">
+									<select id="select_suivi" class="nice-select" name="select_suivi" onchange="afficherSuivi()" style="visibility:hidden;">
+										<option value="-2">Sélectionnez un suivi</option>			
+										'.$select_suivi.'
+									</select>
+									<a href="#" id="controle" style="visibility:hidden;"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+										Création/Modification du contrôle
+									</button></a>
+									<br/><br/><br/>
+									<h5 id="titre" class="animated fade-in" style="visibility:hidden;">Suivi</h5>
+									<table id="table" class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp" style="visibility:hidden;">
+										<thead>
+											<tr>
+										  		<th class="mdl-data-table__cell--non-numeric">ID</th>
+										  		<th class="mdl-data-table__cell--non-numeric">date d\'ouverture</th>
+										  		<th class="mdl-data-table__cell--non-numeric">commentaire</th>
+												<th class="mdl-data-table__cell--non-numeric">statut</th>
+												<th class="mdl-data-table__cell--non-numeric">opérateur</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="mdl-data-table__cell--non-numeric" id="id"></td>
+												<td class="mdl-data-table__cell--non-numeric" id="date_ouverture"></td>
+												<td class="mdl-data-table__cell--non-numeric" id="commentaire"></td>
+												<td class="mdl-data-table__cell--non-numeric" id="statut"></td>
+												<td class="mdl-data-table__cell--non-numeric" id="operateur"></td>
+											</tr>
+										</tbody>
+									</table>
+									<div id="champsSuivi" style="visibility:hidden">
+										<div class="mdl-textfield mdl-js-textfield">
+											<textarea class="mdl-textfield__input" type="text" maxlength="30" rows= "1" id="statut_suivi" name="nouveau_commentaire"></textarea>
+											<label class="mdl-textfield__label" for="sample5">Statut</label>
+										</div><br/><br/>
+										<div class="mdl-textfield mdl-js-textfield">
+											<textarea class="mdl-textfield__input" type="text" maxlength="200" rows= "8" id="commentaire_suivi" name="nouveau_commentaire"></textarea>
+											<label class="mdl-textfield__label" for="sample5">Commentaire</label>
+										</div><br/><br/>
+										<button onclick="gestionSuivi()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"  style="margin-bottom:40px;">
+											Modifier le suivi
+										</button>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--6-col graybox">
+									<div id="tableau_evenement">
+									</div>
+								</div>
+							</div>
+							<div id="validation" class="mdl-card__actions mdl-card--border card-background2 animated slideInUp">
+								<center>	
+									<a href="index.php?d=operateur&a=creer_suivi" ><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+										Créer un nouveau suivi
+									</button></a>
+								</center>
 							</div>
 							<script>afficherSuivi()</script>
 						</div>
-					</div>';
+					</div>
+					<script>
+						$(document).keyup(function(e) {
+							revelerChamps(e.key);
+						});
+					</script>';
 		}
 		public function creerSuiviVoile()
 		{
@@ -1449,6 +1477,7 @@ if(!class_exists("Operateur"))
 				$date = date('d/m/Y');
 				$id=$_POST["id"];
 				$commentaire= str_replace("'","\'",$_POST["commentaire"]);
+				$commentaire = str_replace(",","&#x2C;",$commentaire);
 				$connect = $this->_bdd->openBDD();
 				
 				//ajout de l'événement dans la base de données
@@ -1547,7 +1576,6 @@ if(!class_exists("Operateur"))
 					}
 				}
 			}
-			echo $mail_client;
 			
 			$case="";
 			date_default_timezone_set('Europe/Brussels');
@@ -1556,6 +1584,7 @@ if(!class_exists("Operateur"))
 				$case = "cloturation";
 				if($commentaire!=''){
 					$commentaire = str_replace("'","\'",$commentaire);
+					$commentaire = str_replace(",","&#x2C;",$commentaire);
 					$connect->query("UPDATE `suivi` SET `commentaire`='$commentaire',`date_cloture`='$date',`statut`='$statut',`operateur`='$operateur' WHERE `id`='$id_suivi'");
 				}
 				else{
@@ -1569,6 +1598,7 @@ if(!class_exists("Operateur"))
 				$statut = str_replace("'","\'",$statut);
 				if($commentaire!=''){
 					$commentaire = str_replace("'","\'",$commentaire);
+					$commentaire = str_replace(",","&#x2C;",$commentaire);
 					$connect->query("UPDATE `suivi` SET `commentaire`='$commentaire',`statut`='$statut',`operateur`='$operateur' WHERE `id`='$id_suivi'");
 					
 				}
@@ -1581,6 +1611,8 @@ if(!class_exists("Operateur"))
 			else{
 				$case="MaJ";
 				if($commentaire!=''){
+					$commentaire = str_replace("'","\'",$commentaire);
+					$commentaire = str_replace(",","&#x2C;",$commentaire);
 					$connect->query("UPDATE `suivi` SET `commentaire`='$commentaire',`operateur`='$operateur' WHERE `id`='$id_suivi'");
 					$commentaire = "Mise à jour du suivi de la voile";
 					$connect->query("INSERT INTO suivi_evenement (id_suivi,operateur,commentaire,date) VALUES ('$id_suivi','$operateur','$commentaire','$date')");

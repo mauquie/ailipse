@@ -4,6 +4,7 @@ Site vitrine
 Application
 - Créer des classes CSS pour les balises HTML style="" qui restent dans le code
 - Faire en sorte que l'avatar dans la recherche annonce soit lié à l'utilisateur ayant publié l'annonce
+- Checker si un contrôle a été effectué (js) pour créer le bouton adapté dans le suivi d'une voile
 
 Autres 
 - Mettre toutes les images contenues dans 'images' dans 'images/application'

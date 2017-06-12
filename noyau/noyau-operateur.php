@@ -131,6 +131,12 @@
 			$typeUtilisateur->ajouterEvenementSuivi($login_session);
 		break;
 		
+		case "modifier_suivi":
+			$contenu="";
+			$sortie = "";
+			$typeUtilisateur->modificationSuivi($_POST["id_suivi"],$_POST["commentaire"],$_POST["statut"],$login_session);
+		break;
+		
 		default:
 			//redirection page 404
 			$contenu = "";

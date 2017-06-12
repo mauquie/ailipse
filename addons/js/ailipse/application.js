@@ -1201,8 +1201,32 @@ function showThumbnail(files){
 	}
 	
 	function afficherSuivi(){
+		
+		function insererBr(str, index, value) {
+		    return str.substr(0, index) + value + str.substr(index);
+		}
+		
+		function trouverEspace(actualIndex,myString){
+			var i = actualIndex;
+			while(myString[i]!=" "){
+				i--;
+			}
+			return i;
+		}
+			
+		function formaterString(myString){
+			var actualIndex=40;
+			while(actualIndex<myString.length){
+				i = trouverEspace(actualIndex,myString);
+				myString=insererBr(myString,i,"<br/>");
+				actualIndex=i+40;
+			}			
+			return myString;
+		}
 		var id_select = document.getElementById("select_suivi").value;
 		if(id_select!=-2){
+			document.getElementById("controle").style.visibility = "visible";
+			document.getElementById("champsSuivi").style.visibility = "visible";
 			$.ajax({
 				 url:"index.php?d=operateur&a=recuperer_suivi",
 				 type : "POST",
@@ -1212,7 +1236,7 @@ function showThumbnail(files){
 					tableau=rep.split(',');
 					document.getElementById("id").innerHTML = id_select;
 					document.getElementById("date_ouverture").innerHTML = tableau[0];
-					document.getElementById("commentaire").innerHTML = tableau[1];
+					document.getElementById("commentaire").innerHTML = formaterString(tableau[1]);
 					document.getElementById("statut").innerHTML = tableau[2];
 					document.getElementById("operateur").innerHTML = tableau[3];
 				 }	
@@ -1238,7 +1262,7 @@ function showThumbnail(files){
 					  for(var i=0;i<(tableau.length)-1;i++){
 						  if(i%3==0){
 							  tableau_suivi+='<tr>'+
-												'<td class="mdl-data-table__cell--non-numeric">'+tableau[i]+'</td>';
+												'<td class="mdl-data-table__cell--non-numeric">'+formaterString(tableau[i])+'</td>';
 						  }
 						  else if(i%3==1){
 							  tableau_suivi+='<td class="mdl-data-table__cell--non-numeric">'+tableau[i]+'</td>';
@@ -1253,8 +1277,8 @@ function showThumbnail(files){
 										'<textarea class="mdl-textfield__input" type="text" maxlength="200" rows= "8" id="nouveau_commentaire" name="nouveau_commentaire"></textarea>'+
 										'<label class="mdl-textfield__label" for="sample5">Commentaire</label>'+
 									'</div><br/><br/>'+
-									'<button onclick="gestionSuivi(\'ajout_evenement\')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">'+
-									'Créer un nouvel évènement'+
+									'<button onclick="gestionSuivi(\'ajout_evenement\')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"  style="margin-bottom:40px;">'+
+									'Ajouter un nouvel évènement'+
 									'</button>';
 					  //on va passer deux strings pour savoir si c'est une cloturation ou un ajout d'évènement
 					  $("#tableau_evenement").html(tableau_suivi);
@@ -1264,6 +1288,8 @@ function showThumbnail(files){
 		}
 		else
 		{
+			document.getElementById("controle").style.visibility = "hidden";
+			document.getElementById("champsSuivi").style.visibility = "hidden";
 			document.getElementById("id").innerHTML = "";
 			document.getElementById("date_ouverture").innerHTML = "";
 			document.getElementById("commentaire").innerHTML = "";
@@ -1277,19 +1303,33 @@ function showThumbnail(files){
 		if(type=="ajout_evenement"){
 			commentaire = document.getElementById("nouveau_commentaire").value;
 			id = document.getElementById("select_suivi").value;
+			if(commentaire!=""){
+				$.ajax({
+					 url:"index.php?d=operateur&a=ajouter_evenement_suivi",
+					 type : "POST",
+					 data: {commentaire:commentaire,id:id},
+					 success: function (rep)
+					 {
+						location.href="index.php?d=operateur&a=suivi";
+					 }	
+	
+				});
+			}
+		}
+		else{
+			id_suivi = document.getElementById("select_suivi").value;
+			commentaire = document.getElementById("commentaire_suivi").value;
+			statut = document.getElementById("statut_suivi").value;
 			$.ajax({
-				 url:"index.php?d=operateur&a=ajouter_evenement_suivi",
+				 url:"index.php?d=operateur&a=modifier_suivi",
 				 type : "POST",
-				 data: {commentaire:commentaire,id:id},
+				 data: {id_suivi:id_suivi,commentaire:commentaire,statut:statut},
 				 success: function (rep)
 				 {
-					location.href="index.php?d=operateur&a=menu";
+					location.href="index.php?d=operateur&a=suivi";
 				 }	
 
 			});
-		}
-		else{
-			
 		}
 	}
 	function redimensionnement()
@@ -1334,4 +1374,11 @@ function showThumbnail(files){
 		//alert(table);
 		$(".taile").append(table);
 		//alert('fin');
+	}
+	function revelerChamps(myChar){
+		if(myChar=="p"){
+			document.getElementById("select_suivi").style.visibility = "visible";
+			document.getElementById("titre").style.visibility = "visible";
+			document.getElementById("table").style.visibility = "visible";
+		}
 	}

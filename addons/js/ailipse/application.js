@@ -1225,8 +1225,12 @@ function showThumbnail(files){
 		}
 		var id_select = document.getElementById("select_suivi").value;
 		if(id_select!=-2){
+			
+			//On rend visible les champs
 			document.getElementById("controle").style.visibility = "visible";
 			document.getElementById("champsSuivi").style.visibility = "visible";
+			
+			//On récupère les données du suivi
 			$.ajax({
 				 url:"index.php?d=operateur&a=recuperer_suivi",
 				 type : "POST",
@@ -1242,6 +1246,8 @@ function showThumbnail(files){
 				 }	
 
 			});
+			
+			//On récupère les évènements liés au suivi
 			$.ajax({
 				  url:"index.php?d=operateur&a=recuperer_evenements_suivi",
 				  type : "POST",
@@ -1283,6 +1289,18 @@ function showThumbnail(files){
 					  //on va passer deux strings pour savoir si c'est une cloturation ou un ajout d'évènement
 					  $("#tableau_evenement").html(tableau_suivi);
 				  }	
+
+			});
+			//On checke l'existence d'un fichier xml portant le nom du suivi pour choisir l'intitulé du bouton
+			$.ajax({
+				 url:"index.php?d=operateur&a=fichier_existe",
+				 type : "POST",
+				 data: {id_suivi:id_select},
+				 success: function (rep)
+				 {
+					if(rep==1)	{document.getElementById("controle").innerHTML = "Modification du contrôle";}
+					else		{document.getElementById("controle").innerHTML = "Création du contrôle";}
+				 }	
 
 			});
 		}

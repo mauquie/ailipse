@@ -137,6 +137,11 @@
 			$typeUtilisateur->modificationSuivi($_POST["id_suivi"],$_POST["commentaire"],$_POST["statut"],$login_session);
 		break;
 		
+		case "fichier_existe":
+			$contenu="";
+			$sortie = "";
+			$typeUtilisateur->fichierExiste();
+		break;
 		default:
 			//redirection page 404
 			$contenu = "";

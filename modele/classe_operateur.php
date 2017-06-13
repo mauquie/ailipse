@@ -2239,6 +2239,8 @@ if(!class_exists("Operateur"))
 			$case="";
 			date_default_timezone_set('Europe/Brussels');
 			$date = date('d/m/Y');
+			
+			//On traite les différents cas possibles
 			if($statut=="cloturé"){	
 				$case = "cloturation";
 				if($commentaire!=''){
@@ -2292,6 +2294,13 @@ if(!class_exists("Operateur"))
 					echo "Bad arguments given when calling the function modificationSuivi";
 			}
 			$this->_bdd->closeBDD();
+		}
+		public function fichierExiste()
+		{
+			//on regarde si un fichier xml portant le nom de suivi a été crée
+			$id_suivi = $_POST["id_suivi"];
+			if(file_exists("document/controlexml/".$id_suivi.".xml"))	{echo "1";}
+			else														{echo "0";}
 		}
 
 	}

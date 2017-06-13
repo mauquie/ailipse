@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<controle id="MAUQUIE">
+							<name>Controle</name>
+							<date>2017-06-13 08:10:03</date>
+							<constructeur>ijino_technique</constructeur>
+                            <modele>IJINO</modele>
+                            <taille>test</taille>
+                            <numeroSerie>ezrf</numeroSerie>
+                            <couleurVoile>dfsf</couleurVoile>
+                            <Porosite>
+                                <extrades>
+                                    <centre>sdfdsf</centre>
+                                    <droite>sdf</droite>
+                                    <gauche>sdfsd</gauche>
+                                </extrades>
+								<intrades>
+                                    <centre>sdf</centre>
+                                    <droite>fsd</droite>
+                                    <gauche>fsdf</gauche>
+                                </intrades>
+                            </Porosite>
+                            <controleSymetrie>prob</controleSymetrie>
+                            <controleTissu>nv</controleTissu>
+                            <controleSuspentage>ok</controleSuspentage>
+                            
+                            <A1>;542452;25452</A1>
+                            <A2>;124;24</A2>
+                            <A3>;52;7542</A3>
+                            <A4>;54;2</A4>
+                            <A5>;542;45</A5>
+                            <A6>;254;24</A6>
+                            <A7>;52;54</A7>
+                            <A8>;254;2</A8>
+                            <A9>;542;542</A9>
+                            <A10>;54;254</A10>
+                            <A11>;2;542</A11>
+                            <A12>;54;254</A12>
+                            <A13>;24;2</A13>
+                            <A14>;452;54</A14>
+                            <A15>;2754;252</A15>
+                            <A16>;542;4</A16>
+                            
+                            <B1>;24;52</B1>
+                            <B2>;452;54</B2>
+                            <B3>;254;24</B3>
+                            <B4>;52;54</B4>
+                            <B5>;254;24</B5>
+                            <B6>;21;542</B6>
+                            <B7>;54;245</B7>
+                            <B8>;24;2</B8>
+                            <B9>;42;54</B9>
+                            <B10>;245;24</B10>
+                            <B11>;52;452</B11>
+                            <B12>;4;254</B12>
+                            <B13>;2;425</B13>
+                            <B14>;54;24</B14>
+                            <B15>;25;452</B15>
+                            <B16>;45;24</B16>  
+                            
+                            
+                            <C1>;524;52</C1>
+                            <C2>;542;4</C2>
+                            <C3>;52;452</C3>
+                            <C4>;4;24</C4>
+                            <C5>;52;45</C5>
+                            <C6>;24;2</C6>
+                            <C7>;542;45</C7>
+                            <C8>;24;2</C8>
+                            <C9>;452;4</C9>
+                            <C10>;254;2</C10>
+                            <C11>;4;5254</C11>
+                            <C12>;2;54</C12>
+                            <C13>;24;25</C13>
+                            <C14>;54;24</C14>
+                            <C15>;2;45</C15>
+                            <C16>;24;524</C16> 
+                            
+                            <D1>;524;52</D1>
+                            <D2>;542;4</D2>
+                            <D3>;52;452</D3>
+                            <D4>;4;24</D4>
+                            <D5>;52;45</D5>
+                            <D6>;24;2</D6>
+                            <D7>;542;45</D7>
+                            <D8>;24;2</D8>
+                            <D9>;452;4</D9>
+                            <D10>;254;2</D10>
+                            <D11>;4;5254</D11>
+                            <D12>;2;54</D12>
+                            <D13>;24;25</D13>
+                            <D14>;54;24</D14>
+                            <D15>;2;45</D15>
+                            <D16>;24;524</D16> 
+                            
+							
+						</controle>

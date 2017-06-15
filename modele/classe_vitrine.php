@@ -709,12 +709,12 @@ if(!class_exists("Vitrine")){
 				
 				<p><br /></p>
 
-				<input type="text" name="name" placeholder="Nom"  required=required; />
-				<input type="text" name="surname" placeholder="Prénom"  required=required; />
-				<input type="text" name="tel" placeholder="Téléphone"  required=required; />
-				<input type="text" name="adresse" placeholder="Adresse"  required=required; />
-				<input class="dbl" type="text" name="cp" placeholder="Code postal"  required=required; />
-				<input class="dbl" type="text" name="ville" placeholder="Ville"  required=required; />
+				<input type="text" name="name" placeholder="Nom"  maxlength="50" required=required; />
+				<input type="text" name="surname" placeholder="Prénom"  maxlength="50" required=required; />
+				<input type="text" name="tel" placeholder="Téléphone"  maxlength="10" required=required; />
+				<input type="text" name="adresse" placeholder="Adresse"  maxlength="100" required=required; />
+				<input class="dbl" type="text" name="cp" placeholder="Code postal"  maxlength="5" required=required; />
+				<input class="dbl" type="text" name="ville" placeholder="Ville"  maxlength="50" required=required; />
 
 				<p><br/></p>
 

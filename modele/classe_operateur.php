@@ -345,14 +345,6 @@ if(!class_exists("Operateur"))
 		}
 		public function menuOperateur()		// affichage du pannel operateur chaque <div class="mdl-cell"> sont des items
 		{
-			$add='';
-			if($this->_permissions==3)
-			{
-				$add=	'<div class="mdl-cell"  style="margin-bottom: 50px;">
-								<figure><a href="index.php?d=operateur&a=activer_voile"><img width="250" height="200" src="vue/images/valider.png" /></a></figure>
-								<span>Valider constructeur</span>
-							</div>';
-			}
 			return ('<div class="demo-card-wide mdl-card mdl-shadow--2dp">
 						<div class="mdl-card__title mdl-card-operateur__background animated slideInDown">
 						<h2 class="mdl-card__title-text">Opérateur</h2>
@@ -370,7 +362,7 @@ if(!class_exists("Operateur"))
 								</div>
 						
 						
-								'.$add.'
+							
 
 							</div>
 
@@ -382,13 +374,10 @@ if(!class_exists("Operateur"))
 
 								<div class="mdl-cell"  style="margin-bottom: 50px;">
 									<figure><a href="index.php?d=operateur&a=modifier_voile"><img width="250" height="200" src="vue/images/modifier.png" /></a></figure>
-									<span>Modifier constructeur</span>
+									<span>Modifier/valider/suprimer voile </span>
 								</div>
 						
-								<div class="mdl-cell"  style="margin-bottom: 50px;">
-									<figure><img width="250" height="200" src="vue/images/supprimer.png" /></figure>
-									<span>Supprimer une voile</span>
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -519,6 +508,17 @@ if(!class_exists("Operateur"))
 				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
 			}
 			$this->_bdd->CloseBDD();
+			$bouton='	<button type="button" onclick="window.location=\'index.php?d=operateur&a=suprimer_voile\'" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >
+							suprimer
+					</button>
+					';
+			if($this->_permissions==3)
+			{
+				$bouton.='<button type="button" onclick="window.location=\'index.php?d=operateur&a=valider\'" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >
+						valider
+				</button>';
+			}
+
 			return("
 				<div class='demo-card-wide mdl-card mdl-shadow--2dp'>
 					<div class='mdl-card__title mdl-card-operateur__background animated slideInDown'>
@@ -529,6 +529,9 @@ if(!class_exists("Operateur"))
 					<select name='voileat' id='voileart' onchange='affichvoile()' class='nice-select'>
 					".$voile."
 					</select>
+					<div id='bouton' name='bouton' classe='bouton'style='visibility:hidden;'>
+							".$bouton."
+					</div>
 					<br />
 					<br /><br />
 					<div class='content-grid mdl-grid'>
@@ -543,6 +546,7 @@ if(!class_exists("Operateur"))
 								<select id='fabriquand' name='fabriquand' class='nice-select'>
 								".$fabricant."
 								</select>
+								
 								<br />
 								<br />
 								<h6> nombre de taille </h6>
@@ -2197,45 +2201,6 @@ if(!class_exists("Operateur"))
 			
 			$this->_bdd->closeBDD();
 			header("location: index.php?d=operateur&a=menu");
-		}
-		public function affichage_validation()
-		{
-			$connect= $this->_bdd->openBDD();
-			$sql="SELECT * from voile WHERE valider=0 ";
-			$result= $connect->query($sql);
-			
-			$voile="<option value='-1'>Voile</option>";
-			while($row=mysqli_fetch_array($result))
-			{
-				$voile=$voile."<option value=$row[0]>$row[1]</option>";
-			}
-			
-			$sql="SELECT * from fabricant";
-			$result= $connect->query($sql);
-			
-			$fabricant="<option value='-1'>Fabricant </option>";
-			while($row=mysqli_fetch_array($result))
-			{
-				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
-			}
-			$this->_bdd->CloseBDD();
-			return("
-				<div class='demo-card-wide mdl-card mdl-shadow--2dp'>
-					<div class='mdl-card__title mdl-card-operateur__background animated slideInDown'>
-					<h2 class='mdl-card__title-text'valider</h2>
-					</div>
-					<div class='mdl-card__supporting-text card-background'>
-					<form action='index.php?d=operateur&a=valider_voile' method='post' enctype='multipart/form-data'>
-					<select name='voileat' id='voileart' onchange='aficherValidation()' class='nice-select'>
-					".$voile."
-					</select>
-					<br />
-					<br />
-					<br />
-					</div>
-					</div>
-					");
-			
 		}
 		public function modificationSuivi($id_suivi,$commentaire,$statut,$operateur){
 			/////////////////////////////////////////////////////////////////////////////////

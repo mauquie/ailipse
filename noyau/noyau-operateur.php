@@ -1,13 +1,12 @@
 <?php
-
+$typeUtilisateur->setMail($login_session);
+$typeUtilisateur->recuData();
 	switch($action)
 	{
 		
 		case "menu":
 			$sortie=file("vue/application.html");
 			$nav_en_cours = 'operateur';			
-			$typeUtilisateur->setMail($login_session);
-			$typeUtilisateur->recuData();
 			$contenu=$typeUtilisateur->MenuOperateur();	// utilisation de la classe operateur 
 		break;
 		
@@ -53,12 +52,6 @@
 			$contenu= $typeUtilisateur->creerSuiviVoile(); 
 		break;
 		
-		
-		case "activer_voile":
-			$sortie=file("vue/application.html");
-			$nav_en_cours = 'operateur';
-			$contenu= $typeUtilisateur->affichage_validation();
-			break;
 		
 		
 		

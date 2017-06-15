@@ -143,6 +143,10 @@
 				{
 					document.getElementById('valider').style.visibility='visible';
 				}
+				if(document.getElementById('bouton').style.visibility=='hidden')
+				{
+					document.getElementById('bouton').style.visibility='visible';
+				}
 				/*
 				if(document.getElementById('valeur_taille_containt').style.visibility=='hidden')
 				{
@@ -1399,8 +1403,4 @@ function showThumbnail(files){
 			document.getElementById("titre").style.visibility = "visible";
 			document.getElementById("table").style.visibility = "visible";
 		}
-	}
-	function aficherValidation()
-	{
-		var id = document.getElementById("voileart").value;
 	}

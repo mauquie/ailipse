@@ -2018,3 +2018,7 @@
 2017-06-09 14:26:18 --- Redirection vers la page "voile" par "admin@test.fr
 2017-06-09 14:26:40 --- Redirection vers la page "voile" par "admin@test.fr
 2017-06-09 15:36:27 --- Redirection vers la page "menu" par "admin@test.fr
+2017-06-12 12:01:53 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-12 14:01:56 --- Redirection vers la page "voile" par "admin@test.fr
+2017-06-13 07:09:21 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-13 08:23:18 --- Connexion de "admin@test.fr" en tant que "Administrateur"

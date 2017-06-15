@@ -1400,3 +1400,7 @@ function showThumbnail(files){
 			document.getElementById("table").style.visibility = "visible";
 		}
 	}
+	function aficherValidation()
+	{
+		var id = document.getElementById("voileart").value;
+	}

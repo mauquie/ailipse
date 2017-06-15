@@ -2200,9 +2200,43 @@ if(!class_exists("Operateur"))
 		}
 		public function affichage_validation()
 		{
-			return('');
+			$connect= $this->_bdd->openBDD();
+			$sql="SELECT * from voile WHERE valider=0 ";
+			$result= $connect->query($sql);
+			
+			$voile="<option value='-1'>Voile</option>";
+			while($row=mysqli_fetch_array($result))
+			{
+				$voile=$voile."<option value=$row[0]>$row[1]</option>";
+			}
+			
+			$sql="SELECT * from fabricant";
+			$result= $connect->query($sql);
+			
+			$fabricant="<option value='-1'>Fabricant </option>";
+			while($row=mysqli_fetch_array($result))
+			{
+				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
+			}
+			$this->_bdd->CloseBDD();
+			return("
+				<div class='demo-card-wide mdl-card mdl-shadow--2dp'>
+					<div class='mdl-card__title mdl-card-operateur__background animated slideInDown'>
+					<h2 class='mdl-card__title-text'valider</h2>
+					</div>
+					<div class='mdl-card__supporting-text card-background'>
+					<form action='index.php?d=operateur&a=valider_voile' method='post' enctype='multipart/form-data'>
+					<select name='voileat' id='voileart' onchange='aficherValidation()' class='nice-select'>
+					".$voile."
+					</select>
+					<br />
+					<br />
+					<br />
+					</div>
+					</div>
+					");
+			
 		}
-		
 		public function modificationSuivi($id_suivi,$commentaire,$statut,$operateur){
 			/////////////////////////////////////////////////////////////////////////////////
 			//utilisation: L'id du suivi est obligatoire ainsi que le mail de l'operateur. //

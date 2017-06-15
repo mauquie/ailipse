@@ -200,9 +200,7 @@
 		tablmateriaux+="  </tr> </table>";
 		*/
 	}
-
 	function affichTable()
-
 	{
 
 	
@@ -294,7 +292,6 @@
 	}
 
 	function aficherTableauxvaleur()
-
 	{
 
 		var tabl="";
@@ -1404,3 +1401,42 @@ function showThumbnail(files){
 			document.getElementById("table").style.visibility = "visible";
 		}
 	}
+	function activerVoile()
+	{
+		var id=document.getElementById("voileart").value;
+		if(confirm("Êtes-vous sûr de vouloir valider la voile ?")==true)
+		{
+			$.ajax({
+				 url:"index.php?d=operateur&a=valider",
+				 type : "POST",
+				 data: {id:id},
+				 success: function (rep)
+				 {
+					location.href="index.php?d=operateur&a=modifier_voile";
+				 }	
+	
+			});
+		}
+		
+	}
+	function suprimerVoile()
+	{
+		var id=document.getElementById("voileart").value;
+		if(confirm("Êtes-vous sûr de vouloir suprimer la voile ?")==true)
+		{
+			if(id>0)
+			{
+				$.ajax({
+					 url:"index.php?d=operateur&a=suprimer",
+					 type : "POST",
+					 data: {id:id},
+					 success: function (rep)
+					 {
+						location.href="index.php?d=operateur&a=modifier_voile";
+					 }	
+		
+				});
+			}
+		}
+	}
+	

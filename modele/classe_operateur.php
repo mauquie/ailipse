@@ -508,13 +508,13 @@ if(!class_exists("Operateur"))
 				$fabricant=$fabricant."<option value=$row[0]>$row[1]</option>";
 			}
 			$this->_bdd->CloseBDD();
-			$bouton='	<button type="button" onclick="window.location=\'index.php?d=operateur&a=suprimer_voile\'" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >
+			$bouton='	<button type="button" onclick="suprimerVoile()" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >
 							suprimer
 					</button>
 					';
 			if($this->_permissions==3)
 			{
-				$bouton.='<button type="button" onclick="window.location=\'index.php?d=operateur&a=valider\'" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >
+				$bouton.='<button type="button" onclick="activerVoile()" name="submit"class="mdl-button mdl-js-button mdl-button--raised" >
 						valider
 				</button>';
 			}
@@ -2300,6 +2300,43 @@ if(!class_exists("Operateur"))
 			$id_suivi = $_POST["id_suivi"];
 			if(file_exists("document/controlexml/".$id_suivi.".xml"))	{echo "1";}
 			else														{echo "0";}
+		}
+		public function valider()
+		{
+			$id=$_POST["id"];
+			$connect = $this->_bdd->openBDD();
+			$connect->query("UPDATE `voile` SET `valider`='1'WHERE `id`=$id");
+			$this->_bdd->closeBDD();
+		}
+		public function suprimer()
+		{
+			
+			$id=$_POST["id"];
+			$connect = $this->_bdd->openBDD();
+			$reponce=$connect->query("SELECT `nb_tail`FROM `voile` WHERE `id`='$id'");
+			if($reponce->num_rows>0)
+			{
+				$row = $reponce->fetch_array();
+				$nbTaile=$row[0];
+			}
+			$reponce=$connect->query("SELECT * FROM `voile_taille` WHERE `id`='$id'");
+			if($reponce->num_rows>0)
+			{
+				$row = $reponce->fetch_array();
+			}
+			for($i=1;$i<=$nbTaile;$i++)
+			{
+				$taile[$i]=$row[$i];
+				$connect->query("DELETE FROM `voile_assemblage_sup` WERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_controle_long` WERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_long_susp_cut`  WERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_mat_susp_cut` WERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_ref_susp_cut` WERE `id`='$id.$taile[$i]'"); 
+			}
+			$connect->query("DELETE FROM `voile` WERE `id`='$id'"); 
+			$connect->query("DELETE FROM `voile_taille` WERE `id`='$id'"); 		
+			$this->_bdd->closeBDD();
+			echo("ok");
 		}
 
 	}

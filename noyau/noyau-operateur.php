@@ -135,6 +135,17 @@ $typeUtilisateur->recuData();
 			$sortie = "";
 			$typeUtilisateur->fichierExiste();
 		break;
+		case "valider":
+			$contenu="";
+			$sortie = "";
+			$typeUtilisateur->valider();
+		break;
+		case "suprimer":
+			$contenu="";
+			$sortie = "";
+			echo('ok');
+			$typeUtilisateur->suprimer();
+			break;
 		default:
 			//redirection page 404
 			$contenu = "";

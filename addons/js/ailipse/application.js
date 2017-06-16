@@ -1301,16 +1301,19 @@ function showThumbnail(files){
 		var id=document.getElementById("voileart").value;
 		if(confirm("Êtes-vous sûr de vouloir valider la voile ?")==true)
 		{
-			$.ajax({
-				 url:"index.php?d=operateur&a=valider",
-				 type : "POST",
-				 data: {id:id},
-				 success: function (rep)
-				 {
-					location.href="index.php?d=operateur&a=modifier_voile";
-				 }	
-	
-			});
+			if(id>0)
+			{
+				$.ajax({
+					 url:"index.php?d=operateur&a=valider",
+					 type : "POST",
+					 data: {id:id},
+					 success: function (rep)
+					 {
+						location.href="index.php?d=operateur&a=modifier_voile";
+					 }	
+		
+				});
+			}
 		}
 		
 	}

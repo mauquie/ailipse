@@ -143,7 +143,6 @@ $typeUtilisateur->recuData();
 		case "suprimer":
 			$contenu="";
 			$sortie = "";
-			echo('ok');
 			$typeUtilisateur->suprimer();
 			break;
 		default:

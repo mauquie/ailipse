@@ -1608,25 +1608,24 @@ if(!class_exists("Operateur"))
 				$sql=$sql.")";
 				$connect->query($sql);
 				// pour la base de dennée des reference fabriquand
-					$Id_une=$id_voile;
-					$value=[];
-					for($i=1;$i<=$nb_susp ; $i++)
-					{
-						$value[$i]=$_POST['reffab'.$i.$fois];
-					}
-					$sql="INSERT INTO `voile_ref_susp_cut`(`idvoile`";
-					for($i=1;$i<=$nb_susp;$i++)
-					{
-						$sql=$sql.",`r$i`";
-					}
-					$sql=$sql.")  VALUES ('$Id_une'";
-					for($i=1;$i<=$nb_susp;$i++)
-					{
-						$sql=$sql.",'$value[$i]'";
-					}
-					$sql=$sql.")";
-					$connect->query($sql);
-					echo $sql."\r\n";
+				$Id_une=$id_voile;
+				$value=[];
+				for($i=1;$i<=$nb_susp ; $i++)
+				{
+					$value[$i]=$_POST['reffab'.$i.$fois];
+				}
+				$sql="INSERT INTO `voile_ref_susp_cut`(`idvoile`";
+				for($i=1;$i<=$nb_susp;$i++)
+				{
+					$sql=$sql.",`r$i`";
+				}
+				$sql=$sql.")  VALUES ('$Id_une'";
+				for($i=1;$i<=$nb_susp;$i++)
+				{
+					$sql=$sql.",'$value[$i]'";
+				}
+				$sql=$sql.")";
+				$connect->query($sql);
 				// pour la basse de donner des taille
 				for($fois=1;$fois<=$taill;$fois++)
 				{
@@ -1648,7 +1647,7 @@ if(!class_exists("Operateur"))
 					}
 					$sql=$sql.")";
 					$connect->query($sql);
-					echo $sql."\r\n";
+					
 				}
 				// pour la basse de donner des matareiaux
 				for($fois=1;$fois<=$taill;$fois++)
@@ -1671,7 +1670,7 @@ if(!class_exists("Operateur"))
 					}
 					$sql=$sql.")";
 					$connect->query($sql);
-					echo $sql."\r\n";
+					
 				}
 				$composition=[];
 				$letre=array('A','B','C','D','E','br');

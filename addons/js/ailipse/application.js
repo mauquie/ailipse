@@ -313,117 +313,19 @@
 			for(i=1; i<=nb;i++)
 
 			{
-
-				tabl=tabl+"<th style='width:'"+wid+"px;'>taille"+i+"</th>";
-
-			}
-
+				for(j=1;j<=3;j++)
+				{
+					tabl=tabl+"<th style='width:'"+wid+"px;'>taille"+i+"</th>";
+				}
 				
 
-			
-
+			}
 			tabl=tabl+"</tr><tr> ";
 
-			
+		
 
-			for(j=1;j<=nbSuspente;j++)
 
-			{
-
-				tabl=tabl+"<th width='45px'> suspente"+j+" </th>";
-
-				for(i=1; i<=nb;i++)
-
-				{
-
-					tabl=tabl+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
-
-								'<input name="reffab'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="reffab'+j+i+'">'+
-
-								'<label style=" width:100%" class="mdl-textfield__label" for="reffab'+j+i+'"></label>'+
-
-								'</div>'+'</td>';
-
-				}
-
-				tabl=tabl+"</tr><tr>";
-
-			}
-
-	
-
-			tabl=tabl+"  </tr> </tabl_2e>";
-
-			document.getElementById('valeur_taille').innerHTML = "";
-			if(document.getElementById('valeur_taille_containt').style.visibility=='hidden')
-			{
-				document.getElementById('valeur_taille_containt').style.visibility='visible';
-			}
-			$(".valeur_taille").append(tabl);
-
-			
-
-			var tabl2="";
-
-			tabl2="<h6> Longueur des suspentes par référence et par taille </h6>"+
-
-			"<table border='1'> <tr>"+
-
-			"<th width='"+wid+"px'> taille </th>";
-
-			for(i=1; i<=nb;i++)
-
-			{
-
-				tabl2=tabl2+"<th width='45px'> taille"+i+"</th>";
-
-			}
-
-				
-
-			
-
-			tabl2=tabl2+"</tr><tr> ";
-
-			
-
-			for(j=1;j<=nbSuspente;j++)
-
-			{
-
-				tabl2=tabl2+"<th width='"+wid+"px'> suspente"+j+" </th>";
-
-				for(i=1; i<=nb;i++)
-
-				{
-
-					tabl2=tabl2+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
-
-								'<input name="tailsup'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="tailsup'+j+i+'">'+
-
-								'<label style=" width:100%" class="mdl-textfield__label" for="tailsup'+j+i+'"></label>'+
-
-								'</div>'+'</td>';
-
-				}
-
-				tabl2=tabl2+"</tr><tr>";
-
-			}
-
-	
-
-			tabl2=tabl2+"  </tr> </tabl_2e>";
-
-			if(document.getElementById('longerSuspentecontain').style.visibility=='hidden')
-			{
-				document.getElementById('longerSuspentecontain').style.visibility='visible';
-			}
-			document.getElementById('longerSuspente').innerHTML = "";
-
-			wid= 100/nb;
-
-			$(".longerSuspente").append(tabl2);
+			wid= 100/(nb*3);
 
 			$.ajax({
 
@@ -432,36 +334,31 @@
 			success :function(rep)
 
 			{
-				var tabl3="";
-				tabl3="<h6> listes des matériaux de la suspentes </h6>"+
-
-				"<table border='1'> <tr>"+
-
-				"<th width='60px'> taille </th>";
-
-				for(i=1; i<=nb;i++)
-
-				{
-
-					tabl3=tabl3+"<th width='"+wid+"%'>taile"+i+"</th>";
-
-				}
-
-				tabl3=tabl3+"</tr><tr> ";
-
-				
-
 				for(j=1;j<=nbSuspente;j++)
 
 				{
 
-					tabl3=tabl3+"<th width='"+wid+"px'> supsente"+j+" </th>";
-
+					tabl=tabl+"<th width='45px'> suspente"+j+" </th>";
 					for(i=1; i<=nb;i++)
 
 					{
 
-						tabl3=tabl3+ '<td style=" width:'+wid+'px">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+						tabl=tabl+ '<td style=" width:'+wid+'%">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+
+									'<input name="reffab'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="reffab'+j+i+'">'+
+
+									'<label style=" width:100%" class="mdl-textfield__label" for="reffab'+j+i+'"></label>'+
+
+									'</div>'+'</td>';
+						tabl=tabl+ '<td style=" width:'+wid+'%">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+
+						'<input name="tailsup'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="tailsup'+j+i+'">'+
+
+						'<label style=" width:100%" class="mdl-textfield__label" for="tailsup'+j+i+'"></label>'+
+
+						'</div>'+'</td>';
+
+						tabl=tabl+ '<td style=" width:'+wid+'%">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
 
 									'<select  name="materiaux'+i+j+'"  id="materiaux'+i+j+'"  style="width:100%">'+
 
@@ -470,30 +367,21 @@
 									'</select>'+
 
 									'</div>'+'</td>';
-
 					}
-
-					tabl3=tabl3+"</tr><tr>";
-
+					tabl+="</tr><tr>";
+				}	
+				tabl=tabl+"</tr></table>";
+				document.getElementById('valeur_taille').innerHTML = "";
+				if(document.getElementById('valeur_taille_containt').style.visibility=='hidden')
+				{
+					document.getElementById('valeur_taille_containt').style.visibility='visible';
 				}
-
-		
-
-				tabl3=tabl3+"  </tr> </table>";
-
-				document.getElementById('materiauxSuspente').innerHTML = "";
-
-			if(document.getElementById('materiauxSuspentecontin').style.visibility=='hidden')
-			{
-				document.getElementById('materiauxSuspentecontin').style.visibility='visible';
-			}
-				$(".materiauxSuspente").append(tabl3);
-
-				
-
+				$(".valeur_taille").append(tabl);
 			}
 
 			});
+			
+
 
 			var bouton="";
 

@@ -2143,9 +2143,27 @@ if(!class_exists("Operateur"))
 			$date=$_POST["date"];
 			$certification=$_POST["cert"];
 			$nom=$_POST["nom"];
+			$reponce=$connect->query("SELECT * FROM `voile`WHERE `id`='$id'");
+			if($reponce->num_rows>0)
+			{
+				$row = $reponce->fetch_array();
+				$nbOldTaile=$row[3];
+			}
 			$sql=" UPDATE `voile` SET `nom`='$nom',`id_const`='$constructeur',`nb_tail`='$nbTaile',`date_s`='$date',`cert`='$certification' WHERE `id`='$id' ";
 			
 			$connect->query($sql);
+			
+			
+			$reponce=$connect->query("SELECT * FROM `voile_taille`WHERE `id`='$id'");
+			if($reponce->num_rows>0)
+			{
+				$row = $reponce->fetch_array();
+				for($i=1;$i<=$nbOldTaile;$i++)
+				{
+					$oldTaile[$i]=$row[$i];
+				}
+			}
+			
 			$sql="UPDATE `voile_taille` SET ";
 			for($i=1;$i<=$nbTaile;$i++)
 			{
@@ -2161,7 +2179,16 @@ if(!class_exists("Operateur"))
 			}
 			$sql.="WHERE idvoile='$id'";
 			$connect->query($sql);
-			
+			$connect->query("UPDATE `voile_ref_susp_cut` SET `idvoile`='$id' WHERE `idvoile`='$id'");
+			for($i=1;$i<$nbOldTaile;$i++)
+			{
+				
+				$connect->query("UPDATE `voile_mat_susp_cut` SET `idvoile`='$id.$taile[$i]' WHERE `idvoile`='$id.$oldTaile[$i]'");
+				$connect->query("UPDATE `voile_assemblage_sup` SET `idvoile`='$id.$taile[$i]' WHERE `idvoile`='$id.$oldTaile[$i]'");
+				$connect->query("UPDATE `voile_long_susp` SET `idvoile`='$id.$taile[$i]' WHERE `idvoile`='$id.$oldTaile[$i]'");
+				$connect->query("UPDATE `voile_controle_long` SET `idvoile`='$id.$taile[$i]' WHERE `idvoile`='$id.$oldTaile[$i]'");
+				
+			}
 			$this->_bdd->closeBDD();
 			header("location: index.php?d=operateur&a=menu");
 		}

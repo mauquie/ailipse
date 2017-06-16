@@ -166,16 +166,6 @@ if(!class_exists("Operateur"))
 										<a href="#popup_tableau" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">reference fabriquant des suspente </a>
 									</div>
 								</div>
-								<div class="mdl-cell">
-									<div class="longerSuspentecontain" name="longerSuspentecontain" id="longerSuspentecontain"  style="visibility: hidden">
-										<a href="#popup_tableau2" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">longueur des suspentes</a>
-									</div>
-								</div>
-								<div class="mdl-cell">
-									<div class="materiauxSuspentecontin" name="materiauxSuspentecontin" id="materiauxSuspentecontin" style=" visibility: hidden">
-										<a href="#popup_tableau3" class="mdl-button mdl-js-button mdl-button--primary" style="text-decoration:none; color:rgb(96,125,139)">reference fabriquant des suspente </a>
-									</div>
-								</div>
 							</div>
 						</div>
 						<br />
@@ -197,29 +187,6 @@ if(!class_exists("Operateur"))
 								</div>
 								<br />
 								<hr />
-							</div>
-						</div>
-					
-					
-						<div id="popup_tableau2" class="overlay">
-							<div class="popup">
-								<h2>longeur des supente </h2>
-								<a class="close" href="#">&times;</a>
-								<div class="longerSuspente" id="longerSuspente">
-					
-								</div>
-								<br />
-								<hr />
-							</div>
-						</div>
-					
-						<div id="popup_tableau3" class="overlay">
-							<div class="popup">
-								<h2>materiaux des suspente </h2>
-								<a class="close" href="#">&times;</a>
-								<div class="materiauxSuspente" id="materiauxSuspente">
-					
-								</div>
 							</div>
 						</div>
 						<div id="popup_tableau4" class="overlay">
@@ -1641,9 +1608,7 @@ if(!class_exists("Operateur"))
 				$sql=$sql.")";
 				$connect->query($sql);
 				// pour la base de dennée des reference fabriquand
-				for($fois=1;$fois<=$taill;$fois++)
-				{
-					$Id_une=$id_voile.$array[$fois];
+					$Id_une=$id_voile;
 					$value=[];
 					for($i=1;$i<=$nb_susp ; $i++)
 					{
@@ -1662,7 +1627,6 @@ if(!class_exists("Operateur"))
 					$sql=$sql.")";
 					$connect->query($sql);
 					echo $sql."\r\n";
-				}
 				// pour la basse de donner des taille
 				for($fois=1;$fois<=$taill;$fois++)
 				{

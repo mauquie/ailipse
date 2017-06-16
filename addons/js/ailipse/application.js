@@ -300,22 +300,26 @@
 
 		var nb=document.getElementById("nbtaile").value;
 
-		var wid= 45;
+		var wid= 100/(nb*3);
 
 		tabl="<h6>référence fabricant des suspentes  </h6>"+
 
 			"<table border='1'> <tr>"+
 
-			"<th width='"+wid+"px'> taille </th>";
+			"<th width='"+wid+"%'> taille </th>";
 
 			
 
 			for(i=1; i<=nb;i++)
 
 			{
-				for(j=1;j<=3;j++)
+				if(i==1)
 				{
-					tabl=tabl+"<th style='width:'"+wid+"px;'>taille"+i+"</th>";
+					tabl=tabl+"<th style='width:'"+wid+"%;'>nom</th>";
+				}
+				for(j=1;j<=2;j++)
+				{
+					tabl=tabl+"<th style='width:'"+wid+"%;'>taille"+i+"</th>";
 				}
 				
 
@@ -325,7 +329,7 @@
 		
 
 
-			wid= 100/(nb*3);
+			
 
 			$.ajax({
 
@@ -342,14 +346,17 @@
 					for(i=1; i<=nb;i++)
 
 					{
-
-						tabl=tabl+ '<td style=" width:'+wid+'%">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
-
-									'<input name="reffab'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="reffab'+j+i+'">'+
-
-									'<label style=" width:100%" class="mdl-textfield__label" for="reffab'+j+i+'"></label>'+
-
-									'</div>'+'</td>';
+						if(i==1)
+						{
+							tabl=tabl+ '<td style=" width:'+wid+'%">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
+	
+										'<input name="reffab'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="reffab'+j+i+'">'+
+	
+										'<label style=" width:100%" class="mdl-textfield__label" for="reffab'+j+i+'"></label>'+
+	
+										'</div>'+'</td>';
+						}
+						
 						tabl=tabl+ '<td style=" width:'+wid+'%">'+'<div style="width:100%;" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">'+
 
 						'<input name="tailsup'+j+i+'" style=" width:100%" class="mdl-textfield__input" type="text" id="tailsup'+j+i+'">'+

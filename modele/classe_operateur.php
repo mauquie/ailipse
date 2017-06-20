@@ -179,7 +179,7 @@ if(!class_exists("Operateur"))
 						</div>
 						
 						<div id="popup_tableau" class="overlay">
-									<div class="popup">
+									<div class="popup_tableau">
 								<h2>Référance fabricant des suspentes</h2>
 								<a class="close" href="#">&times;</a>
 								<div class="valeur_taille" id="valeur_taille">
@@ -190,7 +190,7 @@ if(!class_exists("Operateur"))
 							</div>
 						</div>
 						<div id="popup_tableau4" class="overlay">
-							<div class="popup">
+							<div class="popup_tableau">
 								<h2>compisition d\'une ligne</h2>
 								<a class="close" href="#">&times;</a>
 								<div class="compositionligne" id="compositionligne">
@@ -199,7 +199,7 @@ if(!class_exists("Operateur"))
 							</div>
 						</div>
 						<div id="popup_tableau5" class="overlay">
-							<div class="popup">
+							<div class="popup_tableau">
 								<h2>longueurs de contrôle </h2>
 								<a class="close" href="#">&times;</a>
 								<div class="longueursdecontrole" id="longueursdecontrole">

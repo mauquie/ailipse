@@ -304,7 +304,7 @@
 
 		tabl="<h6>référence fabricant des suspentes  </h6>"+
 
-			"<table border='1'> <tr>"+
+			"<table  class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp' border='1'> <tr>"+
 
 			"<th width='"+wid+"%'> taille </th>";
 
@@ -408,7 +408,7 @@
 			$(".boutons").append(bouton);
 			var letre=['A','B','C','D','E','br'];
 			var composition = "<h6> composition d'une ligne</h6>"+
-			"<table border='1'>" +
+			"<table class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp' border='1'>" +
 			"<tr>"+
 			"<th width='5%'>nom</th>"
 			for( var t=1;t<=nb;t++)
@@ -433,7 +433,7 @@
 				}
 			}
 			var longeur = "<h6> longeur d'une ligne</h6>"+
-			"<table border='1'>" +
+			"<table class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp' border='1'>" +
 			"<tr>"+
 			"<th width='5%'>nom</th>"
 			for( var t=1;t<=nb;t++)

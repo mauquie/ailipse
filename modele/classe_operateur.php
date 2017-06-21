@@ -1499,7 +1499,7 @@ if(!class_exists("Operateur"))
 				}
 				// Allow certain file formats
 				if($imageFileType !="pdf") {
-					echo "Sorry, only pdf files are allowed.";
+					echo "Desoler seul els PDF sont autoriser";
 					$uploadOk = 0;
 				}
 				// Check if $uploadOk is set to 0 by an error
@@ -1545,17 +1545,16 @@ if(!class_exists("Operateur"))
 					}
 					// Check file size
 					if ($filesize > 500000000000) {
-						echo "Sorry, your file is too large.";
+						echo "dessoler le fichie rest trop large";
 						$uploadOk = 0;
 					}
 					// Allow certain file formats
 					if($imageFileType !="pdf" ) {
-						echo "Sorry, only pdf files are allowed.";
-						$uploadOk = 0;
+						echo "seul les PDF sont autoriser.";	
 					}
 					// Check if $uploadOk is set to 0 by an error
 					if ($uploadOk == 0) {
-						echo "Sorry, your manual was not uploaded.";
+						echo "desoler, votre ficheir na pas etait uploader.";
 						// if everything is ok, try to upload file
 					} else {
 						if (move_uploaded_file($filetmpname, $target_file)) {
@@ -1570,7 +1569,6 @@ if(!class_exists("Operateur"))
 			}
 			if($valid_annonce)
 			{
-				$id_voile="etst";
 				if($pathManuel=="")
 				{
 					$sql="INSERT INTO `voile`(`nom`, `id_const`, `nb_tail`, `date_s`, `cert`, `plan`) VALUES ('$nom','$id','$taill','$date','$cert','$pathplan')";
@@ -1581,21 +1579,15 @@ if(!class_exists("Operateur"))
 					$sql="INSERT INTO `voile`(`nom`, `id_const`, `nb_tail`, `date_s`, `cert`, `plan`, `manuel`) VALUES ('$nom','$id','$taill','$date','$cert','$pathplan','$pathManuel')";
 				}
 				$connect->query($sql);
-				$sql="SELECT id FROM `voile` WHERE nom='$nom'";
-				$result=$connect->query($sql);
-				
-				while($row[]= $result->fetch_assoc())
-				{
-					foreach($row[0] as $value){
-						$Id_voile=$value;
-					}
-				}
+				$result=$connect->query("SELECT id FROM `voile` WHERE nom='$nom'");
+				$row= $result->fetch_assoc();
+				$Id_voile=$row["id"];
 				$array=[];
 				for($i=1;$i<=$taill;$i++)
 				{
 					$array[$i]=$_POST["taille$i"];
 				}
-				$sql="INSERT INTO `voile_taille` ( `Id-voile`";
+				$sql="INSERT INTO `voile_taille` ( `Idvoile`";
 				for($i=1;$i<=$taill;$i++)
 				{
 					$sql=$sql.",`T$i`";
@@ -1608,18 +1600,17 @@ if(!class_exists("Operateur"))
 				$sql=$sql.")";
 				$connect->query($sql);
 				// pour la base de dennée des reference fabriquand
-				$Id_une=$id_voile;
 				$value=[];
 				for($i=1;$i<=$nb_susp ; $i++)
 				{
-					$value[$i]=$_POST['reffab'.$i.$fois];
+					$value[$i]=$_POST['reffab'.$i."1"];
 				}
 				$sql="INSERT INTO `voile_ref_susp_cut`(`idvoile`";
 				for($i=1;$i<=$nb_susp;$i++)
 				{
 					$sql=$sql.",`r$i`";
 				}
-				$sql=$sql.")  VALUES ('$Id_une'";
+				$sql=$sql.")  VALUES ('$Id_voile'";
 				for($i=1;$i<=$nb_susp;$i++)
 				{
 					$sql=$sql.",'$value[$i]'";
@@ -1629,13 +1620,13 @@ if(!class_exists("Operateur"))
 				// pour la basse de donner des taille
 				for($fois=1;$fois<=$taill;$fois++)
 				{
-					$Id_une=$id_voile.$array[$fois];
+					$Id_une=$Id_voile.$array[$fois];
 					$value=[];
 					for($i=1;$i<=$nb_susp ; $i++)
 					{
 						$value[$i]=$_POST['tailsup'.$i.$fois];
 					}
-					$sql="INSERT INTO `voile_long_sups_cut`(`idvoile`";
+					$sql="INSERT INTO `voile_long_susp_cut`(`idvoile`";
 					for($i=1;$i<=$nb_susp;$i++)
 					{
 						$sql=$sql.",`r$i`";
@@ -1652,13 +1643,13 @@ if(!class_exists("Operateur"))
 				// pour la basse de donner des matareiaux
 				for($fois=1;$fois<=$taill;$fois++)
 				{
-					$Id_une=$id_voile.$array[$fois];
+					$Id_une=$Id_voile.$array[$fois];
 					$value=[];
 					for($i=1;$i<=$nb_susp ; $i++)
 					{
 						$value[$i]=$_POST['materiaux'.$fois.$i];
 					}
-					$sql="INSERT INTO  ` voile_mat_susp_cut` (`idvoile`";
+					$sql="INSERT INTO  `voile_mat_susp_cut` (`idvoile`";
 					for($i=1;$i<=$nb_susp;$i++)
 					{
 						$sql=$sql.",`r$i`";
@@ -1670,7 +1661,7 @@ if(!class_exists("Operateur"))
 					}
 					$sql=$sql.")";
 					$connect->query($sql);
-					
+					echo $sql;
 				}
 				$composition=[];
 				$letre=array('A','B','C','D','E','br');
@@ -1694,8 +1685,8 @@ if(!class_exists("Operateur"))
 						}
 						
 					}
-					$Id_une=$id_voile.$array[$all];
-					$sql=$sql.") VALUES ('$id_voile'";
+					$Id_une=$Id_voile.$array[$all];
+					$sql=$sql.") VALUES ('$Id_une'";
 					for($fois=0;$fois<6;$fois++)
 					{
 						for($i=1;$i<=25;$i++)
@@ -1710,7 +1701,6 @@ if(!class_exists("Operateur"))
 					$connect->query($sql);
 					
 				}
-				// la longeur d
 				for($all=1;$all<=$taill;$all++)
 				{
 					for($fois=0;$fois<6;$fois++)
@@ -1721,7 +1711,7 @@ if(!class_exists("Operateur"))
 						}
 						
 					}
-					$sql="INSERT INTO `voile_assemblage_sup`(`idvoile`";
+					$sql="INSERT INTO `voile_controle_long`(`idvoile`";
 					
 					foreach ($letre as $sortie)
 					{
@@ -1731,8 +1721,8 @@ if(!class_exists("Operateur"))
 						}
 						
 					}
-					$Id_une=$id_voile.$array[$all];
-					$sql=$sql.") VALUES ('$id_voile'";
+					$Id_une=$Id_voile.$array[$all];
+					$sql=$sql.") VALUES ('$Id_une'";
 					for($fois=0;$fois<6;$fois++)
 					{
 						for($i=1;$i<=25;$i++)
@@ -1751,7 +1741,7 @@ if(!class_exists("Operateur"))
 			}
 			
 			$this->_bdd->CloseBDD();
-			header("location: index.php?d=operateur&a=menu");
+			///header("location: index.php?d=operateur&a=menu");
 		}
 		public function valider_constructeur()
 		{
@@ -2317,14 +2307,14 @@ if(!class_exists("Operateur"))
 			for($i=1;$i<=$nbTaile;$i++)
 			{
 				$taile[$i]=$row[$i];
-				$connect->query("DELETE FROM `voile_assemblage_sup` WERE `id`='$id.$taile[$i]'"); 
-				$connect->query("DELETE FROM `voile_controle_long` WERE `id`='$id.$taile[$i]'"); 
-				$connect->query("DELETE FROM `voile_long_susp_cut`  WERE `id`='$id.$taile[$i]'"); 
-				$connect->query("DELETE FROM `voile_mat_susp_cut` WERE `id`='$id.$taile[$i]'"); 
-				$connect->query("DELETE FROM `voile_ref_susp_cut` WERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_assemblage_sup` WHERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_controle_long` WHERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_long_susp_cut`  WHERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_mat_susp_cut` WHERE `id`='$id.$taile[$i]'"); 
+				$connect->query("DELETE FROM `voile_ref_susp_cut` WHERE `id`='$id.$taile[$i]'"); 
 			}
-			$connect->query("DELETE FROM `voile` WERE `id`='$id'"); 
-			$connect->query("DELETE FROM `voile_taille` WERE `id`='$id'"); 		
+			$connect->query("DELETE FROM `voile` WHERE `id`='$id'"); 
+			$connect->query("DELETE FROM `voile_taille` WHERE `id`='$id'"); 		
 			$this->_bdd->closeBDD();
 			echo("ok");
 		}

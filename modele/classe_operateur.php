@@ -1740,7 +1740,7 @@ if(!class_exists("Operateur"))
 			}
 			
 			$this->_bdd->CloseBDD();
-			///header("location: index.php?d=operateur&a=menu");
+			header("location: index.php?d=operateur&a=menu");
 		}
 		public function valider_constructeur()
 		{

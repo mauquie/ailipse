@@ -1661,7 +1661,6 @@ if(!class_exists("Operateur"))
 					}
 					$sql=$sql.")";
 					$connect->query($sql);
-					echo $sql;
 				}
 				$composition=[];
 				$letre=array('A','B','C','D','E','br');

@@ -2028,3 +2028,14 @@
 2017-06-15 11:38:31 --- Connexion de "admin@test.fr" en tant que "Administrateur"
 2017-06-16 05:47:32 --- Connexion de "admin@test.fr" en tant que "Administrateur"
 2017-06-20 08:24:23 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-20 10:24:37 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-20 13:13:00 --- Redirection vers la page "voile" par "admin@test.fr
+2017-06-20 12:02:17 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-20 14:03:26 --- Redirection vers la page "voile" par "admin@test.fr
+2017-06-20 14:05:00 --- Redirection vers la page "notifications" par "admin@test.fr
+2017-06-20 14:05:15 --- Redirection vers la page "activer" par "admin@test.fr
+2017-06-20 14:05:15 --- Redirection vers la page "notifications" par "admin@test.fr
+2017-06-21 05:56:05 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-21 06:32:39 --- Connexion de "admin@test.fr" en tant que "Administrateur"
+2017-06-21 08:54:37 --- Redirection vers la page "voile" par "admin@test.fr
+2017-06-21 08:54:39 --- Redirection vers la page "menu" par "admin@test.fr
